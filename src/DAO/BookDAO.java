@@ -1,4 +1,4 @@
-package model;
+package DAO;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -8,13 +8,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import bean.POItemBean;
+import bean.BookBean;
 
-public class POItemDAO {
+public class BookDAO {
 
 	private DataSource ds;
 
-	public POItemDAO() throws ClassNotFoundException {
+	public BookDAO() throws ClassNotFoundException {
 		try {
 			ds = (DataSource) (new InitialContext()).lookup("java:/comp/env/jdbc/EECS");
 		} catch (NamingException e) {
@@ -22,19 +22,19 @@ public class POItemDAO {
 		}
 	}
 
-	public Map<String, POItemBean> retrieve(String POID, String bookID) throws SQLException {
-		String query = "select P.ID, P.BID, P.PRICE from POITEM P where P.ID = " + Integer.parseInt(POID) 
-				+ " and P.BID = " + Integer.parseInt(bookID);
-		Map<String, POItemBean> rv = new HashMap<String, POItemBean>();
+	public Map<String, BookBean> retrieve(String bookID) throws SQLException {
+		String query = "select B.BID, B.TITLE, B.PRICE, B.CATEGORY from BOOK B where B.BID = " + bookID;
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
-			int id = r.getInt("ID");
 			String bid = r.getString("BID");
+			String title = r.getString("TITLE");
 			int price = r.getInt("PRICE");
-			POItemBean POItem = new POItemBean(id, bid, price);
-			rv.put(id + "", POItem);
+			String category = r.getString("CATEGORY");
+			BookBean book = new BookBean(bid, title, price, category);
+			rv.put(bid, book);
 		}
 		r.close();
 		p.close();
