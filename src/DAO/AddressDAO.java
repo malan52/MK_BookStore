@@ -23,7 +23,7 @@ public class AddressDAO {
 	}
 
 	public Map<String, AddressBean> retrieve(String addressID) throws SQLException {
-		String query = "SELECT A.ID, A.STREET, A.PROVINCE, A.COUNTRY, A.ZIP, A.PHONE from ADDRESS A where A.ID = " + Integer.parseInt(addressID);
+		String query = "SELECT A.ID, A.STREET, A.PROVINCE, A.COUNTRY, A.ZIP, A.PHONE from ADDRESS A where A.ID = '" + Integer.parseInt(addressID) + "'";
 		Map<String, AddressBean> rv = new HashMap<String, AddressBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

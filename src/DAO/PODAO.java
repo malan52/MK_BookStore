@@ -23,7 +23,7 @@ public class PODAO {
 	}
 
 	public Map<String, POBean> retrieve(String POID) throws SQLException {
-		String query = "SELECT P.ID, P.LNAME, P.FNAME, P.STATUS, P.ADDRESS from PO where P.ID = " + Integer.parseInt(POID);
+		String query = "SELECT P.ID, P.LNAME, P.FNAME, P.STATUS, P.ADDRESS from PO where P.ID = '" + Integer.parseInt(POID) + "'";
 		Map<String, POBean> rv = new HashMap<String, POBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
