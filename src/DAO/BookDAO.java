@@ -23,7 +23,7 @@ public class BookDAO {
 	}
 
 	public Map<String, BookBean> retrieve(String bookID) throws SQLException {
-		String query = "select B.BID, B.TITLE, B.PRICE, B.CATEGORY from BOOK B where B.BID = " + bookID;
+		String query = "select B.BID, B.TITLE, B.PRICE, B.CATEGORY from BOOK B where B.BID = '" + bookID + "'";
 		Map<String, BookBean> rv = new HashMap<String, BookBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
