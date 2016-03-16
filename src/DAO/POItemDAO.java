@@ -22,10 +22,10 @@ public class POItemDAO {
 		}
 	}
 
-	public Map<String, POItemBean> retrieve(String POID, String bookID) throws SQLException {
+	public POItemBean retrievePOItem(String POID, String bookID) throws SQLException {
 		String query = "select P.ID, P.BID, P.PRICE from POITEM P where P.ID = " + Integer.parseInt(POID) 
 				+ " and P.BID = '" + bookID + "'";
-		Map<String, POItemBean> rv = new HashMap<String, POItemBean>();
+		POItemBean POItem = null;
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
@@ -33,13 +33,12 @@ public class POItemDAO {
 			int id = r.getInt("ID");
 			String bid = r.getString("BID");
 			int price = r.getInt("PRICE");
-			POItemBean POItem = new POItemBean(id, bid, price);
-			rv.put(id + "", POItem);
+			POItem = new POItemBean(id, bid, price);
 		}
 		r.close();
 		p.close();
 		con.close();
-		return rv;
+		return POItem;
 	}
 
 }
