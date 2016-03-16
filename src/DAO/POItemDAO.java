@@ -24,7 +24,7 @@ public class POItemDAO {
 
 	public Map<String, POItemBean> retrieve(String POID, String bookID) throws SQLException {
 		String query = "select P.ID, P.BID, P.PRICE from POITEM P where P.ID = " + Integer.parseInt(POID) 
-				+ " and P.BID = " + Integer.parseInt(bookID);
+				+ " and P.BID = '" + bookID + "'";
 		Map<String, POItemBean> rv = new HashMap<String, POItemBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

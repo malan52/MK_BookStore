@@ -23,7 +23,7 @@ public class VisitEventDAO {
 	}
 
 	public Map<String, VisitEventBean> retrieve(String visitDay, String bookID) throws SQLException {
-		String query = "select V.DAY, V.BID, B.EVENTTYPE from VISITEVENT V where V.DAY = " + visitDay + " and V.BID = " + bookID;
+		String query = "select V.DAY, V.BID, B.EVENTTYPE from VISITEVENT V where V.DAY = '" + visitDay + "' and V.BID = '" + bookID + "'";
 		Map<String, VisitEventBean> rv = new HashMap<String, VisitEventBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);

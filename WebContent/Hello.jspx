@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=ISO-8859-1" 
+		pageEncoding="ISO-8859-1" session="true"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Insert title here</title>
+<script type="text/javascript" src="res/mc.js">;</script>
+</head>
+<body>
+<form action = "" method = "POST" onsubmit="return validate()">
+<fieldset><legend>Student Information System</legend>
+
+<table border="1">
+	<tr>
+		<td>BId</td>
+		<td>Title</td>
+		<td>Price</td>
+		<td>Category</td>
+	</tr>
+	<c:forEach items="${requestScope['temp']}" var="element"> 
+	<tr>
+	    <td>${element.value.bid}</td>
+		<td>${element.value.title}</td>
+		<td>${element.value.price}</td>
+		<td>${element.value.category}</td>
+	</tr>
+	</c:forEach>
+</table>
+	
+</fieldset>
+
+</form>
+
+</body>
+</html>
+</jsp:root>
