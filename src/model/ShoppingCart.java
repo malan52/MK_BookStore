@@ -64,18 +64,26 @@ public class ShoppingCart {
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * @return the books in cart.
-	 */
-	public Map<BookBean, Integer> getBooks() {
-		return books;
-	}
 
 	/**
-	 * @return size of cart.
+	 * @return number of books in cart.
 	 */
-	public int size(){
-		return books.size();
+	public int getSize(){
+		int totalSize = 0;
+		for(Integer temp : books.values()){
+			totalSize += temp;
+		}
+		return totalSize;
+	}
+	
+	/**
+	 * @return the total price of all items in cart.
+	 */
+	public int getPrice(){
+		int totalPrice = 0;
+		for (Map.Entry<BookBean, Integer> entry : books.entrySet()){
+			totalPrice += entry.getKey().getPrice() * entry.getValue();
+		}
+		return totalPrice;
 	}
 }
