@@ -58,6 +58,49 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div class="container">
+  <div class="jumbotron" style="background-image:url(image/headerImg.png)"> <!-- header -->
+    <h1>Home</h1>  
+    <div class="btn-group" role="group" aria-label="..."> <!-- category in header -->
+  <button type="button" class="btn btn-danger">Fiction</button>
+  <button type="button" class="btn btn-default">Science</button>
+  <button type="button" class="btn btn-default">Book</button>
+  <button type="button" class="btn btn-default">Fiction</button>
+  <button type="button" class="btn btn-default">Science</button>
+  <button type="button" class="btn btn-default">Book</button>
+  <button type="button" class="btn btn-default">Fiction</button>
+  <button type="button" class="btn btn-default">Science</button>
+	</div> <!-- category in header end -->
+	</div> <!-- header end -->
+	
+ <div class="panel panel-info">
+      <div class="panel-heading">Category<button type="button" style="float:right" class="btn btn-link">>View All</button></div>
+      <div class="panel-body"> <!-- panel content -->
+      
+      <div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="image/book_cover/b001.jpg" alt="book001"/>
+      <div class="caption">
+        <h3>Book 001</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add To Cart</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+      
+      
+      </div> <!-- panel content end -->
+    </div>
+  
+</div>
+
+
+
     
     <!-- Javascript files -->
     <script src="js/jquery.min.js"></script>
