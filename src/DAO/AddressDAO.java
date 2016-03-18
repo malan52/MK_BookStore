@@ -22,8 +22,29 @@ public class AddressDAO {
 		}
 	}
 
-	public Map<String, AddressBean> retrieve(String addressID) throws SQLException {
-		String query = "SELECT A.ID, A.STREET, A.PROVINCE, A.COUNTRY, A.ZIP, A.PHONE from ADDRESS A where A.ID = " + Integer.parseInt(addressID);
+	public AddressBean retrieveAddr(String addressID) throws SQLException {
+		String query = "SELECT A.ID, A.STREET, A.PROVINCE, A.COUNTRY, A.ZIP, A.PHONE from ADDRESS A where A.ID = '" + Integer.parseInt(addressID) + "'";
+		AddressBean address = null;
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			int id = r.getInt("ID");
+			String street = r.getString("STREET");
+			String province = r.getString("PROVINCE");
+			String country = r.getString("COUNTRY");
+			String zip = r.getString("ZIP");
+			String phone = r.getString("PHONE");
+			address = new AddressBean(id, street, province, country, zip, phone);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return address;
+	}
+	
+	public Map<String, AddressBean> retrieveAll() throws SQLException {
+		String query = "SELECT * from ADDRESS";
 		Map<String, AddressBean> rv = new HashMap<String, AddressBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
@@ -43,5 +64,4 @@ public class AddressDAO {
 		con.close();
 		return rv;
 	}
-
 }

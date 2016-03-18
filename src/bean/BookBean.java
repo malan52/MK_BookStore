@@ -80,5 +80,4 @@ public class BookBean {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
 }

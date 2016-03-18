@@ -22,9 +22,9 @@ public class VisitEventDAO {
 		}
 	}
 
-	public Map<String, VisitEventBean> retrieve(String visitDay, String bookID) throws SQLException {
-		String query = "select V.DAY, V.BID, B.EVENTTYPE from VISITEVENT V where V.DAY = " + visitDay + " and V.BID = " + bookID;
-		Map<String, VisitEventBean> rv = new HashMap<String, VisitEventBean>();
+	public VisitEventBean retrieve(String visitDay, String bookID) throws SQLException {
+		String query = "select V.DAY, V.BID, B.EVENTTYPE from VISITEVENT V where V.DAY = '" + visitDay + "' and V.BID = '" + bookID + "'";
+		VisitEventBean ve =	null;
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
@@ -32,13 +32,12 @@ public class VisitEventDAO {
 			String day = r.getString("DAY");
 			String bid = r.getString("BID");
 			String eventtype = r.getString("EVENTTYPE");
-			VisitEventBean ve = new VisitEventBean(day, bid, eventtype);
-			rv.put(day, ve);
+			ve = new VisitEventBean(day, bid, eventtype);
 		}
 		r.close();
 		p.close();
 		con.close();
-		return rv;
+		return ve;
 	}
 
 }
