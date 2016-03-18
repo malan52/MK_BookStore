@@ -26,14 +26,14 @@ public class ShoppingCart {
 	 * Add a book to cart.
 	 * @param bid
 	 */
-	public void addBook(String bid){
+	public void addBook(String bid, int quantity){
 		try {
 			BookBean book = bookAccessor.retrieveBook(bid);
 			if(!books.containsKey(book))
-				books.put(book, 1);
+				books.put(book, quantity);
 			else{
 				int oldAmount = books.get(book);
-				books.put(book, oldAmount + 1);
+				books.put(book, oldAmount + quantity);
 			}
 				
 		} catch (SQLException e) {
@@ -50,14 +50,25 @@ public class ShoppingCart {
 		try {
 			BookBean book = bookAccessor.retrieveBook(bid);
 			if(books.containsKey(book)){
-				if(books.get(book) == 1)
-					books.remove(book);
-				else{
-					int oldAmount = books.get(book);
-					books.put(book, oldAmount - 1);
-				}
+				books.remove(book);
 			}
 				
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * In shopping cart page, use this method to update the amount of a book.
+	 * @param bid book id of the book to be added or dropped.
+	 * @param quantity the target amount of the book.
+	 */
+	public void updateBookQuantity(String bid, int quantity){
+		try {
+			BookBean book = bookAccessor.retrieveBook(bid);
+			books.put(book, quantity);
 				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -86,4 +97,13 @@ public class ShoppingCart {
 		}
 		return totalPrice;
 	}
+
+	/**
+	 * @return the books
+	 */
+	public Map<BookBean, Integer> getBooks() {
+		return books;
+	}
+
+	
 }
