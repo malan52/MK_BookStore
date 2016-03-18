@@ -46,7 +46,7 @@ public class Start extends HttpServlet {
 		response.setContentType("text/html");
 		
 		try {
-			Map <String, BookBean> temp = new BookDAO().retrieve("b001");
+			Map <String, BookBean> temp = new BookDAO().retrieveAll();
 			System.out.println(temp.get("b001").toString());
 			request.setAttribute("temp", temp);
 		} catch (ClassNotFoundException e) {
