@@ -58,6 +58,10 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<div class="jumbotron" style="background-image: url(image/header.jpg)">
+  <h1><center>Home</center></h1>      
+</div>
     
     <!-- Javascript files -->
     <script src="js/jquery.min.js"></script>
