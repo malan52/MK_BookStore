@@ -3,7 +3,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
 	<jsp:directive.page contentType="text/html; charset=UTF-8" 
-		pageEncoding="UTF-8" session="false"/>
+		pageEncoding="UTF-8" session="true"/>
 	<jsp:output doctype-root-element="html"
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
@@ -11,36 +11,103 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <title>Home Page</title>
+    <title>Shopping Cart</title>
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <!-- Optional theme -->
 <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     
-<!-- main.css -->
-<link rel="stylesheet" />
+<!-- cart.css -->
+<link rel="stylesheet" href="css/cart.css"/>
 
 </head>
 <body>
 
-<div class="jumbotron" style="background-image: url(image/cart.jpg)">
-  <h1><center>Shopping Cart</center></h1>      
-</div>
 
-	<table>
-		<thead>
-			<tr>
-			<td>Book Title</td>
-			</tr>
-		</thead>
-	</table>
+  <div class="jumbotron" style="background-image:url(image/headerImg.png)"> <!-- header -->
+  <h1><center>Shopping Cart</center></h1>
+  </div>
+
+
+
+<div class="container">         
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+      	<!--Book Bean  -->
+      	<th>BID</th>
+        <th>Book Title</th>        
+        <th>Unit Price</th>
+        <th>Category</th>
+        
+        <!-- Shopping Cart -->
+        <th>Quatity</th>
+        <th>Subtotal</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>   
+    
+      <!-- loop cart item -->
+      <c:forEach items="${sessionScope['cart']}" var="element"> 
+	<tr>
+	    <td>${element.value.sid}</td>
+		<td>${element.value.title}</td>
+		<td>${element.value.price}</td>
+		<td>${element.value.category}</td>
+		<td><input id="quantity" name="quantity" type="text"/>1</td>	<!-- ${element.value.quantity} -->
+		<td>${element.value.subtotal}</td>
+		<td><button action='submit' name='submit' label='submit'> Delete </button></td>
+	</tr>
+	</c:forEach>
+	<!-- samples -->
+	<tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
+     <!--
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+        <td></td>
+        <td></td>
+        <td></td><td></td>
+      </tr>  -->   
+     
+      
+    </tbody>
+  </table>
+ </div>
+  <hr/>
+  
+<div class="container">       
+  <table style="float:right">
+    <tr>
+    
+        <th><p>Total: ${sessionScope['total']}</p></th>
+     </tr>
+     <tr>
+     
+     
+     <th><button type="button" class="btn btn-default" action='submit' name='submit' >Buy Now</button></th>
+     </tr>
+  </table>
+</div> 
+
+ 
 
 
 
 	<!-- Javascript files -->
-    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js">;</script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js">;</script>
 </body>
 </html>
 </jsp:root>
