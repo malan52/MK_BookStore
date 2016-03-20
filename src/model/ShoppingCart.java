@@ -97,6 +97,26 @@ public class ShoppingCart {
 		}
 		return totalPrice;
 	}
+	
+	/**
+	 * 
+	 * @param bid book id of a book.
+	 * @return the unit price * quantity of the given book in cart.
+	 */
+	public int getPriceByBook(String bid){
+		int totalPrice = 0;
+		BookBean book;
+		try {
+			book = bookAccessor.retrieveBook(bid);
+			if(books.containsKey(book)){
+				totalPrice = book.getPrice() * books.get(book);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return totalPrice;
+	}
 
 	/**
 	 * @return the books

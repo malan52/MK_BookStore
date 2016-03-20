@@ -36,7 +36,8 @@ public class Start extends HttpServlet {
     	 * @see Servlet#init(ServletConfig)
     */
     public void init(ServletConfig config) throws ServletException {
-    	// TODO Auto-generated method stub
+    	BSData dataAccessor = new BSData();
+    	config.getServletContext().setAttribute("dataAccessor", dataAccessor);
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,6 +50,7 @@ public class Start extends HttpServlet {
 			Map <String, BookBean> temp = new BookDAO().retrieveAll();
 			System.out.println(temp.get("b001").toString());
 			request.setAttribute("temp", temp);
+			request.getSession().setAttribute("cart", new ShoppingCart());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
