@@ -39,7 +39,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -71,7 +71,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Sign In</a></li>
 					<li><a href="#">Register</a></li>
-					<li><a href="#">Shopping Cart  <span class="badge">0</span></a></li>
+					<li><a href="Cart.jspx">Shopping Cart  <span class="badge">0</span></a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -116,13 +116,16 @@
 							<div class="caption">
 								<!-- book caption -->
 								<h3 data-toggle="modal" data-target="#mymodal">Book Title</h3>
-								<p>Price: $5.10  <div>Quantity:<input type="number" value="1" min="1" max="100" style="float:right"/></div></p>
+								<form action="" method="GET">
+								<p>Price: $5.10  <div>Quantity:<input type="number" id="b001quantity" name="b001quantity" value="1" min="1" max="100" style="float:right"/></div></p>
 								<p>
-									<a href="#" class="btn btn-primary" role="button">Add To
-										Cart</a> 
+									
+												<button action="submit" name="addToCart" value="b001" class="btn btn-primary" >Add To Cart</button>
+									
 									<a href="#" class="btn btn-default" role="button"
 										data-toggle="modal" data-target="#mymodal">Detail</a>
 								</p>
+								</form> 
 								<div class="modal fade" id="mymodal">
 									<!-- modal -->
 									<div class="modal-dialog">
@@ -143,6 +146,9 @@
 													<div id="stars">
 													<span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
 													</div>
+													<div class="rating-stars large">
+														<div class="star" style="width:70%"></div>
+													</div>
 													
 													</td>
 													</tr>
@@ -153,7 +159,9 @@
 												<!-- modal footer -->
 												<button type="button" class="btn btn-default"
 													data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Add To Cart</button>
+												<form action="" method="GET">
+												<button action="submit" name="addToCart" value="addToCartb001" class="btn btn-primary" >Add To Cart</button>
+												</form>
 											</div>
 											<!-- modal footer end -->
 										</div>
