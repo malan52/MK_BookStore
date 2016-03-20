@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.*;
 import DAO.*;
@@ -23,6 +24,7 @@ import model.*;
 @WebServlet("/Start")
 public class Start extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String MAIN_URL = "/main.jspx";
 
     /**
      * Default constructor. 
@@ -45,18 +47,21 @@ public class Start extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
+		HttpSession session = request.getSession();
 		
 		try {
 			Map <String, BookBean> temp = new BookDAO().retrieveAll();
 			System.out.println(temp.get("b001").toString());
 			request.setAttribute("temp", temp);
-			request.getSession().setAttribute("cart", new ShoppingCart());
+			if(session.getAttribute("cart") == null){
+				request.getSession().setAttribute("cart", new ShoppingCart());
+			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/Hello.jspx").forward(request, response);
+		request.getRequestDispatcher(MAIN_URL).forward(request, response);
 	}
 
 	/**

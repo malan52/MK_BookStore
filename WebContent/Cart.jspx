@@ -58,7 +58,7 @@
     <tbody>   
     
       <!-- loop cart item -->
-      <c:forEach items="${sessionScope['cart']}" var="element"> 
+      <c:forEach items="${sessionScope['cart.getBooks()']}" var="element"> 
 	<tr>
 	    <td>${element.value.sid}</td>
 		<td>${element.value.title}</td>
@@ -99,7 +99,7 @@
 <table class="table-responsive" style="float:right;">
 <tr>
 <td>
-<b>Total: ${sessionScope['total']}</b><br/>
+<b>Total: ${sessionScope['cart.getPrice()']}</b><br/>
 <button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">Keep Shopping</button>
 <button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>Buy Now</b></button>
 
