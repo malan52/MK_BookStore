@@ -121,7 +121,7 @@ $("#input-id").rating({min:1, max:10, step:2, size:'lg'});</script>
 							<div class="caption">
 								<!-- book caption -->
 								<h3 data-toggle="modal" data-target="#mymodal">Book Title</h3>
-								<form action="OrderProcessCtrl.java" method="GET">
+								<form action="OrderProcessCtrl" method="GET">
 								<p>Price: $5.10  <div>Quantity:<input type="number" id="b001quantity" name="b001quantity" value="1" min="1" max="100" style="float:right"/></div></p>
 								<p>
 									
