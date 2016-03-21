@@ -25,6 +25,7 @@
 
 <!-- main.css -->
 <link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="css/rating.css" />
 <style type="text/css">
 #stars>span {
 	display: inline-block;
@@ -39,6 +40,11 @@
 
 #stars>span:hover ~ span:before {
 	content: '';
+}
+
+.modal-body-scrollreview {
+	max-height: calc(100vh - 450px);
+	overflow-y: auto;
 }
 </style>
 <script>
@@ -68,42 +74,116 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">x</button>
-						<h3 class="modal-title">Book Title <small>$4.00</small></h3>
+						<h3 class="modal-title">
+							Book Title <small>$4.00</small>
+						</h3>
 					</div>
 					<div class="modal-body">
 						<div class="media">
 							<div class="media-left">
-								<a href="#"><img class="media-object" src="image/book_cover/b001.jpg" alt="..."/></a>
+								<img class="media-object"
+									src="image/book_cover/b001.jpg" width="200" height="200" />
 							</div>
 							<div class="media-body">
-								<h4 class="media-heading">Customer Review</h4>
-								...
+
+								<table>
+									<form id="customerreview">
+										<tr>
+											<td>
+												<h4 class="media-heading">Write A Review</h4>
+
+												<div class="rating">
+													<input type="radio" id="star5" name="rating" value="5" /><label
+														for="star5">5 stars</label> <input type="radio" id="star4"
+														name="rating" value="4" /><label for="star4">4
+														stars</label> <input type="radio" id="star3" name="rating"
+														value="3" /><label for="star3">3 stars</label> <input
+														type="radio" id="star2" name="rating" value="2" /><label
+														for="star2">2 stars</label> <input type="radio" id="star1"
+														name="rating" value="1" /><label for="star1">1
+														star</label>
+												</div>
+											</td>
+										</tr>
+
+										<tr>
+											<td><textarea id="customerreview" rows="3" cols="50"
+													onclick="this.innerHTML=''"> please write a review</textarea></td>
+											<td><button type="submit" class="btn btn-primary">Submit</button></td>
+										</tr>
+										<tr><td><hr/></td></tr>
+										<tr>
+											<td>
+												<h4 class="media-heading">Customer Review (Quantity)</h4>
+												<div class="list-group modal-body-scrollreview">
+													<div class="panel panel-default">
+														<div class="panel-body">Review contentReview
+															contentReview contentReview contentReview contentReview
+															contentReview contentReview contentReview content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+													<div class="panel panel-default">
+														<div class="panel-body">Review content</div>
+														<div class="panel-footer">User name</div>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</form>
+								</table>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
+					<form action="OrderProcessCtrl" method="GET">
+			<div style="float:left">Quantity:<input type="number" id="b001quantity" name="b001quantity" value="1" min="1" max="100"/></div>
+						<button type="submit" class="btn btn-primary">Add To Cart</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						
+        				
+        				</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	<script src="js/jquery.js">
 		;
