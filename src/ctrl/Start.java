@@ -50,15 +50,10 @@ public class Start extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try {
-			Map <String, BookBean> temp = new BookDAO().retrieveAll();
-			System.out.println(temp.get("b001").toString());
-			request.setAttribute("temp", temp);
 			if(session.getAttribute("cart") == null){
 				request.getSession().setAttribute("cart", new ShoppingCart());
 			}
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher(MAIN_URL).forward(request, response);
