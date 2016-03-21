@@ -174,7 +174,7 @@
 					<div class="modal-footer">
 					<form action="OrderProcessCtrl" method="GET">
 			<div style="float:left">Quantity:<input type="number" id="b001quantity" name="b001quantity" value="1" min="1" max="100"/></div>
-						<button type="submit" class="btn btn-primary">Add To Cart</button>
+						<button type="submit" name="addToCart" value="b001" class="btn btn-primary">Add To Cart</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						
         				
