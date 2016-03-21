@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="true"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Register</title>
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    
+<!-- register.css 
+<link rel="stylesheet" href="css/cart.css"/>
+-->
+</head>
+<body>
+<div class="container">
+  <div class="jumbotron" style="background-image:url(image/headerImg.png)"> <!-- header -->
+    <h1>Register</h1>   
+  </div> <!-- header end -->
+</div>
+
+
+<div class="container"> <!-- user register informatoin -->
+<p><h2><b>Create Your Account</b></h2></p>
+<p><h3>Register with your email, username and password</h3></p>
+<br/>
+
+<form class="form-horizontal" role="form">
+<!-- email address -->
+<div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email: </label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="joedoe@example.com"></input>
+      </div>
+    </div>
+  
+
+<!-- username -->
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="usr">Username: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="billingAddress" 
+        placeholder="Joe Doe"></input>
+      </div>
+    </div>
+ 
+<!-- password -->
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="pws">Password: </label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="pwd" placeholder="******"></input>
+      </div>
+    </div>
+</form>    
+</div><!-- user register information -->
+
+<div class="container">
+<button type="button" class="btn btn-warning btn-lg" action='submit' name='register' style="float:right"><b>Register</b></button>
+</div>
+
+
+	<!-- Javascript files -->
+    <script src="js/jquery.min.js">;</script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js">;</script>
+</body>
+</html>
+</jsp:root>
