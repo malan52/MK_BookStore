@@ -9,7 +9,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import bean.AddressBean;
-import bean.CustomerBean;
 
 public class AddressDAO {
 
@@ -24,13 +23,13 @@ public class AddressDAO {
 	}
 
 	public AddressBean retrieveAddr(String addressID) throws SQLException {
-		String query = "SELECT * from ADDRESS A where A.ID = '" + addressID + "'";
+		String query = "SELECT A.ID, A.STREET, A.PROVINCE, A.COUNTRY, A.ZIP, A.PHONE from ADDRESS A where A.ID = '" + Integer.parseInt(addressID) + "'";
 		AddressBean address = null;
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
-		if (r.next()) {
-			String id = r.getString("ID");
+		while (r.next()) {
+			int id = r.getInt("ID");
 			String street = r.getString("STREET");
 			String province = r.getString("PROVINCE");
 			String country = r.getString("COUNTRY");
@@ -43,33 +42,7 @@ public class AddressDAO {
 		con.close();
 		return address;
 	}
-
-	/*
-	 * Update a new customer' address or update an exist customer's address
-	 */
-	public void updateAddr(AddressBean addr) throws SQLException {
-		String queryget = "SELECT * FROM Address WHERE id = '" + addr.getId() + "'";
-		String queryadd = "INSERT INTO Address VALUES ('" + addr.getId() + "', '" + addr.getStreet() + "', '"
-				+ addr.getProvince() + "', '" + addr.getCountry() + "', '" + addr.getZip() + "', '" + addr.getPhone()
-				+ "')";
-		String queryupdate = "UPDATE Address SET \"STREET\"='" + addr.getStreet() + "', \"PROVINCE\"='"
-				+ addr.getProvince() + "', \"COUNTRY\"='" + addr.getCountry() + "', \"ZIP\"='" + addr.getZip()
-				+ "', \"PHONE\"='" + addr.getPhone() + "' WHERE \"ID\"='" + addr.getId() + "'";
-		Connection con = this.ds.getConnection();
-		PreparedStatement p = con.prepareStatement(queryget);
-		ResultSet r = p.executeQuery();
-		if (r.next()) { // user exist, update password
-			p = con.prepareStatement(queryupdate);
-			p.executeUpdate();
-		} else { // user not exist, insert new instance
-			p = con.prepareStatement(queryadd);
-			p.executeUpdate();
-		}
-		r.close();
-		p.close();
-		con.close();
-	}
-
+	
 	public Map<String, AddressBean> retrieveAll() throws SQLException {
 		String query = "SELECT * from ADDRESS";
 		Map<String, AddressBean> rv = new HashMap<String, AddressBean>();
@@ -77,14 +50,14 @@ public class AddressDAO {
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
-			String id = r.getString("ID");
+			int id = r.getInt("ID");
 			String street = r.getString("STREET");
 			String province = r.getString("PROVINCE");
 			String country = r.getString("COUNTRY");
 			String zip = r.getString("ZIP");
 			String phone = r.getString("PHONE");
 			AddressBean address = new AddressBean(id, street, province, country, zip, phone);
-			rv.put(id, address);
+			rv.put(id + "", address);
 		}
 		r.close();
 		p.close();

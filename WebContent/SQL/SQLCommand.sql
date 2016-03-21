@@ -117,10 +117,6 @@ INSERT INTO Customer (username, password) VALUES ('Roger', 'roger123');
 INSERT INTO Customer (username, password) VALUES ('Steven', 'steven123');
 INSERT INTO Customer (username, password) VALUES ('Andy', 'Andy123');
 
-SELECT username, password FROM Customer WHERE username = 'username';
-UPDATE CUSTOMER SET "PASSWORD"='roger124' WHERE "USERNAME"='Roger';
-DELETE FROM Customer WHERE username = 'Eva';
-
 /* Customer profile
 * username: Username to sign in, FK to CUSTOMER
 * fname: first name
@@ -137,8 +133,6 @@ FOREIGN KEY(username) REFERENCES Customer(username) ON DELETE CASCADE);
 
 INSERT INTO Profile (username, fname, lname, email) VALUES ('Steven', 'Steven', 'Eric', 'steveneric@yorku.ca');
 INSERT INTO Profile (username, email) VALUES ('Andy', 'andyabc@yorku.ca');
-
-UPDATE PROFILE SET "FNAME"='Andy', "LNAME"='Tommy' WHERE "USERNAME"='Andy';
 
 /* Credit Card payment information
 * username: Username to sign in, FK to CUSTOMER
@@ -180,4 +174,4 @@ FOREIGN KEY(username) REFERENCES Customer(username) ON DELETE CASCADE
 );
 
 INSERT INTO Review (bid, username, rating, review) VALUES ('b001', 'Roger', 5, 'Very good book!');
-INSERT INTO Review VALUES ('b002', 'Roger', 4, 'Good book!');
+

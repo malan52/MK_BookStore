@@ -1,11 +1,10 @@
-package bean;
+package model.Customer;
 
-public class CreditInfoBean {
+public class CreditInfo {
 	private static final int VISA = 1;
 	private static final int MASTER_CARD = 2;
 	private static final int AMERICAN_EXPRESS = 3;
 	
-	private String username;
 	private int cardType;
 	private String cardHolder;
 	private String cardNumber;
@@ -13,17 +12,15 @@ public class CreditInfoBean {
 	private int expireY;
 	
 	/**
-	 * @param username
-	 * @param cardType
-	 * @param cardHolder
+	 * @param type
+	 * @param holder
 	 * @param cardNumber
 	 * @param expireM
 	 * @param expireY
 	 */
 	
-	public CreditInfoBean(String username, int type, String holder, String cardNumber, int expireM, int expireY) {
+	public CreditInfo(int type, String holder, String cardNumber, int expireM, int expireY) {
 		super();
-		this.setUsername(username);
 		this.cardType = type;
 		this.cardHolder = holder;
 		this.cardNumber = cardNumber;
@@ -31,26 +28,25 @@ public class CreditInfoBean {
 		this.expireY = expireY;
 	}
 	
-	public CreditInfoBean(String username){
-		this(username, 1, null, "", 1, 2017);
+	public CreditInfo(){
+		this(1, null, "", 1, 2017);
 	}
 	
 	/**
-	 * @return the username
+	 * 
 	 */
-	public String getUsername() {
-		return username;
-	}
+
+
 	/**
 	 * @return the type
 	 */
-	public int getCardType() {
+	public int getType() {
 		return cardType;
 	}
 	/**
 	 * @return the holder
 	 */
-	public String getCardHolder() {
+	public String getHolder() {
 		return cardHolder;
 	}
 	/**
@@ -72,21 +68,15 @@ public class CreditInfoBean {
 		return expireY;
 	}
 	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	/**
 	 * @param type the type to set
 	 */
-	public void setCardType(int type) {
+	public void setType(int type) {
 		this.cardType = type;
 	}
 	/**
 	 * @param holder the holder to set
 	 */
-	public void setCardHolder(String holder) {
+	public void setHolder(String holder) {
 		this.cardHolder = holder;
 	}
 	/**
@@ -106,17 +96,6 @@ public class CreditInfoBean {
 	 */
 	public void setExpireY(int expireY) {
 		this.expireY = expireY;
-	}
-	/**
-	 * 
-	 */
-	public String toString() {
-		return "Username: " + username
-				+ "\nCard Type: " + cardType
-				+ "\nCard Holder: " + cardHolder
-				+ "\nCard Number: " + cardNumber
-				+ "\nExpire Month: " + expireM
-				+ "\nExpire Year: " + expireY;
 	}
 	
 }
