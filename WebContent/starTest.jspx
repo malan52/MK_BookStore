@@ -110,12 +110,7 @@ span.stars span {
     <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
 </fieldset>
 
-<fieldset>
-<span class="stars">4.8618164</span>
-<span class="stars">2.6545344</span>
-<span class="stars">0.5355</span>
-<span class="stars">8</span>
-</fieldset>
+
 
 
 
