@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.BookBean;
 import model.ShoppingCart;
 
 /**
@@ -44,10 +45,13 @@ public class OrderProcessCtrl extends HttpServlet {
 			int quantity = Integer.parseInt(request.getParameter("b001quantity"));
 			cart.addBook(bid, quantity);
 		}
-		if(cart.getSize() != 0){
+		if(cart.getSize() != 0 && session.getAttribute("total") == null 
+				&& session.getAttribute("booksInCart") == null){
 			session.setAttribute("total", cart.getPrice());
 			session.setAttribute("booksInCart", cart.getBooks());
 		}
+		System.out.println();
+		request.getRequestDispatcher("/Cart.jspx").forward(request, response);
 	}
 
 	/**
