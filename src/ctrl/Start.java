@@ -53,7 +53,14 @@ public class Start extends HttpServlet {
 			if(session.getAttribute("cart") == null){
 				request.getSession().setAttribute("cart", new ShoppingCart());
 			}
+			else if(session.getAttribute("books") == null){
+				ArrayList<String> categories = new BookDAO().retrieveCategories();
+				request.getServletContext().setAttribute("categories", categories);
+			}
 		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		request.getRequestDispatcher(MAIN_URL).forward(request, response);
