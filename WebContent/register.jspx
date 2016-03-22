@@ -17,9 +17,7 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
     
-<!-- register.css 
-<link rel="stylesheet" href="css/cart.css"/>
--->
+
 </head>
 <body>
 <div class="container">
