@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="true"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Payment</title>
+    
+<!-- js for choose the states and provence -->    
+    <script src="js/p1.js">;</script>   
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <!-- Javascript files -->
+    <script src="js/jquery.min.js">;</script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js">;</script>
+</head>
+<body>
+<div class="container">
+  <div class="jumbotron" style="background-image:url(image/headerImg.png)"> <!-- header -->
+    <h1>Payment</h1>  
+	</div> <!-- header end -->
+	</div>
+<!-- first name and last name -->
+<div class="container">
+<h3><b>Contact Information</b></h3>
+<form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="fname">First Name:</label>
+      <input type="text" class="form-control" id="fname" placeholder="Joe" 
+      style="margin: 10px 10px 10px 10px;"></input>
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name:</label>
+      <input type="text" class="form-control" id="lname" placeholder="Doe"
+      style="margin: 10px 10px 10px 10px;"></input>
+    </div>
+  </form>
+</div>
+<!-- select country and state -->
+<div class="container">
+<h3><b>Billing Address</b></h3>
+	<form class="form-inline" role="form" name="form1">
+		<label  for="country">Country:</label>
+		<div class="form-group" >
+		<div class="col-sm-6 col-md-4">
+		<select id="province" class="form-control" onchange="getCity()">
+			<option value="0">Select country</option> 
+			<option value= "Canada" >Canada</option> 
+			<option value= "USA" >USA</option>
+		</select>
+		</div>
+		</div>
+		
+		<label  for="state">Province/States:</label>
+		<div class="form-group">
+		<div class="col-sm-6 col-md-4">
+		
+		<select id="city" class="form-control"> 
+			<option value="0">Select state</option>
+		</select> 
+		</div>
+		</div>	
+	</form>
+</div>
+<!-- detail address include the apartment number, street number and city -->
+<div class="container">
+  <form role="form">
+    <div class="form-group">
+      <label for="adrs">Address:</label>
+      <textarea class="form-control" rows="2" id="adrs" >;</textarea>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+<form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input type="text" class="form-control" id="phone"  
+      style="margin: 10px 10px 10px 10px;"></input>
+    </div>
+  </form>
+</div>
+
+
+<div class="container">
+<h3><b>Credit Card Information</b></h3>
+
+<!-- credit card information -->
+<form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="cardHolder">Card Holder:</label>
+      <input type="text" class="form-control" id="cardHolder" placeholder="Joe Doe" 
+      style="margin: 10px 10px 10px 10px;"></input>
+    </div>
+ </form>
+
+<form class="form-inline" role="form">
+		<label  for="cardType">Card Type:</label>
+		<div class="form-group" >
+		<div class="col-sm-6 col-md-4">
+		<select id="cardType" class="form-control">
+			<option value= "1" >VISA</option> 
+			<option value= "2" >MASTER CARD</option>
+			<option value= "3" >AMERICAN EXPRESS</option>			
+		</select>
+		</div>
+		</div>
+</form>
+
+<form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" class="form-control" id="cardNumber" 
+      style="margin: 10px 10px 10px 10px;"></input>
+    </div>
+</form>
+
+<form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="exporydate">Card Expiry Date: </label>
+      <select id="expireM" class="form-control">
+			<option value= "1" >01</option> 
+			<option value= "2" >02</option>
+			<option value= "3" >03</option>
+			<option value= "4" >04</option>
+			<option value= "5" >05</option>
+			<option value= "6" >06</option>
+			<option value= "7" >07</option>
+			<option value= "8" >08</option>
+			<option value= "9" >09</option>
+			<option value= "10" >10</option>
+			<option value= "11" >11</option>
+			<option value= "12" >12</option>			
+		</select> /
+		<select id="expireY" class="form-control">
+			<option value= "16" >2016</option> 
+			<option value= "17" >2017</option>
+			<option value= "18" >2018</option>
+			<option value= "19" >2019</option>
+			<option value= "20" >2020</option>
+			<option value= "21" >2021</option>
+			<option value= "22" >2022</option>
+			<option value= "23" >2023</option>
+			<option value= "24" >2024</option>
+			<option value= "25" >2025</option>			
+		</select>
+		</div>
+</form>
+</div>
+
+<div class="container">
+<table style="float:right;">
+<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>Submit</b></button>
+</td></tr>
+</table>
+</div>
+ 
+</body>
+</html>
+</jsp:root>

@@ -10,6 +10,14 @@ package bean;
 //@XmlType(propOrder={"bid", "title", "price", "category"})
 public class BookBean {
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BookBean [bid=" + bid + ", title=" + title + ", price=" + price + ", category=" + category + "]";
+	}
+
 	private String bid;
 	private String title;
 	private int price;
@@ -80,4 +88,5 @@ public class BookBean {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=UTF-8" 
+		pageEncoding="UTF-8" session="true"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>Shopping Cart</title>
+     <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    
+<!-- cart.css -->
+<link rel="stylesheet" href="css/cart.css"/>
+
+</head>
+<body>
+
+<!-- <div class="jumbotron" style="background-image:url(image/headerImg.png)"> 
+  <h1><center>Shopping Cart</center></h1>
+  </div>
+   -->
+<div class="container">
+  <div class="jumbotron" style="background-image:url(image/headerImg.png)"> <!-- header -->
+    <h1>Shopping Cart</h1>  
+    <div class="btn-group" role="group" aria-label="..." style="float:right"> <!-- category in header -->
+  	
+  
+	</div> <!-- category in header end -->
+	</div> <!-- header end -->
+	</div>
+
+
+
+<div class="container">         
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+      	<!--Book Bean  -->
+      	<th>BID</th>
+        <th>Book Title</th>        
+        <th>Unit Price</th>
+        <th>Category</th>
+        
+        <!-- Shopping Cart -->
+        <th>Quatity</th>
+        <th>Subtotal</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>   
+    
+      <!-- loop cart item -->
+      <c:forEach items="${cart.getBooks()}" var="element"> 
+	<tr>
+	    <td>${element.key}</td>
+		<td>${cart.getTitle(element.key)}</td>
+		<td>${cart.getPrice(element.key)}</td>
+		<td>${cart.getCategory(element.key)}</td>
+		<td><input id="quantity" name="quantity" type="number" value="${element.value}"/></td>	<!-- ${element.value.quantity} -->
+		<td>${cart.getPriceByBook(element.key)}</td>
+		<td><button action='submit' name='submit' label='submit'> Delete </button></td>
+	</tr>
+	</c:forEach>
+    </tbody>
+  </table>
+ </div>
+  <hr/>
+  
+<div class="container" >
+<table class="table-responsive" style="float:right;">
+<tr>
+<td>
+<b>Total: ${sessionScope['total']}</b><br/>
+<button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">Keep Shopping</button>
+<button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>CHECK OUT</b></button>
+
+</td>
+</tr>
+</table>
+</div>
+
+	<!-- Javascript files -->
+    <script src="js/jquery.min.js">;</script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js">;</script>
+</body>
+</html>
+</jsp:root>

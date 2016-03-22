@@ -7,7 +7,7 @@ import DAO.BookDAO;
 import bean.BookBean;
 
 public class ShoppingCart {
-	private Map<BookBean, Integer> books; // Key is the book object and value 
+	private Map<String, Integer> books; // Key is the bid of the book object and value 
 										  // is the amount of the purchased book.
 	private BookDAO bookAccessor;	// The data access object.
 	
@@ -18,7 +18,7 @@ public class ShoppingCart {
 	 */
 	public ShoppingCart() throws ClassNotFoundException {
 		super();
-		this.books = new HashMap<BookBean, Integer>();
+		this.books = new HashMap<String, Integer>();
 		this.bookAccessor = new BookDAO();
 	}
 
@@ -27,18 +27,11 @@ public class ShoppingCart {
 	 * @param bid
 	 */
 	public void addBook(String bid, int quantity){
-		try {
-			BookBean book = bookAccessor.retrieveBook(bid);
-			if(!books.containsKey(book))
-				books.put(book, quantity);
-			else{
-				int oldAmount = books.get(book);
-				books.put(book, oldAmount + quantity);
-			}
-				
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(!books.containsKey(bid))
+			books.put(bid, quantity);
+		else{
+			int oldAmount = books.get(bid);
+			books.put(bid, oldAmount + quantity);
 		}
 	}
 	
@@ -47,16 +40,8 @@ public class ShoppingCart {
 	 * @param bid
 	 */
 	public void dropBook(String bid){
-		try {
-			BookBean book = bookAccessor.retrieveBook(bid);
-			if(books.containsKey(book)){
-				books.remove(book);
-			}
-				
-				
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(books.containsKey(bid)){
+			books.remove(bid);
 		}
 	}
 	
@@ -66,14 +51,7 @@ public class ShoppingCart {
 	 * @param quantity the target amount of the book.
 	 */
 	public void updateBookQuantity(String bid, int quantity){
-		try {
-			BookBean book = bookAccessor.retrieveBook(bid);
-			books.put(book, quantity);
-				
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		books.put(bid, quantity);
 	}
 
 	/**
@@ -92,8 +70,35 @@ public class ShoppingCart {
 	 */
 	public int getPrice(){
 		int totalPrice = 0;
-		for (Map.Entry<BookBean, Integer> entry : books.entrySet()){
-			totalPrice += entry.getKey().getPrice() * entry.getValue();
+		for (Map.Entry<String, Integer> entry : books.entrySet()){
+			BookBean book;
+			try {
+				book = bookAccessor.retrieveBook(entry.getKey());
+				totalPrice += book.getPrice() * entry.getValue();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return totalPrice;
+	}
+	
+	/**
+	 * 
+	 * @param bid book id of a book.
+	 * @return the unit price * quantity of the given book in cart.
+	 */
+	public int getPriceByBook(String bid){
+		int totalPrice = 0;
+		BookBean book;
+		try {
+			if(books.containsKey(bid)){
+				book = bookAccessor.retrieveBook(bid);
+				totalPrice = book.getPrice() * books.get(bid);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return totalPrice;
 	}
@@ -101,9 +106,33 @@ public class ShoppingCart {
 	/**
 	 * @return the books
 	 */
-	public Map<BookBean, Integer> getBooks() {
+	public Map<String, Integer> getBooks() {
 		return books;
 	}
+	
+	public BookBean getBook(String bid){
+		BookBean result = null;
+		if(books.containsKey(bid))
+			try {
+				result = bookAccessor.retrieveBook(bid);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return result;
+			
+	}
+	
+	public String getTitle(String bid){
+		return getBook(bid).getTitle();
+	}
+	
+	public int getPrice(String bid){
+		return getBook(bid).getPrice();
+	}
 
+	public String getCategory(String bid){
+		return getBook(bid).getCategory();
+	}
 	
 }
