@@ -1,0 +1,17 @@
+<div class="container header-margin-top">
+	<div class="jumbotron"
+		style="background-image: url(image/headerImg.png)">
+		<h1>Home</h1>
+		<div class="btn-group" role="group" aria-label="...">
+			<!-- category in header -->
+			<button type="button" class="btn btn-danger">Fiction</button>
+			<button type="button" class="btn btn-default">Science</button>
+			<button type="button" class="btn btn-default">Book</button>
+			<button type="button" class="btn btn-default">Fiction</button>
+			<button type="button" class="btn btn-default">Science</button>
+			<button type="button" class="btn btn-default">Book</button>
+			<button type="button" class="btn btn-default">Fiction</button>
+			<button type="button" class="btn btn-default">Science</button>
+		</div>
+	</div>
+</div>

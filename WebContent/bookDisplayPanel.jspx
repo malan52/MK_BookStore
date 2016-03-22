@@ -1,0 +1,44 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page" class="container">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			Category
+			<button type="button" style="float: right" class="btn btn-link">View
+				All</button>
+		</div>
+		<div class="panel-body">
+			<!-- panel content -->
+
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<!-- thumbnail -->
+						<img type="button" src="image/book_cover/b001.jpg" alt="book001"
+							data-toggle="modal" data-target="#myModal" />
+						<div class="caption">
+							<!-- book caption -->
+							<h3 data-toggle="modal" data-target="#myModal">Book Title</h3>
+							<form action="OrderProcessCtrl" method="GET">
+								<p>Price: $5.10
+								<div>
+									Quantity:<input type="number" id="b001quantity"
+										name="b001quantity" value="1" min="1" max="100"
+										style="float: right" />
+								</div>
+								</p>
+								<p>
+									<button action="submit" name="addToCart" value="b001"
+										class="btn btn-primary">Add To Cart</button>
+
+									<button type="button" class="btn btn-default"
+										data-toggle="modal" data-target="#myModal">Detail</button>
+								</p>
+							</form>
+							<jsp:include page="/detailModal.jspx" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
