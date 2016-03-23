@@ -1,17 +1,17 @@
-package model.Customer;
+package bean;
 
-public class Customer {
+public class CustomerBean {
 	private String username;
 	private String password;
-	private Profile profile;
-	private CreditInfo creditInfo;
+	private ProfileBean profile;
+	private CreditInfoBean creditInfo;
 	/**
 	 * @param username
 	 * @param password
 	 * @param profile
 	 * @param creditInfo
 	 */
-	public Customer(String username, String password, Profile profile, CreditInfo creditInfo) {
+	public CustomerBean(String username, String password, ProfileBean profile, CreditInfoBean creditInfo) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -19,8 +19,8 @@ public class Customer {
 		this.creditInfo = creditInfo;
 	}
 	
-	public Customer(String username, String password){
-		this(username, password, new Profile(), new CreditInfo());
+	public CustomerBean(String username, String password){
+		this(username, password, new ProfileBean(username), new CreditInfoBean(username));
 	}
 
 	/**
@@ -40,14 +40,14 @@ public class Customer {
 	/**
 	 * @return the profile
 	 */
-	public Profile getProfile() {
+	public ProfileBean getProfile() {
 		return profile;
 	}
 
 	/**
 	 * @return the creditInfo
 	 */
-	public CreditInfo getCreditInfo() {
+	public CreditInfoBean getCreditInfo() {
 		return creditInfo;
 	}
 
@@ -68,17 +68,22 @@ public class Customer {
 	/**
 	 * @param profile the profile to set
 	 */
-	public void setProfile(Profile profile) {
+	public void setProfile(ProfileBean profile) {
 		this.profile = profile;
 	}
 
 	/**
 	 * @param creditInfo the creditInfo to set
 	 */
-	public void setCreditInfo(CreditInfo creditInfo) {
+	public void setCreditInfo(CreditInfoBean creditInfo) {
 		this.creditInfo = creditInfo;
 	}
-	
+	/**
+	 * 
+	 */
+	public String toString() {
+		return "Username: " + username + ", Password :" + password;
+	}
 	
 	
 }

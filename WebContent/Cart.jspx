@@ -62,7 +62,7 @@
 	<tr>
 	    <td>${element.key}</td>
 		<td>${cart.getTitle(element.key)}</td>
-		<td>${cart.getPrice(element.key)}</td>
+		<td><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
 		<td>${cart.getCategory(element.key)}</td>
 		<td><input id="quantity" name="quantity" type="number" value="${element.value}"/></td>	<!-- ${element.value.quantity} -->
 		<td>${cart.getPriceByBook(element.key)}</td>
@@ -78,7 +78,7 @@
 <table class="table-responsive" style="float:right;">
 <tr>
 <td>
-<b>Total: ${sessionScope['total']}</b><br/>
+<b>Total: <f:formatNumber type="currency"> ${cart.getPrice()}</f:formatNumber></b><br/>
 <button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">Keep Shopping</button>
 <button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>CHECK OUT</b></button>
 

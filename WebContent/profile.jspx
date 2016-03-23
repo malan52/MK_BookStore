@@ -9,21 +9,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Insert title here</title>
-<script src="js/p1.js">;</script>
-
 </head>
-<body > 
-<form name="form1">
-<select id="province" onchange="getCity()">
-<option value="0">select country</option> 
-<option value= "canada" >canada</option> 
-<option value= "usa" >usa</option>
-</select>
- 
-<select id="city" style="width:60px"> 
-<option value="0">select state</option>
-</select> 
-</form>
+<body>
+
 </body>
 </html>
 </jsp:root>
