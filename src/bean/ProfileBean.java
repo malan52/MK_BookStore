@@ -4,26 +4,26 @@ public class ProfileBean {
 	private String username;
 	private String fname;
 	private String lname;
-	private AddressBean billingAddress;
+	private AddressBean sAddress;
 	private String email;
 	/**
 	 * @param username
 	 * @param fname
 	 * @param lname
-	 * @param billingAddress
+	 * @param sAddress
 	 * @param email
 	 */
-	public ProfileBean(String username, String fname, String lname, AddressBean billingAddress, String email) {
+	public ProfileBean(String username, String fname, String lname, AddressBean sAddress, String email) {
 		super();
 		this.username = username;
 		this.fname = fname;
 		this.lname = lname;
-		this.billingAddress = billingAddress;
+		this.sAddress = sAddress;
 		this.email = email;
 	}
 	
 	public ProfileBean(String username){
-		this(username, "", "", new AddressBean(username), "");
+		this(username, "", "", new AddressBean(username, "Shipping"), "");
 	}
 	/**
 	 * @return the username
@@ -48,8 +48,8 @@ public class ProfileBean {
 	/**
 	 * @return the billingAddress
 	 */
-	public AddressBean getBillingAddress() {
-		return billingAddress;
+	public AddressBean getSAddress() {
+		return sAddress;
 	}
 	
 	/**
@@ -81,8 +81,8 @@ public class ProfileBean {
 	/**
 	 * @param billingAddress the billingAddress to set
 	 */
-	public void setBillingAddress(AddressBean billingAddress) {
-		this.billingAddress = billingAddress;
+	public void setSAddress(AddressBean sAddress) {
+		this.sAddress = sAddress;
 	}
 	
 	/**
