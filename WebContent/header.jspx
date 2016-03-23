@@ -1,17 +1,22 @@
-<div class="container header-margin-top">
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt"
+	class="container header-margin-top">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
 	<div class="jumbotron"
 		style="background-image: url(image/headerImg.png)">
 		<h1>Home</h1>
 		<div class="btn-group" role="group" aria-label="...">
 			<!-- category in header -->
-			<button type="button" class="btn btn-danger">Fiction</button>
-			<button type="button" class="btn btn-default">Science</button>
-			<button type="button" class="btn btn-default">Book</button>
-			<button type="button" class="btn btn-default">Fiction</button>
-			<button type="button" class="btn btn-default">Science</button>
-			<button type="button" class="btn btn-default">Book</button>
-			<button type="button" class="btn btn-default">Fiction</button>
-			<button type="button" class="btn btn-default">Science</button>
+			<button type="button" class="btn btn-danger">All Books</button>
+			<c:forEach items="${categories}" var="category">
+			<button type="button" class="btn btn-info">${category}</button>
+			</c:forEach>
 		</div>
 	</div>
 </div>
