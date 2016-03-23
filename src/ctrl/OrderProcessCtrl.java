@@ -42,7 +42,7 @@ public class OrderProcessCtrl extends HttpServlet {
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 		if(request.getParameter("addToCart") != null){
 			String bid = request.getParameter("addToCart");
-			int quantity = Integer.parseInt(request.getParameter("b001quantity"));
+			int quantity = Integer.parseInt(request.getParameter("quantity"));
 			cart.addBook(bid, quantity);
 		}
 		if(cart.getSize() != 0 && session.getAttribute("total") == null 
