@@ -43,7 +43,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core"
 								</p>
 								<p>
 									<button action="submit" name="addToCart" value="b001"
-										class="btn btn-primary">Add To Cart</button>
+										class="btn btn-primary" style="margin-right:5px;">Add To Cart</button>
 
 									<button type="button" class="btn btn-default"
 										data-toggle="modal" data-target="#myModal">Detail</button>
