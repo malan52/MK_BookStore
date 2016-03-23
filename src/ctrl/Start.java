@@ -54,7 +54,7 @@ public class Start extends HttpServlet {
 				request.getSession().setAttribute("cart", new ShoppingCart());
 			}
 			
-			if(session.getAttribute("books") == null){
+			if(session.getAttribute("categories") == null){
 				ArrayList<String> categories = new BookDAO().retrieveCategories();
 				request.getServletContext().setAttribute("categories", categories);
 			}
