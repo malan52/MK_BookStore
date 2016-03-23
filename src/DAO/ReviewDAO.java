@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.*;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -68,4 +69,26 @@ public class ReviewDAO {
 		con.close();
 	}
 
+	/*
+	 * Giving an bookID return a map with all ReviewBean of this book
+	 * if book not exist or no review on this book, map will be null
+	 */
+	public Map<String, ReviewBean> retrieveAllReview(String bookID) throws SQLException {
+		String query = "SELECT * FROM Review WHERE bid = '" + bookID + "'";
+		Map<String, ReviewBean> map = new HashMap<String, ReviewBean>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			String bid = r.getString("BID");
+			String username = r.getString("USERNAME");
+			int rating = r.getInt("RATING");
+			String review = r.getString("REVIEW");
+			map.put(username, new ReviewBean(bid, username, rating, review));
+		}
+		r.close();
+		p.close();
+		con.close();
+		return map;
+	}
 }
