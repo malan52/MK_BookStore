@@ -79,7 +79,7 @@ public class BookDAO {
 	}
 	
 	public Map<String, BookBean> retrieveCategory(String category) throws SQLException {
-		String query = "select * from BOOK B where B.category = " + category + "order by B.title";
+		String query = "select * from BOOK B where B.category = " + "\'" + category + "\'" + "order by B.category";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
