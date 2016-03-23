@@ -38,8 +38,14 @@ public class Start extends HttpServlet {
     	 * @see Servlet#init(ServletConfig)
     */
     public void init(ServletConfig config) throws ServletException {
-    	BSData dataAccessor = new BSData();
-    	config.getServletContext().setAttribute("dataAccessor", dataAccessor);
+    	BookDAO bookAccessor = null;
+		try {
+			bookAccessor = new BookDAO();
+	    	config.getServletContext().setAttribute("bookAccessor", bookAccessor);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,7 +60,7 @@ public class Start extends HttpServlet {
 				request.getSession().setAttribute("cart", new ShoppingCart());
 			}
 			
-			if(session.getAttribute("books") == null){
+			if(session.getAttribute("categories") == null){
 				ArrayList<String> categories = new BookDAO().retrieveCategories();
 				request.getServletContext().setAttribute("categories", categories);
 			}
