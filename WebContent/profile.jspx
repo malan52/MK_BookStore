@@ -1,17 +1,37 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-	<jsp:directive.page contentType="text/html; charset=ISO-8859-1" 
-		pageEncoding="ISO-8859-1" session="false"/>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" class="container">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
 	<jsp:output doctype-root-element="html"
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Insert title here</title>
-</head>
-<body>
+	<ul class="nav nav-tabs">
+		<li class="active"><a data-toggle="tab" href="#account_info">Account
+				Information</a></li>
+		<li><a data-toggle="tab" href="#order_history">Order History</a></li>
+		<li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+		<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+	</ul>
 
-</body>
-</html>
-</jsp:root>
+	<div class="tab-content">
+		<jsp:include page="/editAccountInfo.jspx" />
+		<div id="order_history" class="tab-pane fade">
+			<h3>Order History</h3>
+			<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
+				laboris nisi ut aliquip ex ea commodo consequat.</p>
+		</div>
+		<div id="menu2" class="tab-pane fade">
+			<h3>Menu 2</h3>
+			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+				accusantium doloremque laudantium, totam rem aperiam.</p>
+		</div>
+		<div id="menu3" class="tab-pane fade">
+			<h3>Menu 3</h3>
+			<p>Eaque ipsa quae ab illo inventore veritatis et quasi
+				architecto beatae vitae dicta sunt explicabo.</p>
+		</div>
+	</div>
+
+</div>
