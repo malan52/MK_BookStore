@@ -42,9 +42,6 @@
 	overflow-y: auto;
 }
 
-.header-margin-top {
-	margin-top: 5%;
-}
 </style>
 <script>
 	$("#input-id").rating({
