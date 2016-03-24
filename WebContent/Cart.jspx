@@ -52,7 +52,7 @@
 		<td><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
 		<td>${cart.getCategory(element.key)}</td>
 		<td><input id="quantity" name="quantity" type="number" value="${element.value}"/></td>	<!-- ${element.value.quantity} -->
-		<td>${cart.getPriceByBook(element.key)}</td>
+		<td><f:formatNumber type="currency">${cart.getPriceByBook(element.key)}</f:formatNumber></td>
 		<td><button action='submit' name='submit' label='submit'> Delete </button></td>
 	</tr>
 	</c:forEach>
