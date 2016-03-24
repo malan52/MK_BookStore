@@ -6,12 +6,12 @@
 <form class="form-inline" role="form">
     <div class="form-group">
       <label for="sfname">First Name:</label>
-      <input type="text" class="form-control" id="sfname" placeholder="Joe" 
-      style="margin: 10px 10px 10px 10px;"></input>
+      <p id="pf"/><input type="text" class="form-control" id="sfname" name="sfname" placeholder="Joe" 
+      style="margin: 10px 10px 10px 10px;" />
     </div>
     <div class="form-group">
       <label for="slname">Last Name:</label>
-      <input type="text" class="form-control" id="slname" placeholder="Doe"
+      <p id="pl"/><input type="text" class="form-control" id="slname" name="slname" placeholder="Doe"
       style="margin: 10px 10px 10px 10px;"></input>
     </div>
   </form>
@@ -22,7 +22,7 @@
 		<label  for="scountry">Country:</label>
 		<div class="form-group" >
 		<div class="col-sm-6 col-md-4">
-		<select id="scountry" class="form-control" onchange="sgetState()">
+		<p id="pc"/><select id="scountry" name="scountry" class="form-control" onchange="sgetState()">
 			<option value="0">Select country</option> 
 			<option value= "Canada" >Canada</option> 
 			<option value= "USA" >USA</option>
@@ -34,7 +34,7 @@
 		<div class="form-group">
 		<div class="col-sm-6 col-md-4">
 		
-		<select id="sstate" class="form-control"> 
+		<p id="ps"/><select id="sstate" name="sstate" class="form-control"> 
 			<option value="0">Select state</option>
 		</select> 
 		</div>
@@ -46,7 +46,7 @@
   <form role="form">
     <div class="form-group">
       <label for="adrs">Address:</label>
-      <textarea class="form-control" rows="2" id="sadrs" name="adrs" onclick="this.innerHTML=''">Please enter address</textarea>
+      <p id="pa"/><textarea class="form-control" rows="2" id="sadrs" name="adrs" onclick="this.innerHTML=''">Please enter address</textarea>
     </div>
   </form>
 </div>
@@ -55,8 +55,8 @@
 <form class="form-inline" role="form">
     <div class="form-group">
       <label for="sphone">Phone Number:</label>
-      <input type="text" class="form-control" id="sphone" name="phone"
-      style="margin: 10px 10px 10px 10px;"></input>
+      <p id="pp"/><input type="text" class="form-control" id="sphone" name="phone"
+      style="margin: 10px 10px 10px 10px;"/>
     </div>
   </form>
 </div>
@@ -65,7 +65,7 @@
 <form class="form-inline" role="form">
     <div class="form-group">
       <label for="semail">E-mail:</label>
-      <input type="email" class="form-control" id="semail" name="email"
+      <p id="pe"/><input type="email" class="form-control" id="semail" name="email"
       style="margin: 10px 10px 10px 10px;"></input>
     </div>
   </form>

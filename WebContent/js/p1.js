@@ -57,9 +57,50 @@ function sameadrs(){
 	sgetState();	
 	//the same state
 	var s = document.getElementById("state").value;
-	document.getElementById("sstate").value=s;
-	
-	document.getElementById('sstate').options[document.getElementById('sstate').selectedIndex].text=document.getElementById('state').options[document.getElementById('state').selectedIndex].text
+	document.getElementById("sstate").value=s;	
+	document.getElementById("sstate").options[document.getElementById("sstate").selectedIndex].text=document.getElementById("state").options[document.getElementById("state").selectedIndex].text
 	
 }
 
+	function change(){
+		
+		var pf = document.getElementById("pf");//first name
+		var pl = document.getElementById("pl");//last name
+		var pc = document.getElementById("pc");//country
+		var ps = document.getElementById("ps");//state
+		var pa = document.getElementById("pa");//address
+		var pp = document.getElementById("pp");//phone
+		var pe = document.getElementById("pe");//email
+		
+		var sf = document.getElementById("sfname").value;
+		var sl = document.getElementById("slname").value;
+		var sc = document.getElementById("scountry").value;
+		var ss = document.getElementById("sstate").value;
+		var sa = document.getElementById("sadrs").value;
+		var sp = document.getElementById("sphone").value;
+		var se = document.getElementById("semail").value;
+		
+		if(document.getElementById("yes").checked == true){
+			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" name=\"sfname\" placeholder="+ sf +" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
+			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" name=\"slname\" placeholder="+ sl +" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
+			pc.innerHTML = "<select id=\"scountry\" name=\"scountry\" class=\"form-control\" onchange=\"sgetState()\" disabled=\"disabled\"><option value=\"0\">"+ sc + "</option></select>";
+			ps.innerHTML = "<select id=\"sstate\" name=\"sstate\" class=\"form-control\" disabled=\"disabled\"><option value=\"0\">"+ss+"</option></select>";
+			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\" disabled=\"disabled\"/>"+ sa;
+			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\" placeholder="+ sp +">";
+			pe.innerHTML = "<input type=\"email\" class=\"form-control\" id=\"semail\" name=\"email\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\" placeholder="+ se +">";
+		
+			
+		} else {
+			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" name=\"sfname\" placeholder=\"Joe\" style=\"margin: 10px 10px 10px 10px;\"/>";
+			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" name=\"slname\" placeholder=\"Doe\" style=\"margin: 10px 10px 10px 10px;\"/>";
+			pc.innerHTML = "<select id=\"scountry\" name=\"scountry\" class=\"form-control\" onchange=\"sgetState()\"><option value=\"0\">Select country</option><option value=\"Canada\" >Canada</option><option value=\"USA\" >USA</option></select>";
+			ps.innerHTML = "<select id=\"sstate\" name=\"sstate\" class=\"form-control\"><option value=\"0\">Select state</option></select>";
+			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\"/>Please enter address</textarea>";
+			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" style=\"margin: 10px 10px 10px 10px;\"/>";
+			pe.innerHTML = "<input type=\"email\" class=\"form-control\" id=\"semail\" name=\"email\" style=\"margin: 10px 10px 10px 10px;\"/>";
+			
+		}
+		
+		//alert(sf+"\n"+sl+"\n"+sc+"\n"+ss+"\n"+sa+"\n"+sp+"\n"+se);
+	}
+	

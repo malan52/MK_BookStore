@@ -7,7 +7,7 @@ package bean;
 //@XmlType(propOrder={"id", "street", "province", "country", "zip", "phone", "type"})
 public class AddressBean {
 	
-	private String id;
+	private String username;
 	private String street;
 	private String province;
 	private String country;
@@ -15,8 +15,8 @@ public class AddressBean {
 	private String phone;
 	private String type;
 
-	public AddressBean(String id, String street, String province, String country, String zip, String phone, String type) {
-		this.setId(id);
+	public AddressBean(String username, String street, String province, String country, String zip, String phone, String type) {
+		this.setUsername(username);
 		this.setStreet(street);
 		this.setProvince(province);
 		this.setCountry(country);
@@ -32,15 +32,15 @@ public class AddressBean {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
-		return id;
+	public String getUsername() {
+		return username;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class AddressBean {
 	 * 
 	 */
 	public String toString() {
-		return "Username: " + id
+		return "Username: " + username
 				+ "\nStreet: " + street
 				+ "\nProvince: " + province
 				+ "\nCountry: " + country
