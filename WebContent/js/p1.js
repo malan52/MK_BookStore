@@ -59,7 +59,7 @@ function sameadrs(){
 	var s = document.getElementById("state").value;
 	document.getElementById("sstate").value=s;	
 	document.getElementById("sstate").options[document.getElementById("sstate").selectedIndex].text=document.getElementById("state").options[document.getElementById("state").selectedIndex].text
-		
+	
 }
 
 	function change(){
@@ -72,29 +72,34 @@ function sameadrs(){
 		var pp = document.getElementById("pp");//phone
 		var pe = document.getElementById("pe");//email
 		
-		
+		var sf = document.getElementById("sfname").value;
+		var sl = document.getElementById("slname").value;
 		var sc = document.getElementById("scountry").value;
 		var ss = document.getElementById("sstate").value;
+		var sa = document.getElementById("sadrs").value;
+		var sp = document.getElementById("sphone").value;
+		var se = document.getElementById("semail").value;
 		
 		if(document.getElementById("yes").checked == true){
-			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" placeholder=\"Joe\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
-			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" placeholder=\"Doe\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
-			pc.innerHTML = "<select id=\"scountry\" class=\"form-control\" onchange=\"sgetState()\" disabled=\"disabled\"><option value=\"0\">"+ sc + "</option></select>";
-			ps.innerHTML = "<select id=\"sstate\" class=\"form-control\" disabled=\"disabled\"><option value=\"0\">"+ss+"</option></select>";
-			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\" disabled=\"disabled\"/></div>";
-			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
-			pe.innerHTML = "<input type=\"email\" class=\"form-control\" id=\"semail\" name=\"email\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
+			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" name=\"sfname\" placeholder="+ sf +" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
+			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" name=\"slname\" placeholder="+ sl +" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
+			pc.innerHTML = "<select id=\"scountry\" name=\"scountry\" class=\"form-control\" onchange=\"sgetState()\" disabled=\"disabled\"><option value=\"0\">"+ sc + "</option></select>";
+			ps.innerHTML = "<select id=\"sstate\" name=\"sstate\" class=\"form-control\" disabled=\"disabled\"><option value=\"0\">"+ss+"</option></select>";
+			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\" disabled=\"disabled\"/>"+ sa;
+			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\" placeholder="+ sp +">";
+			pe.innerHTML = "<input type=\"email\" class=\"form-control\" id=\"semail\" name=\"email\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\" placeholder="+ se +">";
 		
 			
 		} else {
-			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" placeholder=\"Joe\" style=\"margin: 10px 10px 10px 10px;\"/>";
-			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" placeholder=\"Doe\" style=\"margin: 10px 10px 10px 10px;\"/>";
-			pc.innerHTML = "<select id=\"scountry\" class=\"form-control\" onchange=\"sgetState()\"><option value=\"0\">Select country</option><option value=\"Canada\" >Canada</option><option value=\"USA\" >USA</option></select>";
-			ps.innerHTML = "<select id=\"sstate\" class=\"form-control\"><option value=\"0\">Select state</option></select>";
-			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\"/>Please enter address</textarea></div>";
+			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" name=\"sfname\" placeholder=\"Joe\" style=\"margin: 10px 10px 10px 10px;\"/>";
+			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" name=\"slname\" placeholder=\"Doe\" style=\"margin: 10px 10px 10px 10px;\"/>";
+			pc.innerHTML = "<select id=\"scountry\" name=\"scountry\" class=\"form-control\" onchange=\"sgetState()\"><option value=\"0\">Select country</option><option value=\"Canada\" >Canada</option><option value=\"USA\" >USA</option></select>";
+			ps.innerHTML = "<select id=\"sstate\" name=\"sstate\" class=\"form-control\"><option value=\"0\">Select state</option></select>";
+			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\"/>Please enter address</textarea>";
 			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" style=\"margin: 10px 10px 10px 10px;\"/>";
 			pe.innerHTML = "<input type=\"email\" class=\"form-control\" id=\"semail\" name=\"email\" style=\"margin: 10px 10px 10px 10px;\"/>";
 			
 		}
 		
 	}
+	
