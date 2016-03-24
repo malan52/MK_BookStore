@@ -1,0 +1,42 @@
+<div id="account_info" class="tab-pane fade in active">
+			<h3>
+				Edit Personal Information <small>Current User Name</small>
+			</h3>
+
+			<form role="form" id="editAccInfo" style="text-align: center">
+				<div class="form-group form-inline" style="text-align: center">
+					<label for="editfname">First Name:</label> <input type="text"
+						class="form-control" id="editfname" name="editfname"
+						value="Current Last Name" style="margin: 10px 10px 10px 10px;"></input>
+				</div>
+				<div class="form-group form-inline" style="text-align: center">
+					<label for="editfname">Last Name:</label> <input type="text"
+						class="form-control" id="editfname" name="editfname"
+						value="Current First Name" style="margin: 10px 10px 10px 10px;"></input>
+				</div>
+				<div class="form-group form-inline">
+					<label for="setcountry">Country: </label> <select id="setcountry"
+						name="setcountry" class="form-control" onchange="getState()"
+						style="margin-right: 20px; margin-left: 5px;">
+						<option value="0">Select country</option>
+						<option value="Canada">Canada</option>
+						<option value="USA">USA</option>
+					</select> <label for="setstate">Province/States: </label> <select
+						id="setstate" name="setstate" class="form-control"
+						style="margin-left: 5px;">
+						<option value="0">Select state</option>
+					</select>
+				</div>
+				<div class="form-group form-inline" style="text-align: center">
+					<label for="editemail">Email: </label> <input type="text"
+						class="form-control" id="editemail" name="editemail"
+						value="Current Email Address" style="margin: 10px 10px 10px 10px;"></input>
+				</div>
+				<div class="form-group" style="float: right;">
+					<button type="reset" class="btn btn-default btn-lg"
+						style="margin-right: 10px">Cancel</button>
+					<button type="submit" class="btn btn-info btn-lg">Save
+						Changes</button>
+				</div>
+			</form>
+		</div>
