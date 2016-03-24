@@ -50,7 +50,11 @@ public class OrderProcessCtrl extends HttpServlet {
 			session.setAttribute("total", cart.getPrice());
 			session.setAttribute("booksInCart", cart.getBooks());
 		}
-		System.out.println();
+		if(request.getParameter("delete") != null){
+			String param = (String) request.getParameter("delete");
+			//System.out.println(param);
+			cart.dropBook(request.getParameter("delete"));
+		}
 		request.getRequestDispatcher("/Cart.jspx").forward(request, response);
 	}
 

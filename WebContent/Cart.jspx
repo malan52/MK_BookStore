@@ -46,14 +46,14 @@
     
       <!-- loop cart item -->
       <c:forEach items="${cart.getBooks()}" var="element"> 
-	<tr>
+	<tr id="${element.key}">
 	    <td>${element.key}</td>
 		<td>${cart.getTitle(element.key)}</td>
 		<td><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
 		<td>${cart.getCategory(element.key)}</td>
 		<td><input id="quantity" name="quantity" type="number" value="${element.value}"/></td>	<!-- ${element.value.quantity} -->
 		<td><f:formatNumber type="currency">${cart.getPriceByBook(element.key)}</f:formatNumber></td>
-		<td><button action='submit' name='submit' label='submit'> Delete </button></td>
+		<td><button action='submit' name='submit' label='submit' onclick='deleteBook("${element.key}")'> Delete </button></td>
 	</tr>
 	</c:forEach>
     </tbody>
@@ -77,11 +77,26 @@ Keep Shopping</button></a>
 </tr>
 </table>
 </div>
-
+<jsp:include page="/login.jspx"/>
+<jsp:include page="/registerModal.jspx"/>
 	<!-- Javascript files -->
     <script src="js/jquery.min.js">;</script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="js/bootstrap.min.js">;</script>
+    <script>
+    function deleteBook(bid){
+    	var xhttp = new XMLHttpRequest();
+    	  xhttp.onreadystatechange = function() {
+    		  // Use jQuery to perform remove action on element "bid".
+    		  $(bid).remove();
+		    	  
+    	 	 }
+	    	  xhttp.open("GET", "OrderProcessCtrl?delete=" + bid, true);
+	    	  xhttp.send();
+    	}
+ 
+    </script>
+    <script src="js/jquery.min.js">;</script>
 </form>
 </body>
 </html>
