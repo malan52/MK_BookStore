@@ -21,6 +21,8 @@
 
 <!-- main.css -->
 <link rel="stylesheet" href="css/main.css" />
+<!-- js for confirm the password -->
+     <script src="js/registercfmpwd.js">;</script>
 <style type="text/css">
 #stars>span {
 	display: inline-block;
@@ -68,6 +70,7 @@
 	<jsp:include page="/bookDisplayPanel.jspx" />
 	
 	<jsp:include page="/login.jspx" />
+	<jsp:include page="/registerModal.jspx" />
 	
 	<script src="js/jquery.js">
 		;
