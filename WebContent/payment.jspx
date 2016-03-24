@@ -25,92 +25,35 @@
     <script src="js/bootstrap.min.js">;</script>
 </head>
 <body>
-
 <jsp:include page="/navbar.jspx" />
-	<jsp:include page="/header.jspx" />
-
-
+<jsp:include page="/header.jspx" />
 <div class="container">
-<h2><b>Your Account Information</b></h2>
+<table class="table">
+<tr>
+<td><h2><b>Your Account Information</b></h2></td>
+<td style="width:100px;"><a href="Cart.jspx"><button type="button" class="btn btn-warning" style="margin: 15px 10px 10px 10px;">
+Go Back to Shopping Cart</button></a></td>
+</tr>
+</table>
 </div>
-
-
-<!-- first name and last name -->
-<div class="container">
-<h3><p>Billing Information</p></h3>
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="fname">First Name:</label>
-      <input type="text" class="form-control" id="fname" placeholder="Joe" 
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-    <div class="form-group">
-      <label for="lname">Last Name:</label>
-      <input type="text" class="form-control" id="lname" placeholder="Doe"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
-<!-- select country and state -->
-<div class="container">
-	<form class="form-inline" role="form" name="form1">
-		<label  for="country">Country:</label>
-		<div class="form-group" >
-		<div class="col-sm-6 col-md-4">
-		<select id="country" class="form-control" onchange="getState()">
-			<option value="0">Select country</option> 
-			<option value= "Canada" >Canada</option> 
-			<option value= "USA" >USA</option>
-		</select>
-		</div>
-		</div>
-		
-		<label  for="state">Province/States:</label>
-		<div class="form-group">
-		<div class="col-sm-6 col-md-4">
-		
-		<select id="state" class="form-control"> 
-			<option value="0">Select state</option>
-		</select> 
-		</div>
-		</div>	
-	</form>
-</div>
-<!-- detail address include the apartment number, street number and city -->
-<div class="container">
-  <form role="form">
-    <div class="form-group">
-      <label for="adrs">Address:</label>
-      <textarea class="form-control" rows="2" id="adrs" name="adrs" onclick="this.innerHTML=''">Please enter address</textarea>
-    </div>
-  </form>
-</div>
-
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="phone">Phone Number:</label>
-      <input type="text" class="form-control" id="phone" name="phone"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
-
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="email">E-mail:</label>
-      <input type="eamil" class="form-control" id="email" name="email"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
-
-
+<!-- billing address -->
+<jsp:include page ="/billing.jspx" />
 <jsp:include page="/creditcard.jspx" />
-
 <hr/>
+<div class="container">
+<table>
+<tr>
+<td><p style="color:red;">shipping地址==billing地址?</p></td>
+<td><label><input type="checkbox" value="yes" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onclick="sameadrs()" onchange="change()"/>Yes</label>	</td>
+</tr>
+</table> 
+<p>If you want to ship to a different place, please fillout the form below.</p>
+</div>
 
+
+<!-- shipping address -->
+<jsp:include page="/shipping.jspx" />
+<br/>
 <div class="container">
 <table style="float:right;">
 <tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>Submit</b></button>

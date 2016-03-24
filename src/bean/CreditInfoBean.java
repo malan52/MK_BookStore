@@ -11,6 +11,7 @@ public class CreditInfoBean {
 	private String cardNumber;
 	private int expireM;
 	private int expireY;
+	private AddressBean bAddress;
 	
 	/**
 	 * @param username
@@ -19,9 +20,10 @@ public class CreditInfoBean {
 	 * @param cardNumber
 	 * @param expireM
 	 * @param expireY
+	 * @param bAddress
 	 */
 	
-	public CreditInfoBean(String username, int type, String holder, String cardNumber, int expireM, int expireY) {
+	public CreditInfoBean(String username, int type, String holder, String cardNumber, int expireM, int expireY, AddressBean bAddress) {
 		super();
 		this.setUsername(username);
 		this.cardType = type;
@@ -29,10 +31,11 @@ public class CreditInfoBean {
 		this.cardNumber = cardNumber;
 		this.expireM = expireM;
 		this.expireY = expireY;
+		this.setbAddress(bAddress);
 	}
 	
 	public CreditInfoBean(String username){
-		this(username, 1, null, "", 1, 2017);
+		this(username, 1, null, "", 1, 2017, new AddressBean(username, "Billing"));
 	}
 	
 	/**
@@ -107,6 +110,20 @@ public class CreditInfoBean {
 	public void setExpireY(int expireY) {
 		this.expireY = expireY;
 	}
+	/**
+	 * @return the bAddress
+	 */
+	public AddressBean getbAddress() {
+		return bAddress;
+	}
+
+	/**
+	 * @param bAddress the bAddress to set
+	 */
+	public void setbAddress(AddressBean bAddress) {
+		this.bAddress = bAddress;
+	}
+
 	/**
 	 * 
 	 */

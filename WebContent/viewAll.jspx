@@ -1,0 +1,50 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" class="container">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">Category</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<!-- thumbnail -->
+						<a href="#"><img type="button" src="image/book_cover/b001.jpg"
+							alt="book001" data-toggle="modal" data-target="#myModal" /></a>
+						<div class="caption">
+							<!-- book caption -->
+							<a href="#"><h3 data-toggle="modal" data-target="#myModal">Book
+									Title</h3></a>
+							<form action="OrderProcessCtrl" method="GET">
+								<p>Price: $5.10
+								<div>
+									Quantity:<input type="number" id="b001quantity"
+										name="b001quantity" value="1" min="1" max="100"
+										style="float: right" />
+								</div>
+								</p>
+								<p>
+									<button action="submit" name="addToCart" value="b001"
+										class="btn btn-primary" style="margin-right: 5px;">Add
+										To Cart</button>
+
+									<button type="button" class="btn btn-default"
+										data-toggle="modal" data-target="#myModal">Detail</button>
+								</p>
+							</form>
+							<jsp:include page="/detailModal.jspx" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
