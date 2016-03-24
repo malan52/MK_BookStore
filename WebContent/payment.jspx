@@ -28,7 +28,13 @@
 <jsp:include page="/navbar.jspx" />
 <jsp:include page="/header.jspx" />
 <div class="container">
-<h2><b>Your Account Information</b></h2>
+<table class="table">
+<tr>
+<td><h2><b>Your Account Information</b></h2></td>
+<td style="width:100px;"><a href="Cart.jspx"><button type="button" class="btn btn-warning" style="margin: 15px 10px 10px 10px;">
+Go Back to Shopping Cart</button></a></td>
+</tr>
+</table>
 </div>
 <!-- billing address -->
 <jsp:include page ="/billing.jspx" />
@@ -37,8 +43,8 @@
 <div class="container">
 <table>
 <tr>
-<td><p style="color:red;">Is your shipping address different from billing?</p></td>
-<td><label><input type="checkbox" value="yes" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onclick="sameadrs()"/>Yes</label>	</td>
+<td><p style="color:red;">shipping地址==billing地址?</p></td>
+<td><label><input type="checkbox" value="yes" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onclick="sameadrs()" onchange="change()"/>Yes</label>	</td>
 </tr>
 </table> 
 <p>If you want to ship to a different place, please fillout the form below.</p>

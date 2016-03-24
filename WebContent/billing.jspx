@@ -65,7 +65,7 @@
 <form class="form-inline" role="form">
     <div class="form-group">
       <label for="email">E-mail:</label>
-      <input type="eamil" class="form-control" id="email" name="email"
+      <input type="email" class="form-control" id="email" name="email"
       style="margin: 10px 10px 10px 10px;"></input>
     </div>
   </form>
