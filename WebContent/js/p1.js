@@ -101,5 +101,6 @@ function sameadrs(){
 			
 		}
 		
+		//alert(sf+"\n"+sl+"\n"+sc+"\n"+ss+"\n"+sa+"\n"+sp+"\n"+se);
 	}
 	
