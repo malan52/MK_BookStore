@@ -22,22 +22,9 @@
 
 </head>
 <body>
-
-<!-- <div class="jumbotron" style="background-image:url(image/headerImg.png)"> 
-  <h1><center>Shopping Cart</center></h1>
-  </div>
-   -->
-<div class="container">
-  <div class="jumbotron" style="background-image:url(image/headerImg.png)"> <!-- header -->
-    <h1>Shopping Cart</h1>  
-    <div class="btn-group" role="group" aria-label="..." style="float:right"> <!-- category in header -->
-  	
-  
-	</div> <!-- category in header end -->
-	</div> <!-- header end -->
-	</div>
-
-
+<form action="" method = "GET">
+<jsp:include page="/navbar.jspx" /><!-- include the navigation bar -->
+<jsp:include page="/header.jspx" /><!-- include the header -->
 
 <div class="container">         
   <table class="table table-condensed">
@@ -65,7 +52,7 @@
 		<td><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
 		<td>${cart.getCategory(element.key)}</td>
 		<td><input id="quantity" name="quantity" type="number" value="${element.value}"/></td>	<!-- ${element.value.quantity} -->
-		<td>${cart.getPriceByBook(element.key)}</td>
+		<td><f:formatNumber type="currency">${cart.getPriceByBook(element.key)}</f:formatNumber></td>
 		<td><button action='submit' name='submit' label='submit'> Delete </button></td>
 	</tr>
 	</c:forEach>
@@ -79,8 +66,12 @@
 <tr>
 <td>
 <b>Total: <f:formatNumber type="currency"> ${cart.getPrice()}</f:formatNumber></b><br/>
-<button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">Keep Shopping</button>
-<button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>CHECK OUT</b></button>
+<a href="main.jspx"><button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">
+Keep Shopping</button></a>
+
+
+<a href="payment.jspx"><button type="button" class="btn btn-warning btn-lg" 
+	action='submit' name='submit' ><b>CHECK OUT</b></button></a>
 
 </td>
 </tr>
@@ -91,6 +82,7 @@
     <script src="js/jquery.min.js">;</script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="js/bootstrap.min.js">;</script>
+</form>
 </body>
 </html>
 </jsp:root>

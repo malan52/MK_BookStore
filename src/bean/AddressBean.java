@@ -4,7 +4,7 @@ package bean;
 //import javax.xml.bind.annotation.XmlType;
 
 //@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"id", "street", "province", "country", "zip", "phone"})
+//@XmlType(propOrder={"id", "street", "province", "country", "zip", "phone", "type"})
 public class AddressBean {
 	
 	private String id;
@@ -13,18 +13,20 @@ public class AddressBean {
 	private String country;
 	private String zip;
 	private String phone;
+	private String type;
 
-	public AddressBean(String id, String street, String province, String country, String zip, String phone) {
+	public AddressBean(String id, String street, String province, String country, String zip, String phone, String type) {
 		this.setId(id);
 		this.setStreet(street);
 		this.setProvince(province);
 		this.setCountry(country);
 		this.setZip(zip);
 		this.setPhone(phone);
+		this.setType(type);
 	}
 	
-	public AddressBean(String id) {
-		this(id, "", "", "", "", "");
+	public AddressBean(String id, String type) {
+		this(id, "", "", "", "", "", type);
 	}
 
 	/**
@@ -110,6 +112,20 @@ public class AddressBean {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	/**
 	 * 
 	 */
