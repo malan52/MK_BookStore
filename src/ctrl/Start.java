@@ -39,9 +39,12 @@ public class Start extends HttpServlet {
     */
     public void init(ServletConfig config) throws ServletException {
     	BookDAO bookAccessor = null;
+    	CustomerDAO customerAccessor = null;
 		try {
 			bookAccessor = new BookDAO();
 	    	config.getServletContext().setAttribute("bookAccessor", bookAccessor);
+	    	customerAccessor = new CustomerDAO();
+	    	config.getServletContext().setAttribute("customerAccessor", customerAccessor);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
