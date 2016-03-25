@@ -4,15 +4,21 @@
 <div class="container">
 <h3><p>Shipping Information</p></h3>
 <form class="form-inline" role="form">
-    <div class="form-group">
+    <div class="form-group ">   
       <label for="sfname">First Name:</label>
-      <p id="pf"/><input type="text" class="form-control" id="sfname" name="sfname" placeholder="Joe" 
-      style="margin: 10px 10px 10px 10px;" />
+      <a id="pf"><input type="text" class="form-control" id="sfname" name="sfname" placeholder="Joe"
+      					style="margin: 10px 10px 10px 10px;"/></a>
+      
     </div>
     <div class="form-group">
       <label for="slname">Last Name:</label>
-      <p id="pl"/><input type="text" class="form-control" id="slname" name="slname" placeholder="Doe"
-      style="margin: 10px 10px 10px 10px;"></input>
+      <a id="pl"><input type="text" class="form-control" id="slname" name="slname" placeholder="Doe"
+      					style="margin: 10px 10px 10px 10px;"/></a>
+    </div>
+    <div class="form-group">
+      <label for="slname">Phone Number:</label>
+      <a id="pp"><input type="text" class="form-control" id="sphone" name="sphone" placeholder="10 digits"
+      						style="margin: 10px 10px 10px 10px;" onblur="checkSPhone()"/></a>
     </div>
   </form>
 </div>
@@ -38,7 +44,13 @@
 			<option value="0">Select state</option>
 		</select> 
 		</div>
-		</div>	
+		</div>
+		
+		<div class="form-group">
+      		<label for="szip">ZIP CODE:</label>
+     		 <a id="pz"><input type="text" class="form-control" id="szip" name="szip" placeholder="6 digits"
+      		style="margin: 10px 10px 10px 10px;" onblur="checkZip()"></input></a>
+    	</div>	
 	</form>
 </div>
 <!-- detail address include the apartment number, street number and city -->
@@ -51,23 +63,6 @@
   </form>
 </div>
 
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="sphone">Phone Number:</label>
-      <p id="pp"/><input type="text" class="form-control" id="sphone" name="phone"
-      style="margin: 10px 10px 10px 10px;"/>
-    </div>
-  </form>
-</div>
 
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="semail">E-mail:</label>
-      <p id="pe"/><input type="email" class="form-control" id="semail" name="email"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
+
 </div>
