@@ -66,7 +66,7 @@ function sameadrs(){
 //--------if the client check the checkbox, change the status of the shipping address
 	function change(){
 		
-		var pf = document.getElementById("pf");//first name
+		var pf = document.getElementById("pf");//first name for the tag out of the first name
 		var pl = document.getElementById("pl");//last name
 		var pc = document.getElementById("pc");//country
 		var ps = document.getElementById("ps");//state
@@ -123,7 +123,7 @@ function sameadrs(){
 	}
 //check if the zip code is 6 digits with letter	
 	function checkZip(){
-		var reg =  /^([a-zA-Z0-9]){6,6}$/;
+		var reg =  /^[a-zA-Z0-9]{6,6}$/;
 		var flag = reg.test(document.getElementById("zip").value);
 		if(!flag){
 			alert("ZIP CODE must be 6 digits with numbers and letters!");
@@ -131,7 +131,7 @@ function sameadrs(){
 	}
 //check if the shipping zip code is 6 digits with letter
 	function checkSZip(){
-		var reg =  /^([a-zA-Z0-9]){6,6}$/;
+		var reg =  /^[a-zA-Z0-9]{6,6}$/;
 		var flag = reg.test(document.getElementById("szip").value);
 		if(!flag){
 			alert("ZIP CODE must be 6 digits with numbers and letters!");
@@ -148,8 +148,8 @@ function sameadrs(){
 	
 //check if the card number is digits
 	function checkCardNumber(){
-		var reg16 = /([0-9]{16})/;
-		var reg15 = /([0-9]{15})/;		
+		var reg16 = /^[0-9]{16,16}$/;
+		var reg15 = /^[0-9]{15,15}$/;		
 		var type = document.getElementById("cardType");
 		if(type.value=="1" || type.value=="2"){
 			var flag16 = reg16.test(document.getElementById("cardNumber").value);
@@ -171,8 +171,8 @@ function sameadrs(){
 
 //check if the cvc is all digits
 	function checkCVC(){
-		var reg3 = /([0-9]{3})/;
-		var reg4 =/([0-9]){4}/;
+		var reg3 = /^[0-9]{3,3}$/;
+		var reg4 =/^[0-9]{4,4}$/;
 		
 		var type = document.getElementById("cardType"); 
 		if(type.value == "1" || type.value == "2"){
@@ -191,23 +191,23 @@ function sameadrs(){
 	
 	function checkAll(){
 		//check the billling phone
-		var regphone = /\d{10}/;
+		var regphone = /^[0-9]{10,10}$/;
 		var flagphone = regphone.test(document.getElementById("phone").value);
 		//shipping phone
-		var regsphone = /\d{10}/;
+		var regsphone = /^[0-9]{10,10}$/;
 		var flagsphone = regsphone.test(document.getElementById("sphone").value);
 		//billing zip code
-		var regzip =  /([a-zA-Z0-9]){6}$/;
+		var regzip =  /^([a-zA-Z0-9]){6,6}$/;
 		var flagzip = regzip.test(document.getElementById("zip").value);
 		//shipping zip code
-		var regszip =  /([a-zA-Z0-9]){6}$/;
+		var regszip =  /^([a-zA-Z0-9]){6,6}$/;
 		var flagszip = regszip.test(document.getElementById("szip").value);
 		//cardHolder
 		var regholder = /^[a-zA-Z]+$/;
 		var flagholder = regholder.test(document.getElementById("cardHolder").value);
 		//card number
-		var reg16 = /([0-9]{16})/;
-		var reg15 = /([0-9]{15})/;		
+		var reg16 = /^[0-9]{16,16}$/;
+		var reg15 = /^[0-9]{15,15}$/;		
 		var type = document.getElementById("cardType");
 		if(type.value=="1" || type.value=="2"){
 			var flag16 = reg16.test(document.getElementById("cardNumber").value);
@@ -216,8 +216,8 @@ function sameadrs(){
 			var flag15 = reg15.test(document.getElementById("cardNumber").value);
 		}
 		//check cvc
-		var reg3 = /([0-9]{3})/;
-		var reg4 =/([0-9]){4}/;
+		var reg3 = /^[0-9]{3,3}$/;
+		var reg4 =/^[0-9]{4,4}$/;
 		if(type.value == "1" || type.value == "2"){
 			var digit3 = reg3.test(document.getElementById("cvc").value);
 		}
