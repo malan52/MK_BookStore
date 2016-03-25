@@ -12,8 +12,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Register</title>
-    <!-- js for confirm the password -->
-     <script src="js/registercfmpwd.js">;</script>
+   
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <!-- Optional theme -->
@@ -25,34 +24,28 @@
 
 <jsp:include page="/navbar.jspx" />
 <jsp:include page="/header.jspx" />
-<form action="" method="GET">
-
-<div class="container"> <!-- user register informatoin -->
-<p><h2><b>Create Your Account</b></h2></p>
-<p><h3>Register with your username and password</h3></p>
-<br/>
-
-
-<!-- username -->
-   <div class="form-group">
-  <label for="usr">Name:</label>
-  <input type="text" class="form-control col-sm-6" id="usr" style="margin: 0px 0px 0px 10px;"/>
-</div>
-</div>
-<br/>
-<!-- password -->
+<!-- username password -->
 <jsp:include page="/password.jspx" />	
+<!-- billing address -->
+<jsp:include page="/billing.jspx" />
+<!-- shipping address -->
+<jsp:include page="/shipping.jspx"/>
 
 <div class="container">
-<button type="button" class="btn btn-warning btn-lg" action='submit' name='register' style="float:right"><b>Register</b></button>
+<br/>
+<button type="button" class="btn btn-warning" action='submit' name='register' style="float:right"><b>Register</b></button>
 </div>
 <br/>
+<br/>
 
+ <!-- js for confirm the password -->
+     <script src="js/registercfmpwd.js">;</script>
+     <script src="js/p1.js">;</script>
 	<!-- Javascript files -->
     <script src="js/jquery.min.js">;</script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="js/bootstrap.min.js">;</script>
-</form>
+
 </body>
 </html>
 </jsp:root>
