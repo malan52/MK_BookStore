@@ -1,11 +1,13 @@
-function confirmPWD(){
-		var pwd = document.getElementById("pwd").value;
-		var cfmpws = document.getElementById("cfmpws").value;
-		if(pwd != cfmpws)
+//check if the confirm password is as the same as the previous password
+function confirmPWD(previous, current){
+		var pwd = document.getElementById("previous").value;
+		var cfmpws = document.getElementById("current").value;
+		if(previous != current)
 			alert("Password is not the same!"); 
 		return flag;
 	}
-function checkPWD(){
+//check  if the password has minimun 6 character with just letter and number,by a paramter
+function checkPWD(pwd){
 		var reg = /([a-zA-Z0-9]){6,}$/;
 		var flag = reg.test(document.getElementById("pwd").value);
 		if(!flag){

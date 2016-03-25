@@ -22,10 +22,10 @@
 
 </head>
 <body>
-<form action="" method="GET">
+
 <jsp:include page="/navbar.jspx" />
 <jsp:include page="/header.jspx" />
-
+<form action="" method="GET">
 
 <div class="container"> <!-- user register informatoin -->
 <p><h2><b>Create Your Account</b></h2></p>

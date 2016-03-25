@@ -13,6 +13,11 @@
       <label for="lname">Last Name:</label>
       <input type="text" class="form-control" id="lname" name="lname" placeholder="Doe"
       style="margin: 10px 10px 10px 10px;"></input>
+    </div>    
+    <div class="form-group">
+      <label for="phone">Phone Number:</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="10 digits"
+      style="margin: 10px 10px 10px 10px;" onblur="checkPhone(phone)"/>
     </div>
   </form>
 </div>
@@ -32,13 +37,20 @@
 		
 		<label  for="state">Province/States:</label>
 		<div class="form-group">
-		<div class="col-sm-6 col-md-4">
-		
+		<div class="col-sm-6 col-md-4">		
 		<select id="state" name="state" class="form-control" > 
 			<option value="0">Select state</option>
 		</select> 
 		</div>
 		</div>	
+		
+		<div class="form-group">
+      		<label for="zip">ZIP CODE:</label>
+     		 <input type="text" class="form-control" id="zip" name="zip" placeholder="6 digits"
+      		style="margin: 10px 10px 10px 10px;" onblur="checkZip(zip)"></input>
+    	</div>
+		
+		
 	</form>
 </div>
 <!-- detail address include the apartment number, street number and city -->
@@ -51,23 +63,6 @@
   </form>
 </div>
 
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="phone">Phone Number:</label>
-      <input type="text" class="form-control" id="phone" name="phone"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
 
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="email">E-mail:</label>
-      <input type="email" class="form-control" id="email" name="email"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
+
 </div>
