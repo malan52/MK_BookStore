@@ -1,0 +1,112 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" id="order_history"
+	class="tab-pane fade">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<h3>Order History</h3>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				Order Date Name: First Last Address:xxxxxxxxxxxxxxxxx
+				<p style="float: right;">
+					<small style="margin-left: 10px; margin-right: 10px;"><b>status</b></small>Total:
+					$300.00
+				</p>
+			</h3>
+		</div>
+		<div class="list-group">
+			<a class="list-group-item">
+
+				<div class="media">
+					<div class="media-left">
+						<img class="media-left"
+							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Book Title</h4>
+						<h5>Quantity: 3</h5>
+						<h6 style="float: right">Subtotal: $50.00</h6>
+					</div>
+				</div>
+			</a> <a class="list-group-item">
+
+				<div class="media">
+					<div class="media-left">
+						<img class="media-left"
+							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Book Title</h4>
+						<h5>Quantity: 3</h5>
+						<h6 style="float: right">Subtotal: $50.00</h6>
+					</div>
+				</div>
+			</a> <a class="list-group-item">
+
+				<div class="media">
+					<div class="media-left">
+						<img class="media-left"
+							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Book Title</h4>
+						<h5>Quantity: 2</h5>
+						<h6 style="float: right">Subtotal: $50.00</h6>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				Order Date Name: First Last Address:xxxxxxxxxxxxxxxxx
+				<p style="float: right;">
+					<small style="margin-left: 10px; margin-right: 10px;"><b>status</b></small>Total:
+					$500.00
+				</p>
+			</h3>
+		</div>
+		<div class="list-group">
+			<a class="list-group-item">
+
+				<div class="media">
+					<div class="media-left">
+						<img class="media-left"
+							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Book Title</h4>
+						<h5>Quantity: 3</h5>
+						<h6 style="float: right">Subtotal: $80.00</h6>
+					</div>
+				</div>
+			</a> <a class="list-group-item">
+
+				<div class="media">
+					<div class="media-left">
+						<img class="media-left"
+							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Book Title</h4>
+						<h5>Quantity: 1</h5>
+						<h6 style="float: right">Subtotal: $10.00</h6>
+					</div>
+				</div>
+			</a> 
+		</div>
+	</div>
+</div>
