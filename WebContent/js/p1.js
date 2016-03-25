@@ -107,7 +107,7 @@ function sameadrs(){
 //check if the billing phone number is 10 digits
 	function checkPhone(){
 		//alert("this is a test");
-		var reg = /\d{10}/;
+		var reg = /^[0-9]{10,10}$/;
 		var flag = reg.test(document.getElementById("phone").value);
 		if(!flag){
 			alert("Phone Number must be 10 digits!");
@@ -115,7 +115,7 @@ function sameadrs(){
 	}
 //check if the shipping phone number is 10digits
 	function checkSPhone(){
-		var reg = /\d{10}/;
+		var reg = /^[0-9]{10,10}$/;
 		var flag = reg.test(document.getElementById("sphone").value);
 		if(!flag){
 			alert("Phone Number must be 10 digits!");
@@ -123,7 +123,7 @@ function sameadrs(){
 	}
 //check if the zip code is 6 digits with letter	
 	function checkZip(){
-		var reg =  /([a-zA-Z0-9]){6}$/;
+		var reg =  /^([a-zA-Z0-9]){6,6}$/;
 		var flag = reg.test(document.getElementById("zip").value);
 		if(!flag){
 			alert("ZIP CODE must be 6 digits with numbers and letters!");
@@ -131,7 +131,7 @@ function sameadrs(){
 	}
 //check if the shipping zip code is 6 digits with letter
 	function checkSZip(){
-		var reg =  /([a-zA-Z0-9]){6}$/;
+		var reg =  /^([a-zA-Z0-9]){6,6}$/;
 		var flag = reg.test(document.getElementById("szip").value);
 		if(!flag){
 			alert("ZIP CODE must be 6 digits with numbers and letters!");
@@ -226,10 +226,5 @@ function sameadrs(){
 		}	
 		if(!flagphone||!flagsphone||!flagzip||!flagszip||!flagholder||(!flag16 && type.value=="1")||(!flag16 && type.value=="2")||(!flag15 && type.value =="3")||!digit3||!digit4){
 			alert("please check the input information!");
-		}
-		
-		
-		
-		
-		
+		}		
 	}
