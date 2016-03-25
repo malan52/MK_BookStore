@@ -14,7 +14,6 @@ import bean.BookBean;
 public class BookDAO {
 
 	private DataSource ds;
-	private int book;
 
 	public BookDAO() throws ClassNotFoundException {
 		try {
@@ -99,5 +98,49 @@ public class BookDAO {
 		return rv;
 	}
 	
-
+	/**
+	 * Return all book with title equal and include input partTitle
+	 * @param title
+	 * @return book with related title
+	 * @throws SQLException
+	 */
+	public Map<String, BookBean> searchBook(String partTitle) throws SQLException{
+		String query = "select * from BOOK where TITLE like '%" + partTitle + "%'";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		while (r.next()) {
+			String bid = r.getString("BID");
+			String title = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			String cate = r.getString("CATEGORY");
+			BookBean book = new BookBean(bid, title, price, cate);
+			rv.put(bid, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+	}
+	
+	public Map<String, BookBean> searchPrice(int low, int high) throws SQLException{
+		String query = "select * from BOOK where PRICE>=" + low + " and PRICE<=" + high;
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		while (r.next()) {
+			String bid = r.getString("BID");
+			String title = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			String cate = r.getString("CATEGORY");
+			BookBean book = new BookBean(bid, title, price, cate);
+			rv.put(bid, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+	}
 }
