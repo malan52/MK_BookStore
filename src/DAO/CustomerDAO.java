@@ -24,10 +24,14 @@ public class CustomerDAO {
 		}
 	}
 
-	/*
+	/**
 	 * Giving an username return a CustomerBean with the username and stored
 	 * password if username exist. Return null CostomerBean if username is not
 	 * exist in database
+	 * 
+	 * @param username
+	 * @return CustomerBean with username
+	 * @throws SQLException
 	 */
 	public CustomerBean retrieveCustomer(String username) throws SQLException {
 		String query = "SELECT * FROM Customer WHERE username = '" + username + "'";
@@ -37,15 +41,42 @@ public class CustomerDAO {
 		ResultSet r = p.executeQuery();
 		if (r.next())
 			customer = new CustomerBean(username, r.getString("PASSWORD"), retrieveProfile(username),
-					retrieveCreditInfo(username));
+					retrieveCreditInfo(username));// Profile and CreditInfo will
+													// be null initially
 		r.close();
 		p.close();
 		con.close();
 		return customer;
 	}
 
-	/*
-	 * Update a new customer or update an exist customer's password
+	/**
+	 * Check if the username and password is correct
+	 * 
+	 * @param username
+	 * @param password
+	 * @return boolean
+	 * @throws SQLException
+	 */
+	public boolean successLogin(String username, String password) throws SQLException {
+		String query = "SELECT * FROM Customer WHERE username = '" + username + "'";
+		boolean success = false;
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		if (r.next() && r.getString("PASSWORD").equals(password))
+			success = true;
+		r.close();
+		p.close();
+		con.close();
+		return success;
+	}
+
+	/**
+	 * Update a new customer or update an exist customer's password with given
+	 * information
+	 * 
+	 * @param customer
+	 * @throws SQLException
 	 */
 	public void updateCustomer(CustomerBean customer) throws SQLException {
 		String queryget = "SELECT * FROM Customer WHERE username = '" + customer.getUsername() + "'";
@@ -56,24 +87,28 @@ public class CustomerDAO {
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(queryget);
 		ResultSet r = p.executeQuery();
-		if (r.next()) { // user exist, update password
+		if (r.next()) { // user exist, update password, user will use exist
+						// CustomerBean to call this method, so to update to
+						// profile
 			p = con.prepareStatement(queryupdate);
 			p.executeUpdate();
 		} else { // user not exist, insert new instance
 			p = con.prepareStatement(queryadd);
 			p.executeUpdate();
+			updateProfile(customer.getProfile());
+			updateCreditInfo(customer.getCreditInfo());
 		}
 		r.close();
 		p.close();
 		con.close();
-		updateProfile(customer.getProfile());
-		updateCreditInfo(customer.getCreditInfo());
 	}
 
-	/*
-	 * Giving an username return a CustomerBean with the username and stored
-	 * password if username exist. Return null CostomerBean if username is not
+	/**
+	 * Giving an username delete the corresponding database instance if it is
 	 * exist in database
+	 * 
+	 * @param username
+	 * @throws SQLException
 	 */
 	public void deleteCustomer(String username) throws SQLException {
 		String query = "DELETE FROM Customer WHERE username = '" + username + "'";
@@ -84,10 +119,14 @@ public class CustomerDAO {
 		con.close();
 	}
 
-	/*
+	/**
 	 * Giving an username return a CreditInfoBean with the username and stored
 	 * credit informations if username exist. Return null CreditInfoBean if
 	 * username is not exist in database
+	 * 
+	 * @param username
+	 * @return a CreditInfoBean with the username and stored credit informations
+	 * @throws SQLException
 	 */
 	public CreditInfoBean retrieveCreditInfo(String username) throws SQLException {
 		String query = "select * from CreditInfo where username = '" + username + "'";
@@ -95,32 +134,38 @@ public class CustomerDAO {
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
-		if (r.next())
+		if (r.next() && !r.getString("CARDHOLDER").equals("default"))
 			credit = new CreditInfoBean(username, r.getInt("CARDTYPE"), r.getString("CARDHOLDER"),
-					r.getString("CARDNUMBER"), r.getInt("EXPIREM"), r.getInt("EXPIREY"));
+					r.getString("CARDNUMBER"), r.getInt("EXPIREM"), r.getInt("EXPIREY"),
+					addrDAO.retrieveAddrByID(r.getInt("A_ID")));
 		r.close();
 		p.close();
 		con.close();
 		return credit;
 	}
 
-	/*
+	/**
 	 * Update a new registered customer credit information or update an exist
 	 * customer's credit information
+	 * 
+	 * @param credit
+	 * @throws SQLException
 	 */
 	public void updateCreditInfo(CreditInfoBean credit) throws SQLException {
 		String queryget = "SELECT * FROM CreditInfo WHERE username = '" + credit.getUsername() + "'";
-		String queryadd = "INSERT INTO CreditInfo VALUES ('" + credit.getUsername() + "', " + credit.getCardType()
-				+ ", '" + credit.getCardHolder() + "', '" + credit.getCardNumber() + "', " + credit.getExpireM() + ", "
-				+ credit.getExpireY() + ")";
-		String queryupdate = "UPDATE CreditInfo SET \"CARDTYPE\"=" + credit.getCardType() + ", \"CARDHOLDER\"='"
-				+ credit.getCardHolder() + "', \"CARDNUMBER\"='" + credit.getCardNumber() + "', \"EXPIREM\"="
-				+ credit.getExpireM() + ", \"EXPIREY\"=" + credit.getExpireY() + " WHERE \"USERNAME\"='"
-				+ credit.getUsername() + "'";
+		String queryadd = "INSERT INTO CreditInfo (username, cardType, CardHolder, CardNumber, expireM, expireY) VALUES ('"
+				+ credit.getUsername() + "', " + credit.getCardType() + ", '" + credit.getCardHolder() + "', '"
+				+ credit.getCardNumber() + "', " + credit.getExpireM() + ", " + credit.getExpireY() + ")";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(queryget);
 		ResultSet r = p.executeQuery();
 		if (r.next()) { // user exist, update password
+			int a_id = addrDAO.updateAddr(credit.getbAddress());
+			String queryupdate = "UPDATE CreditInfo SET \"CARDTYPE\"=" + credit.getCardType() + ", \"CARDHOLDER\"='"
+					+ credit.getCardHolder() + "', \"CARDNUMBER\"='" + credit.getCardNumber() + "', \"EXPIREM\"="
+					+ credit.getExpireM() + ", \"EXPIREY\"=" + credit.getExpireY() + ", \"A_ID\"="
+					+ a_id + " WHERE \"USERNAME\"='" + credit.getUsername()
+					+ "'";
 			p = con.prepareStatement(queryupdate);
 			p.executeUpdate();
 		} else { // user not exist, insert new instance
@@ -132,10 +177,14 @@ public class CustomerDAO {
 		con.close();
 	}
 
-	/*
+	/**
 	 * Giving an username return a ProfileBean with the username and stored user
 	 * profile if username exist. Return null ProfileBean if username is not
 	 * exist in database
+	 * 
+	 * @param username
+	 * @return ProfileBean with the username and stored user profile
+	 * @throws SQLException
 	 */
 	public ProfileBean retrieveProfile(String username) throws SQLException {
 		String query = "select * from Profile where username = '" + username + "'";
@@ -143,18 +192,25 @@ public class CustomerDAO {
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
-		if (r.next())
-			profile = new ProfileBean(username, r.getString("FNAME"), r.getString("LNAME"),
-					addrDAO.retrieveAddr(username), r.getString("EMAIL"));
+		if (r.next()) {
+			if (!r.getString("FNAME").equals("default"))// if profile is
+														// default, return null
+														// profileBean
+				profile = new ProfileBean(username, r.getString("FNAME"), r.getString("LNAME"), r.getString("EMAIL"));
+			// servlet will not use profile to get shipping address
+		}
 		r.close();
 		p.close();
 		con.close();
 		return profile;
 	}
 
-	/*
+	/**
 	 * Update a new registered customer profile or update an exist customer's
 	 * profile
+	 * 
+	 * @param profile
+	 * @throws SQLException
 	 */
 	public void updateProfile(ProfileBean profile) throws SQLException {
 		String queryget = "SELECT * FROM Profile WHERE username = '" + profile.getUsername() + "'";
@@ -176,7 +232,6 @@ public class CustomerDAO {
 		r.close();
 		p.close();
 		con.close();
-		addrDAO.updateAddr(profile.getBillingAddress());
 	}
 
 }

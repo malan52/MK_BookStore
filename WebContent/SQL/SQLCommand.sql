@@ -23,22 +23,36 @@ INSERT INTO Book (bid, title, price, category) VALUES ('b003','Mechanics' ,100,'
 DROP TABLE Address;
 
 CREATE TABLE Address (
-id VARCHAR(20)  NOT NULL,
+a_id INT  NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+username VARCHAR(20)  NOT NULL,
 street VARCHAR(100) NOT NULL,
 province VARCHAR(20) NOT NULL,
 country VARCHAR(20) NOT NULL,
 zip VARCHAR(20) NOT NULL,
 phone VARCHAR(20),
-PRIMARY KEY(id),
-FOREIGN KEY(id) REFERENCES Customer(username) ON DELETE CASCADE
+addrType VARCHAR(15) NOT NULL,
+PRIMARY KEY(a_id),
+FOREIGN KEY(username) REFERENCES Customer(username) ON DELETE CASCADE
 );
 
-INSERT INTO Address (id, street, province, country, zip, phone) VALUES ('Roger', '123 Yonge St', 'ON',
-'Canada', 'K1E 6T5' ,'647-123-4567');
-INSERT INTO Address (id, street, province, country, zip, phone) VALUES ('Steven', '445 Avenue rd', 'ON',
-'Canada', 'M1C 6K5' ,'416-123-8569');
-INSERT INTO Address (id, street, province, country, zip, phone) VALUES ('Andy', '789 Keele St.', 'ON',
-'Canada', 'K3C 9T5' ,'416-123-9568');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Roger', '123 Yonge St', 'ON',
+'Canada', 'K1E 6T5' ,'647-123-4567', 'Shipping');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Roger', '123 Yonge St', 'ON',
+'Canada', 'K1E 6T5' ,'647-123-4567', 'Billing');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Andy', '789 Keele St.', 'ON',
+'Canada', 'K3C 9T5' ,'416-123-9568', 'Billing');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Andy', '789 Keele St.', 'ON',
+'Canada', 'K3C 9T5' ,'416-123-9568', 'Shipping');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('John', '345 John St.', 'ON',
+'Canada', 'M1C 5X3' ,'416-321-3456', 'Billing');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('John', '345 John St.', 'ON',
+'Canada', 'M1C 5X3' ,'416-321-3456', 'Shipping');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Peter', '321 McCown St.', 'ON',
+'Canada', 'L5T 1R7' ,'416-456-4567', 'Billing');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Peter', '321 McCown St.', 'ON',
+'Canada', 'L5T 1R7' ,'416-456-4567', 'Shipping');
+INSERT INTO Address (username, street, province, country, zip, phone, addrType) VALUES ('Roger', '124 Yonge St', 'ON',
+'Canada', 'K1E 6T5' ,'647-123-4567', 'Shipping');
 
 /* Purchase Order
 * lname: last name
@@ -49,19 +63,18 @@ INSERT INTO Address (id, street, province, country, zip, phone) VALUES ('Andy', 
 DROP TABLE PO;
 
 CREATE TABLE PO (
-id INT  NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-lname VARCHAR(20) NOT NULL,
-fname VARCHAR(20) NOT NULL,
-status VARCHAR(20) NOT NULL,
-address VARCHAR(20)  NOT NULL,
-PRIMARY KEY(id),
-UNIQUE (address),
-FOREIGN KEY (address) REFERENCES Address (id) ON DELETE CASCADE
+po_id 		INT  NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+username 	VARCHAR(20)  NOT NULL,
+status 		VARCHAR(20) NOT NULL,
+a_id 		INT  NOT NULL,
+po_date 	VARCHAR(10) NOT NULL,
+PRIMARY KEY(po_id),
+FOREIGN KEY (a_id) REFERENCES Address(a_id)
 );
 
-INSERT INTO PO (lname, fname, status, address) VALUES ( 'John', 'White', 'PROCESSED', 'Roger');
-INSERT INTO PO (lname, fname, status, address) VALUES ( 'Peter', 'Black', 'DENIED', 'Steven');
-INSERT INTO PO (lname, fname, status, address) VALUES ( 'Andy', 'Green', 'ORDERED', 'Andy');
+INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'Roger', 'PROCESSED', 2, '10302014');
+INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'John', 'DENIED', 6, '11212015');
+INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'Andy', 'Andy', 4, '12042015');
 
 /* Items on order
 * id : purchase order id
@@ -71,19 +84,18 @@ INSERT INTO PO (lname, fname, status, address) VALUES ( 'Andy', 'Green', 'ORDERE
 DROP TABLE POItem;
 
 CREATE TABLE POItem (
-id INT  NOT NULL,
-bid VARCHAR(20) NOT NULL,
-price INT  NOT NULL,
-PRIMARY KEY(id,bid),
-UNIQUE (id),
-FOREIGN KEY(id) REFERENCES PO(id) ON DELETE CASCADE,
-UNIQUE (bid),
+po_id 		INT NOT NULL,
+bid 		VARCHAR(20) NOT NULL,
+quantity	INT NOT NULL,
+PRIMARY KEY(po_id,bid),
+FOREIGN KEY(po_id) REFERENCES PO(po_id) ON DELETE CASCADE,
 FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE
 );
 
-INSERT INTO POItem (id, bid, price) VALUES (1, 'b001', 20);
-INSERT INTO POItem (id, bid, price) VALUES (2, 'b002', 201);
-INSERT INTO POItem (id, bid, price) VALUES (3, 'b003', 100);
+INSERT INTO POItem (po_id, bid, quantity) VALUES (1, 'b001', 1);
+INSERT INTO POItem (po_id, bid, quantity) VALUES (2, 'b002', 2);
+INSERT INTO POItem (po_id, bid, quantity) VALUES (3, 'b003', 1);
+INSERT INTO POItem (po_id, bid, quantity) VALUES (3, 'b004', 1);
 
 /* visit to website
 * day: date
@@ -115,6 +127,8 @@ PRIMARY KEY (username)
 
 INSERT INTO Customer (username, password) VALUES ('Roger', 'roger123');
 INSERT INTO Customer (username, password) VALUES ('Steven', 'steven123');
+INSERT INTO Customer (username, password) VALUES ('John', 'john123');
+INSERT INTO Customer (username, password) VALUES ('Peter', 'peter123');
 INSERT INTO Customer (username, password) VALUES ('Andy', 'Andy123');
 
 SELECT username, password FROM Customer WHERE username = 'username';
@@ -155,12 +169,14 @@ cardHolder	VARCHAR(50) NOT NULL,
 cardNumber	VARCHAR(20) NOT NULL,
 expireM		INT NOT NULL,
 expireY		INT NOT NULL,
+a_id		INT,
 PRIMARY KEY (username),
-FOREIGN KEY (username) REFERENCES Customer(username) ON DELETE CASCADE
+FOREIGN KEY (username) REFERENCES Customer(username) ON DELETE CASCADE,
+FOREIGN KEY (a_id) REFERENCES Address(a_id) ON DELETE CASCADE
 );
 
-INSERT INTO CreditInfo (username, cardType, CardHolder, CardNumber, expireM, expireY) 
-VALUES ('Roger', 1, 'Roger Sun', '1111 2222 3333 4444', 8, 17);
+INSERT INTO CreditInfo (username, cardType, CardHolder, CardNumber, expireM, expireY, a_id) 
+VALUES ('Roger', 1, 'Roger Sun', '1111 2222 3333 4444', 8, 17, 1);
 
 /*
  * Review comments on books
@@ -181,3 +197,6 @@ FOREIGN KEY(username) REFERENCES Customer(username) ON DELETE CASCADE
 
 INSERT INTO Review (bid, username, rating, review) VALUES ('b001', 'Roger', 5, 'Very good book!');
 INSERT INTO Review VALUES ('b002', 'Roger', 4, 'Good book!');
+
+UPDATE on table 'CREDITINFO' caused a violation of foreign key constraint 'SQL160324223441752' for key (0).  
+The statement has been rolled back.
