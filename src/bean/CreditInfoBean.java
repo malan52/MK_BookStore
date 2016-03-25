@@ -31,11 +31,11 @@ public class CreditInfoBean {
 		this.cardNumber = cardNumber;
 		this.expireM = expireM;
 		this.expireY = expireY;
-		this.setbAddress(bAddress);
+		this.bAddress = bAddress;
 	}
 	
 	public CreditInfoBean(String username){
-		this(username, 1, null, "", 1, 2017, new AddressBean(username, "Billing"));
+		this(username, 1, "default", "default", 1, 1, null);
 	}
 	
 	/**

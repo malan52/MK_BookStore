@@ -25,10 +25,6 @@ public class AddressBean {
 		this.setType(type);
 	}
 	
-	public AddressBean(String id, String type) {
-		this(id, "", "", "", "", "", type);
-	}
-
 	/**
 	 * @return the id
 	 */
@@ -135,7 +131,8 @@ public class AddressBean {
 				+ "\nProvince: " + province
 				+ "\nCountry: " + country
 				+ "\nZip: " + zip
-				+ "\nPhone: " + phone;
+				+ "\nPhone: " + phone
+				+ "\nType: " + type;
 	}
 
 }
