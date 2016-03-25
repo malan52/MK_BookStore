@@ -71,8 +71,7 @@
 <body>
 	<jsp:include page="/navbar.jspx" />
 	<jsp:include page="/header.jspx" />
-	<!-- <jsp:include page="/bookDisplayPanel.jspx" /> -->
-	<jsp:include page="/profile.jspx" />
+	<jsp:include page="/bookDisplayPanel.jspx" />
 	<div class="container" style="margin-bottom:5%;"><HR /></div>
 	
 	<jsp:include page="/login.jspx" />
@@ -89,6 +88,10 @@
 	<script src="js/bootstrap.min.js">
 		;
 	</script>
+	<!-- For login.jspx -->
+	<script src="js/login.js">
+    	;
+    </script>
 	
 </body>
 	</html>
