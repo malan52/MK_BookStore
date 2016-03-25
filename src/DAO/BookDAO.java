@@ -14,6 +14,7 @@ import bean.BookBean;
 public class BookDAO {
 
 	private DataSource ds;
+	private int book;
 
 	public BookDAO() throws ClassNotFoundException {
 		try {
