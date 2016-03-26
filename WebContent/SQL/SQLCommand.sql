@@ -63,18 +63,23 @@ INSERT INTO Address (username, street, province, country, zip, phone, addrType) 
 DROP TABLE PO;
 
 CREATE TABLE PO (
-po_id 		INT  NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+po_id 		VARCHAR(15) NOT NULL,
 username 	VARCHAR(20)  NOT NULL,
 status 		VARCHAR(20) NOT NULL,
-a_id 		INT  NOT NULL,
+a_id 		INT NOT NULL,
 po_date 	VARCHAR(10) NOT NULL,
+lname		VARCHAR(20) NOT NULL,
+fname		VARCHAR(20) NOT NULL,
 PRIMARY KEY(po_id),
 FOREIGN KEY (a_id) REFERENCES Address(a_id)
 );
 
-INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'Roger', 'PROCESSED', 2, '10302014');
-INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'John', 'DENIED', 6, '11212015');
-INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'Andy', 'Andy', 4, '12042015');
+INSERT INTO PO VALUES ( '201506071545332', 'Roger', 'PROCESSED', 2, '20150607', 'Rose', 'Wendy');
+INSERT INTO PO VALUES ( '201511212359082', 'John', 'DENIED', 6, '20151121', 'John', 'Willie');
+INSERT INTO PO VALUES ( '201512041403527', 'Andy', 'ORDERD', 4, '20151204', 'Andy', 'Olly');
+
+SELECT * from PO order by PO_date desc;
+select * from PO where PO_date > '20150710' and po_date < '20151203';
 
 /* Items on order
 * id : purchase order id
@@ -84,7 +89,7 @@ INSERT INTO PO (username, status, a_id, po_date) VALUES ( 'Andy', 'Andy', 4, '12
 DROP TABLE POItem;
 
 CREATE TABLE POItem (
-po_id 		INT NOT NULL,
+po_id 		VARCHAR(15) NOT NULL,
 bid 		VARCHAR(20) NOT NULL,
 quantity	INT NOT NULL,
 PRIMARY KEY(po_id,bid),
@@ -92,10 +97,14 @@ FOREIGN KEY(po_id) REFERENCES PO(po_id) ON DELETE CASCADE,
 FOREIGN KEY(bid) REFERENCES Book(bid) ON DELETE CASCADE
 );
 
-INSERT INTO POItem (po_id, bid, quantity) VALUES (1, 'b001', 1);
-INSERT INTO POItem (po_id, bid, quantity) VALUES (2, 'b002', 2);
-INSERT INTO POItem (po_id, bid, quantity) VALUES (3, 'b003', 1);
-INSERT INTO POItem (po_id, bid, quantity) VALUES (3, 'b004', 1);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201506071545332', 'b001', 1);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201511212359082', 'b002', 2);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b003', 1);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b004', 1);
+
+
+select * from POItem where PO_id >= (select min(PO_id) from POItem where PO_id like '20150607%') 
+and PO_id <= (select max(PO_id) from POItem where PO_id like '20151121%');
 
 /* visit to website
 * day: date
@@ -197,6 +206,3 @@ FOREIGN KEY(username) REFERENCES Customer(username) ON DELETE CASCADE
 
 INSERT INTO Review (bid, username, rating, review) VALUES ('b001', 'Roger', 5, 'Very good book!');
 INSERT INTO Review VALUES ('b002', 'Roger', 4, 'Good book!');
-
-UPDATE on table 'CREDITINFO' caused a violation of foreign key constraint 'SQL160324223441752' for key (0).  
-The statement has been rolled back.
