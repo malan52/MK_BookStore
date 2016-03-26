@@ -55,6 +55,14 @@ public class OrderProcessCtrl extends HttpServlet {
 			//System.out.println(param);
 			cart.dropBook(request.getParameter("delete"));
 		}
+		if(request.getParameter("quantity") != null && request.getParameter("bid") != null){	
+			int quantity = Integer.parseInt(((String) request.getParameter("quantity")));
+			String bid = (String) request.getParameter("bid");
+			cart.updateBookQuantity(bid, quantity);
+			response.setHeader("total", 
+					"<b>Total: <f:formatNumber type=\"currency\">" + cart.getPrice() + "</f:formatNumber></b></td><br/>");
+			response.setHeader("size", cart.getSize() +"");
+		}
 		request.getRequestDispatcher("/Cart.jspx").forward(request, response);
 	}
 

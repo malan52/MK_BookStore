@@ -69,7 +69,9 @@
 </head>
 
 <body>
-	<jsp:include page="/navbar.jspx" />
+	<jsp:include page="/navbar.jspx">
+		<jsp:param name="cart_size" value="${cart.getSize()}" />
+	</jsp:include>
 	<jsp:include page="/header.jspx" />
 	<jsp:include page="/bookDisplayPanel.jspx" />
 	<div class="container" style="margin-bottom:5%;"><HR /></div>

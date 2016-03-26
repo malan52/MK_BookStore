@@ -23,7 +23,9 @@
 </head>
 <body>
 
-<jsp:include page="/navbar.jspx" /><!-- include the navigation bar -->
+<jsp:include page="/navbar.jspx"><!-- include the navigation bar -->
+	<jsp:param name="cart_size" value="${cart.getSize()}" />
+</jsp:include>
 <jsp:include page="/header.jspx" /><!-- include the header -->
 <form action="" method = "GET">
 <div class="container">         
@@ -49,9 +51,10 @@
 	<tr id="${element.key}">
 	    <td>${element.key}</td>
 		<td>${cart.getTitle(element.key)}</td>
-		<td><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
+		<td id="subtotal"><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
 		<td>${cart.getCategory(element.key)}</td>
-		<td><input id="quantity" name="quantity" type="number" value="${element.value}"/></td>	<!-- ${element.value.quantity} -->
+		<td><input id="${element.key}quantity" name="${element.key}quantity" type="number"  min="1" max="100" style="float: right"
+		value="${element.value}" onchange='updateQuantity("${element.key}")' /></td>	<!-- ${element.value.quantity} -->
 		<td><f:formatNumber type="currency">${cart.getPriceByBook(element.key)}</f:formatNumber></td>
 		<td><button action='submit' name='submit' label='submit' onclick='deleteBook("${element.key}")'> Delete </button></td>
 	</tr>
@@ -64,8 +67,9 @@
 <div class="container" >
 <table class="table-responsive" style="float:right;">
 <tr>
+<td id="total">
+<b>Total: <f:formatNumber type="currency">${cart.getPrice()}</f:formatNumber></b></td><br/>
 <td>
-<b>Total: <f:formatNumber type="currency"> ${cart.getPrice()}</f:formatNumber></b><br/>
 <a href="main.jspx"><button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">
 Keep Shopping</button></a>
 
@@ -73,7 +77,7 @@ Keep Shopping</button></a>
 <a href="payment.jspx"><button type="button" class="btn btn-warning btn-lg" 
 	action='submit' name='submit' ><b>CHECK OUT</b></button></a>
 
-</td>
+</td>	
 </tr>
 </table>
 </div>
@@ -92,6 +96,16 @@ Keep Shopping</button></a>
 		    	  
     	 	 }
 	    	  xhttp.open("GET", "OrderProcessCtrl?delete=" + bid, true);
+	    	  xhttp.send();
+    	}
+    function updateQuantity(bid){
+    	var xhttp = new XMLHttpRequest();
+    	  xhttp.onreadystatechange = function() {
+    		  $("#total").html(xhttp.getResponseHeader('total')); 
+    		  $("[name='cart_size']").val(xhttp.getResponseHeader('size')); 
+
+    	 	 }
+	    	  xhttp.open("GET", "OrderProcessCtrl?bid=" + bid + "&amp;quantity=" +  $("#"+ bid +"quantity").val(), true); 
 	    	  xhttp.send();
     	}
  
