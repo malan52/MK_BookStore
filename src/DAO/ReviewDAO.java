@@ -91,4 +91,25 @@ public class ReviewDAO {
 		con.close();
 		return map;
 	}
+	
+	/**
+	 * Return the average rating of this book
+	 * @param bid
+	 * @return Return the average rating of this book
+	 * @throws SQLException
+	 */
+	public int avgRate(String bookID) throws SQLException {
+		String query = "select avg(rating) as \"AVG\" from REVIEW where BID = '" + bookID + "'";
+		int avgrate = 0;
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			avgrate = r.getInt("AVG");
+		}
+		r.close();
+		p.close();
+		con.close();
+		return avgrate;
+	}
 }
