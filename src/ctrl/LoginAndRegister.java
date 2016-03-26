@@ -47,8 +47,9 @@ public class LoginAndRegister extends HttpServlet {
 			CustomerBean customer;
 			try {
 				customer = customerAccessor.retrieveCustomer(username);
-				if(customer != null && customer.getPassword() == password){
-					response.getWriter().print("Welcome back! " + username);
+				response.setContentType("text/html");
+				if(customer != null && password.equals(customer.getPassword().trim())){
+					response.getWriter().print("Welcome back " + username + "!");
 				}
 				else{
 					response.getWriter().print("Sorry, your are not logged in!");
