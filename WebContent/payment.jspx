@@ -11,19 +11,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <title>Payment</title>
-    
-<!-- js for choose the states and provence -->    
-    <script src="js/p1.js">;</script>   
-    
+    <title>Payment</title>    
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <!-- Optional theme -->
 <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
-    <!-- Javascript files -->
-    <script src="js/jquery.min.js">;</script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="js/bootstrap.min.js">;</script>
+    
 </head>
 <body>
 <jsp:include page="/navbar.jspx" />
@@ -39,32 +32,28 @@ Go Back to Shopping Cart</button></a></td>
 </table>
 </div>
 <!-- billing address -->
-
-<jsp:include page ="/billing.jspx" />
 <jsp:include page="/creditcard.jspx" />
-<hr/>
+<br/>
+<jsp:include page ="/billing.jspx" />
 <div class="container">
-<table>
-<tr>
-<td><p style="color:red;">shipping地址==billing地址?</p></td>
-<td><label><input type="checkbox" value="yes" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onclick="sameadrs()" onchange="change()"/>Yes</label>	</td>
-</tr>
-</table> 
-<p>If you want to ship to a different place, please fillout the form below.</p>
+<hr/>
 </div>
-
-
 <!-- shipping address -->
 <jsp:include page="/shipping.jspx" />
 
 <br/>
 <div class="container">
 <table style="float:right;">
-<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' onclick="checkAll()"><b>Submit</b></button>
+<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' onclick="test()"><b>Submit</b></button>
 </td></tr>
 </table>
 </div>
  <br/><br/>
+<script src="js/p1.js">;</script>
+	<!-- Javascript files -->
+    <script src="js/jquery.min.js">;</script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js">;</script>
 </body>
 </html>
 </jsp:root>
