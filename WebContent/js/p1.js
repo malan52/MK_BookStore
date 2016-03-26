@@ -37,73 +37,59 @@ var state=[
 //-------------shipping addres is as the same as billing address----------
 
 function sameadrs(){
-	//the same first name
-	var f = document.getElementById("fname").value;
-	document.getElementById("sfname").value=f;
-	//the same last name
-	var l = document.getElementById("lname").value;
-	document.getElementById("slname").value = l;	
-	//the same address
-	var a = document.getElementById("adrs").value;
-	document.getElementById("sadrs").value=a;
-	//the same phone number
-	var p = document.getElementById("phone").value;
-	document.getElementById("sphone").value=p;
-	//the same email
-	var e = document.getElementById("zip").value;
-	document.getElementById("szip").value=e;	
-	//the same contry
-	var c = document.getElementById("country").value;
-	document.getElementById("scountry").value=c;
-	sgetState();	
-	//the same state
-	var s = document.getElementById("state").value;
-	document.getElementById("sstate").value=s;	
-	document.getElementById("sstate").options[document.getElementById("sstate").selectedIndex].text=document.getElementById("state").options[document.getElementById("state").selectedIndex].text
-	
-}
-
-//--------if the client check the checkbox, change the status of the shipping address
-	function change(){
-		
-		var pf = document.getElementById("pf");//first name for the tag out of the first name
-		var pl = document.getElementById("pl");//last name
-		var pc = document.getElementById("pc");//country
-		var ps = document.getElementById("ps");//state
-		var pa = document.getElementById("pa");//address
-		var pp = document.getElementById("pp");//phone
-		var pz = document.getElementById("pz");//email
-		
-		var sf = document.getElementById("fname").value;
-		var sl = document.getElementById("lname").value;
-		var sc = document.getElementById("country").value;
-		var ss = document.getElementById("state").value;
-		var sa = document.getElementById("adrs").value;
-		var sp = document.getElementById("phone").value;
-		var sz = document.getElementById("zip").value;
-		
-		if(document.getElementById("yes").checked == true){
-			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" name=\"sfname\" placeholder="+ sf +" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
-			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" name=\"slname\" placeholder="+ sl +" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\"/>";
-			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\" placeholder="+ sp +">";
-			pc.innerHTML = "<select id=\"scountry\" name=\"scountry\" class=\"form-control\" onchange=\"sgetState()\" disabled=\"disabled\"><option value=\"0\">"+ sc + "</option></select>";
-			ps.innerHTML = "<select id=\"sstate\" name=\"sstate\" class=\"form-control\" disabled=\"disabled\"><option value=\"0\">"+ss+"</option></select>";
-			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\" disabled=\"disabled\"/>"+ sa;
-			pz.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"szip\" name=\"szip\" style=\"margin: 10px 10px 10px 10px;\" disabled=\"disabled\" placeholder="+ sz +">";
-		
-			
-		} else {
-			pf.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sfname\" name=\"sfname\" placeholder=\"Joe\" style=\"margin: 10px 10px 10px 10px;\"/>";
-			pl.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"slname\" name=\"slname\" placeholder=\"Doe\" style=\"margin: 10px 10px 10px 10px;\"/>";
-			pp.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"sphone\" name=\"phone\" placeholder=\"10 digits\" style=\"margin: 10px 10px 10px 10px;\" onblur=\"checkSPhone()\"/>";
-			pc.innerHTML = "<select id=\"scountry\" name=\"scountry\" class=\"form-control\" onchange=\"sgetState()\"><option value=\"0\">Select country</option><option value=\"Canada\" >Canada</option><option value=\"USA\" >USA</option></select>";
-			ps.innerHTML = "<select id=\"sstate\" name=\"sstate\" class=\"form-control\"><option value=\"0\">Select state</option></select>";
-			pa.innerHTML = "<textarea class=\"form-control\" rows=\"2\" id=\"sadrs\" name=\"adrs\" onclick=\"this.innerHTML=''\"/>Please enter address</textarea>";
-			pz.innerHTML = "<input type=\"text\" class=\"form-control\" id=\"szip\" name=\"szip\" placeholder=\"6 digits\" style=\"margin: 10px 10px 10px 10px;\" onblur=\"checkSZip()\"/>";
-			//alert("shipping country:" + sc + "\n" + "shipping state:" + ss);
+	if(document.getElementById("yes").checked == true){
+		var cName = document.getElementById("cardHolder").value; // name form credit card
+		var nameSplit = cName.split(" ");
+		//first name for the shipping address
+		var sfToString="";
+		for(var i=0;i<nameSplit.length - 1;i++){
+			sfToString=sfToString+nameSplit[i].toString() + " ";
 		}
+		document.getElementById("sfname").value=sfToString;
+		document.getElementById("sfname").disabled = true; 
+		
+		//last name for the shipping address
+		var slToString="";
+		slToString=nameSplit[nameSplit.length - 1].toString();	
+		document.getElementById("slname").value=slToString;
+		document.getElementById("slname").disabled = true;	
+		
+		//the same address
+		var a = document.getElementById("adrs").value;
+		document.getElementById("sadrs").value=a;
+		document.getElementById("sadrs").disabled=true;
+		
+		//the same phone number
+		var p = document.getElementById("phone").value;
+		document.getElementById("sphone").value=p;
+		document.getElementById("sphone").disabled=true;
+		
+		//the same zip
+		var e = document.getElementById("zip").value;
+		document.getElementById("szip").value=e;
+		document.getElementById("szip").disabled=true;
+		//the same contry
+		var c = document.getElementById("country").value;
+		document.getElementById("scountry").value=c;
+		document.getElementById("scountry").disabled=true;
+		sgetState();	
+		//the same state
+		var s = document.getElementById("state").value;
+		document.getElementById("sstate").value=s;	
+		document.getElementById("sstate").options[document.getElementById("sstate").selectedIndex].text=document.getElementById("state").options[document.getElementById("state").selectedIndex].text;
+		document.getElementById("sstate").disabled=true;
 	}
-
+	else{
+		document.getElementById("sfname").disabled = false;
+		document.getElementById("slname").disabled = false;
+		document.getElementById("sadrs").disabled = false;
+		document.getElementById("sphone").disabled = false;
+		document.getElementById("szip").disabled = false;
+		document.getElementById("scountry").disabled = false;
+		document.getElementById("sstate").disabled = false;	
+	}	
+}
+	
 //check if the billing phone number is 10 digits
 	function checkPhone(){
 		//alert("this is a test");
@@ -137,15 +123,16 @@ function sameadrs(){
 			alert("ZIP CODE must be 6 digits with numbers and letters!");
 		}		
 	}
+	
 	//check if the cardholder is all letters
-	function checkCardHolder(){		
+	function checkCardHolder(){			
 		var reg = /^[a-zA-Z]+$/;
 		var flag = reg.test(document.getElementById("cardHolder").value);
 		if(!flag){
 			alert("CardHolder must to be all letters!");
 		}
 	}
-	
+
 //check if the card number is digits
 	function checkCardNumber(){
 		var reg16 = /^[0-9]{16,16}$/;
@@ -227,4 +214,30 @@ function sameadrs(){
 		if(!flagphone||!flagsphone||!flagzip||!flagszip||!flagholder||(!flag16 && type.value=="1")||(!flag16 && type.value=="2")||(!flag15 && type.value =="3")||!digit3||!digit4){
 			alert("please check the input information!");
 		}		
+		
+		
 	}
+	
+	
+	
+	function test(){
+		alert("the shipping first name is:"+ document.getElementById("sfname").value);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
