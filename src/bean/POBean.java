@@ -144,5 +144,15 @@ public class POBean {
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
+	
+	public String toString() {
+		return "PO_id: " + PO_id
+				+ "\nusername: " + username
+				+ "\nstatus" + status
+				+ "\naddress: " +  address.toString()
+				+ "\nPO_date: " +  PO_date
+				+ "\nlname: " +   lname
+				+ "\nfname: " +   fname;
+	}
 
 }
