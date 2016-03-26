@@ -13,27 +13,30 @@
 	</h3>
 
 	<form role="form" id="editAccInfo" style="text-align: center">
+
 		<div class="form-group form-inline" style="text-align: center">
 			<label for="oldpassword" style="width: 150px;">Password: </label> <input
 				type="password" class="form-control" id="oldpassword"
 				name="oldpassword" value="Current Last Name"
 				style="margin: 10px 10px 10px 10px;" disabled="disabled"><br />
 			<small style="margin-right: -10%;"> <label><input
-					type="checkbox" id="changePassword" name="changePassword"
-					value="yesChange" style="margin-right: 10px;" />Change Password</label></small></input>
+					type="checkbox" id="chkPassword" style="margin-right: 10px;"
+					onclick="ShowHideDiv(this)" />Change Password</label></small></input>
 		</div>
-		<div class="form-group form-inline" style="text-align: center">
-			<label for="newPassword" style="width: 150px;">New Password:</label>
-			<input type="password" class="form-control" id="newPassword"
-				name="newPassword" style="margin: 10px 10px 10px 10px;"
-				placeholder="Enter New Password..."></input> <br /> <small>*
-				Minimum of 6 characters with only letters or/and number</small>
-		</div>
-		<div class="form-group form-inline" style="text-align: center">
-			<label for="cfm_newPassword" style="width: 150px;">Confirm
-				Password: </label> <input type="password" class="form-control"
-				id="cfm_newPassword" placeholder="Confirm Password..."
-				onblur="confirmPWD()" required="required"></input>
+		<div id="dvPassword" style="display: none">
+			<div class="form-group form-inline" style="text-align: center">
+				<label for="newPassword" style="width: 150px;">New Password:</label>
+				<input type="password" class="form-control" id="newPassword"
+					name="newPassword" style="margin: 10px 10px 10px 10px;"
+					placeholder="Enter New Password..."></input> <br /> <small>*
+					Minimum of 6 characters with only letters or/and number</small>
+			</div>
+			<div class="form-group form-inline" style="text-align: center">
+				<label for="cfm_newPassword" style="width: 150px;">Confirm
+					Password: </label> <input type="password" class="form-control"
+					id="cfm_newPassword" placeholder="Confirm Password..."
+					onblur="confirmPWD()" required="required"></input>
+			</div>
 		</div>
 
 
@@ -46,7 +49,7 @@
 		</div>
 		<div class="form-group" style="float: right;">
 			<button type="reset" class="btn btn-default btn-lg"
-				style="margin-right: 10px">Cancel</button>
+				style="margin-right: 10px" value="resetEditInfo" onclick="ShowHideDiv(this)">Reset</button>
 			<button type="submit" class="btn btn-info btn-lg">Save
 				Changes</button>
 		</div>
