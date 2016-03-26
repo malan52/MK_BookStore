@@ -60,7 +60,9 @@ public class OrderProcessCtrl extends HttpServlet {
 			String bid = (String) request.getParameter("bid");
 			cart.updateBookQuantity(bid, quantity);
 			response.setHeader("total", 
-					"<b>Total: <f:formatNumber type=\"currency\">" + cart.getPrice() + "</f:formatNumber></b></td><br/>");
+					"<b>Total: $" + cart.getPrice() + ".00</b></td><br/>");
+			response.setHeader("subtotal", 
+					"$" + cart.getSubtotal(bid) + ".00</td><br/>");
 			response.setHeader("size", cart.getSize() +"");
 		}
 		request.getRequestDispatcher("/Cart.jspx").forward(request, response);

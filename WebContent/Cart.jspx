@@ -19,7 +19,6 @@
     
 <!-- cart.css -->
 <link rel="stylesheet" href="css/cart.css"/>
-
 </head>
 <body>
 
@@ -51,11 +50,11 @@
 	<tr id="${element.key}">
 	    <td>${element.key}</td>
 		<td>${cart.getTitle(element.key)}</td>
-		<td id="subtotal"><f:formatNumber type="currency">${cart.getPrice(element.key)}</f:formatNumber></td>
+		<td><f:formatNumber type="currency">${cart.getUnitPrice(element.key)}</f:formatNumber></td>
 		<td>${cart.getCategory(element.key)}</td>
 		<td><input id="${element.key}quantity" name="${element.key}quantity" type="number"  min="1" max="100" style="float: right"
 		value="${element.value}" onchange='updateQuantity("${element.key}")' /></td>	<!-- ${element.value.quantity} -->
-		<td><f:formatNumber type="currency">${cart.getPriceByBook(element.key)}</f:formatNumber></td>
+		<td id="${element.key}subtotal"><f:formatNumber type="currency">${cart.getSubtotal(element.key)}</f:formatNumber></td>
 		<td><button action='submit' name='submit' label='submit' onclick='deleteBook("${element.key}")'> Delete </button></td>
 	</tr>
 	</c:forEach>
@@ -101,8 +100,11 @@ Keep Shopping</button></a>
     function updateQuantity(bid){
     	var xhttp = new XMLHttpRequest();
     	  xhttp.onreadystatechange = function() {
-    		  $("#total").html(xhttp.getResponseHeader('total')); 
-    		  $("[name='cart_size']").val(xhttp.getResponseHeader('size')); 
+    		  if (xhttp.readyState == 4) {
+	    		  $("#total").html(xhttp.getResponseHeader('total')); 
+	    		  $("#cart_icon").text(xhttp.getResponseHeader('size')); 
+	    		  $("#"+ bid +"subtotal").html(xhttp.getResponseHeader('subtotal'));
+    		  }
 
     	 	 }
 	    	  xhttp.open("GET", "OrderProcessCtrl?bid=" + bid + "&amp;quantity=" +  $("#"+ bid +"quantity").val(), true); 
@@ -111,6 +113,9 @@ Keep Shopping</button></a>
  
     </script>
     <script src="js/jquery.min.js">;</script>
+    <script src="js/login.js">
+   		;
+	</script>
 </form>
 </body>
 </html>
