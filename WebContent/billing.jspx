@@ -1,73 +1,117 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" class="container">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<!-- billing information -->
+	<!-- first name and last name -->
+	<div>
+		<h3>
+			<p>Billing Information</p>
+		</h3>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Firstname</th>
+						<th>Lastname</th>
+						<th>Email</th>
+						<th>Phone Number</th>
+						<th>Address</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>John</td>
+						<td>Doe</td>
+						<td>john@example.com</td>
+						<td>6473382328</td>
+						<td>9 Serano Crescent, Richmond Hill, Ontario, Canada</td>
+					</tr>
+					<tr>
+
+					</tr>
+				</tbody>
+			</table>
+			<button class="btn btn-default" type="button" id="useDefaultBilling"
+			name="useDefaultBilling" style="float: right;">Use This
+			Billing Address</button>
+		</div>
+		
+<br />
+<br />
+<br />
 <div>
-<!-- billing information -->
-<!-- first name and last name -->
-<div class="container">
-<h3><p>Billing Information</p></h3>
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="fname">First Name:</label>
-      <input type="text" class="form-control" id="fname" name="fname" placeholder="Joe" 
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-    <div class="form-group">
-      <label for="lname">Last Name:</label>
-      <input type="text" class="form-control" id="lname" name="lname" placeholder="Doe"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
-<!-- select country and state -->
-<div class="container">
-	<form class="form-inline" role="form" name="form1">
-		<label  for="country">Country:</label>
-		<div class="form-group" >
-		<div class="col-sm-6 col-md-4">
-		<select id="country" name="country" class="form-control" onchange="getState()">
-			<option value="0">Select country</option> 
-			<option value= "Canada" >Canada</option> 
-			<option value= "USA" >USA</option>
-		</select>
+		<div>
+			<form class="form-inline" role="form">
+				<div class="form-group">
+					<label for="fname">First Name:</label> <input type="text"
+						class="form-control" id="fname" name="fname" placeholder="Joe"
+						style="margin: 10px 10px 10px 10px;"></input>
+				</div>
+				<div class="form-group">
+					<label for="lname">Last Name:</label> <input type="text"
+						class="form-control" id="lname" name="lname" placeholder="Doe"
+						style="margin: 10px 10px 10px 10px;"></input>
+				</div>
+				<div class="form-group">
+					<label for="phone">Phone Number:</label> <input type="text"
+						class="form-control" id="phone" name="phone"
+						placeholder="10 digits" style="margin: 10px 10px 10px 10px;"
+						onblur="checkPhone(phone)" />
+				</div>
+			</form>
 		</div>
-		</div>
-		
-		<label  for="state">Province/States:</label>
-		<div class="form-group">
-		<div class="col-sm-6 col-md-4">
-		
-		<select id="state" name="state" class="form-control" > 
-			<option value="0">Select state</option>
-		</select> 
-		</div>
-		</div>	
-	</form>
-</div>
-<!-- detail address include the apartment number, street number and city -->
-<div class="container">
-  <form role="form">
-    <div class="form-group">
-      <label for="adrs">Address:</label>
-      <textarea class="form-control" rows="2" id="adrs" name="adrs" onclick="this.innerHTML=''">Please enter address</textarea>
-    </div>
-  </form>
+	</div>
+	<!-- select country and state -->
+	<div>
+		<form class="form-inline" role="form" name="form1">
+			<label for="country">Country:</label>
+			<div class="form-group">
+				<div class="col-sm-6 col-md-4">
+					<select id="country" name="country" class="form-control"
+						onchange="getState()">
+						<option value="0">Select country</option>
+						<option value="Canada">Canada</option>
+						<option value="USA">USA</option>
+					</select>
+				</div>
+			</div>
+
+			<label for="state">Province/States:</label>
+			<div class="form-group">
+				<div class="col-sm-6 col-md-4">
+					<select id="state" name="state" class="form-control">
+						<option value="0">Select state</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="zip">ZIP CODE:</label> <input type="text"
+					class="form-control" id="zip" name="zip" placeholder="6 digits"
+					style="margin: 10px 10px 10px 10px;" onblur="checkZip(zip)"></input>
+			</div>
+
+
+		</form>
+	</div>
+	<!-- detail address include the apartment number, street number and city -->
+	<div>
+		<form role="form">
+			<div class="form-group">
+				<label for="adrs">Address:</label>
+				<textarea class="form-control" rows="2" id="adrs" name="adrs"
+					onclick="this.innerHTML=''">Please enter address</textarea>
+			</div>
+		</form>
+	</div>
+
 </div>
 
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="phone">Phone Number:</label>
-      <input type="text" class="form-control" id="phone" name="phone"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
-
-<div class="container">
-<form class="form-inline" role="form">
-    <div class="form-group">
-      <label for="email">E-mail:</label>
-      <input type="email" class="form-control" id="email" name="email"
-      style="margin: 10px 10px 10px 10px;"></input>
-    </div>
-  </form>
-</div>
 </div>

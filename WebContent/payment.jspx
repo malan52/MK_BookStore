@@ -15,6 +15,7 @@
     
 <!-- js for choose the states and provence -->    
     <script src="js/p1.js">;</script>   
+    
      <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <!-- Optional theme -->
@@ -27,6 +28,7 @@
 <body>
 <jsp:include page="/navbar.jspx" />
 <jsp:include page="/header.jspx" />
+
 <div class="container">
 <table class="table">
 <tr>
@@ -37,6 +39,7 @@ Go Back to Shopping Cart</button></a></td>
 </table>
 </div>
 <!-- billing address -->
+
 <jsp:include page ="/billing.jspx" />
 <jsp:include page="/creditcard.jspx" />
 <hr/>
@@ -53,10 +56,11 @@ Go Back to Shopping Cart</button></a></td>
 
 <!-- shipping address -->
 <jsp:include page="/shipping.jspx" />
+
 <br/>
 <div class="container">
 <table style="float:right;">
-<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' ><b>Submit</b></button>
+<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' onclick="checkAll()"><b>Submit</b></button>
 </td></tr>
 </table>
 </div>
