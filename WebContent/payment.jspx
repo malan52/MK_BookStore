@@ -44,7 +44,7 @@ Go Back to Shopping Cart</button></a></td>
 <br/>
 <div class="container">
 <table style="float:right;">
-<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' onclick="checkAll()"><b>Submit</b></button>
+<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' onclick="test()"><b>Submit</b></button>
 </td></tr>
 </table>
 </div>

@@ -62,8 +62,8 @@
 		<form role="form">
 			<div class="form-group">
 				<label for="adrs">Address:</label>
-				<textarea class="form-control" rows="2" id="adrs" name="adrs"
-					onclick="this.innerHTML='';if (this.value=='${aB.getZip()}'){this.value=''};">Please enter address</textarea>
+				<textarea class="form-control" rows="2" id="adrs" name="adrs" value="${aB.getStreet()}"
+					onclick="this.innerHTML='';if (this.value=='${aB.getStreet()}'){this.value=''};">Please enter address</textarea>
 			</div>
 		</form>
 	</div>

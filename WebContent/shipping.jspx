@@ -1,6 +1,4 @@
 <div>
-<!-- billing information -->
-<!-- first name and last name -->
 <div class="container">
 <h3><p>Shipping Information</p></h3>
 
@@ -8,17 +6,13 @@
 <table>
 <tr>
 <td><p style="color:red;">shipping==billing?</p></td>
-<td><label><input type="checkbox" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onclick="sameadrs()" onchange="change()"/>Yes</label>	</td>
+<td><label><input type="checkbox" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onchange="sameadrs()" />Yes</label>	</td>
 </tr>
 </table> 
+<!-- table end -->
+
 <p>If you want to ship to a different place, please fillout the form below.</p>
 <br/>
-
-
-
-
-
-
 <form class="form-inline" role="form">
     <div class="form-group ">   
       <label for="sfname">First Name:</label>
