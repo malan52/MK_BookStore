@@ -7,28 +7,29 @@ package bean;
 //@XmlType(propOrder={"id", "bid", "price"})
 public class POItemBean {
 
-	private int id;
+	private String PO_id;
 	private String bid;
-	private int price;
-	
-	public POItemBean(int id, String bid, int price) {
-		this.setId(id);
+	private int quantity;
+
+	public POItemBean(String PO_id, String bid, int quantity) {
+		this.setPO_id(PO_id);
 		this.setBid(bid);
-		this.setPrice(price);
+		this.setQuantity(quantity);
 	}
 
 	/**
 	 * @return the id
 	 */
-	public int getId() {
-		return id;
+	public String getPO_id() {
+		return PO_id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setId(int id) {
-		this.id = id;
+	public void setPO_id(String PO_id) {
+		this.PO_id = PO_id;
 	}
 
 	/**
@@ -39,7 +40,8 @@ public class POItemBean {
 	}
 
 	/**
-	 * @param bid the bid to set
+	 * @param bid
+	 *            the bid to set
 	 */
 	public void setBid(String bid) {
 		this.bid = bid;
@@ -48,15 +50,16 @@ public class POItemBean {
 	/**
 	 * @return the price
 	 */
-	public int getPrice() {
-		return price;
+	public int getQuantity() {
+		return quantity;
 	}
 
 	/**
-	 * @param price the price to set
+	 * @param price
+	 *            the price to set
 	 */
-	public void setPrice(int price) {
-		this.price = price;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }
