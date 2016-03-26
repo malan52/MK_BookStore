@@ -103,7 +103,7 @@ function sameadrs(){
 			//alert("shipping country:" + sc + "\n" + "shipping state:" + ss);
 		}
 	}
-
+	
 //check if the billing phone number is 10 digits
 	function checkPhone(){
 		//alert("this is a test");
@@ -137,15 +137,16 @@ function sameadrs(){
 			alert("ZIP CODE must be 6 digits with numbers and letters!");
 		}		
 	}
+	
 	//check if the cardholder is all letters
-	function checkCardHolder(){		
+	function checkCardHolder(){			
 		var reg = /^[a-zA-Z]+$/;
 		var flag = reg.test(document.getElementById("cardHolder").value);
 		if(!flag){
 			alert("CardHolder must to be all letters!");
 		}
 	}
-	
+
 //check if the card number is digits
 	function checkCardNumber(){
 		var reg16 = /^[0-9]{16,16}$/;
@@ -228,3 +229,25 @@ function sameadrs(){
 			alert("please check the input information!");
 		}		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
