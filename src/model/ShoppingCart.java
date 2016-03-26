@@ -88,7 +88,7 @@ public class ShoppingCart {
 	 * @param bid book id of a book.
 	 * @return the unit price * quantity of the given book in cart.
 	 */
-	public int getPriceByBook(String bid){
+	public int getSubtotal(String bid){
 		int totalPrice = 0;
 		BookBean book;
 		try {
@@ -127,7 +127,7 @@ public class ShoppingCart {
 		return getBook(bid).getTitle();
 	}
 	
-	public int getPrice(String bid){
+	public int getUnitPrice(String bid){
 		return getBook(bid).getPrice();
 	}
 
