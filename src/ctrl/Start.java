@@ -60,6 +60,7 @@ public class Start extends HttpServlet {
 		
 		try {
 			String selectedCategory;
+			String searchString;
 			if(session.getAttribute("cart") == null){
 				request.getSession().setAttribute("cart", new ShoppingCart());
 			}
@@ -68,7 +69,16 @@ public class Start extends HttpServlet {
 				ArrayList<String> categories = new BookDAO().retrieveCategories();
 				request.getServletContext().setAttribute("categories", categories);
 			}
-			if(request.getParameter("viewByCategory") != null)
+			if(request.getParameter("searchbtn") != null)
+			{
+				searchString = request.getParameter("searchPattern");
+				Map<String,BookBean> searchedBooks = new BookDAO().searchBook(searchString);
+				request.setAttribute("searchedBooksMap", searchedBooks);
+				request.setAttribute("searchpattern", searchString);
+				request.getRequestDispatcher("/searchedView.jspx").forward(request, response);
+				
+			}
+			else if(request.getParameter("viewByCategory") != null)
 			{
 				selectedCategory = request.getParameter("viewByCategory");
 				Map<String, BookBean> bookInCategory = new BookDAO().retrieveCategory(selectedCategory);
