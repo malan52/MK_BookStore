@@ -21,6 +21,8 @@
 	<div class="form-group">
       <label for="sel1">Your previous shipping address:</label>
       <select class="form-control" id="sel1">
+     <!-- first name & last name is different from the address -->
+     <!-- we need to have to forEach nested to show the preview address -->
       <c:forEach items="${requestScope['shippingAddress']}" var="element">
         <option name="${element.key}" value="${element.key}">${element.value.getPhone()} ${element.value.getCountry()} ${element.value.getProvince()} ${element.value.getZip()} ${element.value.getSreet()}</option>
       </c:forEach>
