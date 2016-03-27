@@ -87,6 +87,14 @@ public class Start extends HttpServlet {
 				request.getRequestDispatcher("/viewByCategory.jspx").forward(request, response);
 
 			}
+			else if(request.getParameter("viewAll") != null)
+			{
+				Map<String,BookBean> allBooks = new BookDAO().retrieveAll();
+				request.setAttribute("selectCategory", allBooks);
+				request.setAttribute("categoryName", "All Books");
+				request.getRequestDispatcher("/viewByCategory.jspx").forward(request, response);
+				
+			}
 			else{
 				request.getRequestDispatcher(MAIN_URL).forward(request, response);
 			}
