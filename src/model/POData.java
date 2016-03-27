@@ -30,9 +30,9 @@ public class POData {
 	 * @return Map<POBean, Map<BookBean, Integer>>
 	 * @throws Exception
 	 */
-	public Map<POBean, Map<BookBean, Integer>> retrievePO(String username) throws Exception {
+	public Map<POBean, Map<String, Integer>> retrievePO(String username) throws Exception {
 		Map<String, POBean> pobean = po.retrievePOByUser(username);
-		Map<POBean, Map<BookBean, Integer>> result = new HashMap<POBean, Map<BookBean, Integer>>();
+		Map<POBean, Map<String, Integer>> result = new HashMap<POBean, Map<String, Integer>>();
 		for (String key : pobean.keySet()) {
 			result.put(pobean.get(key), poitem.retrieveItemByID(key));
 		}
@@ -125,7 +125,7 @@ public class POData {
 	 * @return Map with BookBean and Quantity for each book
 	 * @throws SQLException
 	 */
-	public Map<BookBean, Integer> retrieveItemByID(String PO_id) throws SQLException {
+	public Map<String, Integer> retrieveItemByID(String PO_id) throws SQLException {
 		return poitem.retrieveItemByID(PO_id);
 	}
 
@@ -157,7 +157,7 @@ public class POData {
 	 *         quantity
 	 * @throws SQLException
 	 */
-	public Map<BookBean, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
+	public Map<String, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
 		return poitem.retrieveOrderHistory(start, end);
 	}
 
