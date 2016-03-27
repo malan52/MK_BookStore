@@ -15,9 +15,12 @@
 			value="${bookAccessor.retrieveCategory(category).values().toArray()}" />
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				${category}
-				<button type="button" style="float: right" class="btn btn-link">View
-					All</button>
+				<form>
+					${category}
+					<button type="submit" style="float: right;" class="btn btn-link" id="viewByCategory" name="viewByCategory"
+									value="${category}" formaction="Start">View
+						All</button>
+				</form>
 			</div>
 			<div class="panel-body">
 
@@ -27,14 +30,15 @@
 						<div class="col-sm-6 col-md-4">
 							<!-- book section -->
 							<div class="thumbnail">
-								<img id="${bookList[i].bid}toModal" type="button" src="image/book_cover/${bookList[i].bid}.jpg"
-								onclick="updateModal('${bookList[i].bid}', '${bookList[i].title}', '${bookList[i].price}')"
+								<img id="${bookList[i].bid}toModal" type="button"
+									src="image/book_cover/${bookList[i].bid}.jpg"
+									onclick="updateModal('${bookList[i].bid}', '${bookList[i].title}', '${bookList[i].price}')"
 									alt="book001" data-toggle="modal" data-target="#myModal" />
 								<div class="caption">
 									<!-- book caption -->
-									<h3 id="${bookList[i].bid}toModal" data-toggle="modal" 
-									onclick="updateModal('${bookList[i].bid}', '${bookList[i].title}', '${bookList[i].price}')"
-									data-target="#myModal">${bookList[i].title}</h3>
+									<h3 id="${bookList[i].bid}toModal" data-toggle="modal"
+										onclick="updateModal('${bookList[i].bid}', '${bookList[i].title}', '${bookList[i].price}')"
+										data-target="#myModal">${bookList[i].title}</h3>
 									<form action="OrderProcessCtrl" method="GET">
 										<p>
 											Price:
@@ -49,8 +53,9 @@
 												value="${bookList[i].bid}" class="btn btn-primary"
 												style="margin-right: 5px;">Add To Cart</button>
 
-											<button id="${bookList[i].bid}toModal" type="button" class="btn btn-default"
-											onclick="updataModal('${bookList[i].bid}', '${bookList[i].title}', '${bookList[i].price}')"
+											<button id="${bookList[i].bid}toModal" type="button"
+												class="btn btn-default"
+												onclick="updataModal('${bookList[i].bid}', '${bookList[i].title}', '${bookList[i].price}')"
 												data-toggle="modal" data-target="#myModal">Detail</button>
 										</p>
 									</form>
