@@ -1,8 +1,42 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt"
+	class="container" style="margin-top:5%;">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
 <div>
-<!-- billing information -->
-<!-- first name and last name -->
 <div class="container">
 <h3><p>Shipping Information</p></h3>
+
+
+<table>
+<tr>
+<td><p style="color:red;">Set Shipping Address as Billing Address?</p></td>
+<td><label><input type="checkbox" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onchange="sameadrs()" />Yes</label>	</td>
+<td ><div class="form-inline" style="margin: 0px 10px 10px 10px;">
+	<div class="form-group">
+      <label for="sel1">Your previous shipping address:</label>
+      <select class="form-control" id="sel1">
+     <!-- first name & last name is different from the address -->
+     <!-- we need to have to forEach nested to show the preview address -->
+      <c:forEach items="${requestScope['shippingAddress']}" var="element">
+        <option name="${element.key}" value="${element.key}">${element.value.getPhone()} ${element.value.getCountry()} ${element.value.getProvince()} ${element.value.getZip()} ${element.value.getSreet()}</option>
+      </c:forEach>
+      </select>
+      <br/>     
+    </div>
+    </div>
+ </td>
+ </tr>
+</table> 
+<!-- table end -->
+
+<p>If you want to ship to a different place, please fillout the form below.</p>
+<br/>
 <form class="form-inline" role="form">
     <div class="form-group ">   
       <label for="sfname">First Name:</label>
@@ -62,7 +96,5 @@
     </div>
   </form>
 </div>
-
-
-
+</div>
 </div>

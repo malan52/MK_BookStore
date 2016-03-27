@@ -78,7 +78,7 @@ public class PODAO {
 	 * @throws SQLException
 	 */
 	public Map<String, POBean> retrievePOByUser(String username) throws SQLException {
-		String query = "SELECT * from PO where USERNAME='" + username + " order by PO_DATE desc;";
+		String query = "SELECT * from PO where USERNAME='" + username + "' order by PO_DATE desc";
 		Map<String, POBean> map = new HashMap<String, POBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
