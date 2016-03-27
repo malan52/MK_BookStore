@@ -10,7 +10,7 @@
 
 
 	<div class="panel panel-info">
-		<div class="panel-heading">Category</div>
+		<div class="panel-heading"><c:out value="${categoryName}"/></div>
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-sm-6 col-md-4">
