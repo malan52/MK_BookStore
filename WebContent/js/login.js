@@ -22,6 +22,10 @@ function updateModal(bid, title, price){
 				$("#dm_img").attr("src", "image/book_cover/" + bid + ".jpg");
 				$("#dm_title").text(title);
 				$("#dm_price").text("$" + price + ".00");
+				var reviews = responseText.split("\n");
+				for(var i; i < reviews.length; i++){
+					reviews[i].split(",");
+				}
 			}	
     	}
     	 xhttp.open("GET", "DetailModalCtrl?bid=" + bid, true);

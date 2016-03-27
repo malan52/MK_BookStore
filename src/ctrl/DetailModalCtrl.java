@@ -1,12 +1,16 @@
 package ctrl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.BookBean;
+import bean.ReviewBean;
 import model.BSData;
 import model.ShoppingCart;
 
@@ -36,6 +40,13 @@ public class DetailModalCtrl extends HttpServlet {
 			try {
 				request.setAttribute("dm_book", ba.retrieveBook(bid));
 				request.setAttribute("reviews", ba.retrieveAllReview(bid));
+				BookBean book = ba.retrieveBook(bid);
+				ArrayList<ReviewBean> reviews = ba.retrieveAllReview(bid);
+				for(ReviewBean review : reviews){
+					response.getWriter().println(review.getRating() + ","
+							+ review.getReview() + "," + review.getUsername());
+				}
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
