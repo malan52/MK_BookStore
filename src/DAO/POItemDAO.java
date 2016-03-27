@@ -12,7 +12,6 @@ import bean.*;
 public class POItemDAO {
 
 	private DataSource ds;
-	private BookDAO bDAO;
 
 	public POItemDAO() throws ClassNotFoundException {
 		try {
@@ -49,16 +48,16 @@ public class POItemDAO {
 	 * @return Map with BID and Quantity for each book
 	 * @throws SQLException
 	 */
-	public Map<BookBean, Integer> retrieveItemByID(String PO_id) throws SQLException {
+	public Map<String, Integer> retrieveItemByID(String PO_id) throws SQLException {
 		String query = "select * from POItem where PO_ID='" + PO_id + "'";
-		Map<BookBean, Integer> map = new HashMap<BookBean, Integer>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String bid = r.getString("BID");
 			int quantity = r.getInt("QUANTITY");
-			map.put(bDAO.retrieveBook(bid), quantity);
+			map.put(bid, quantity);
 		}
 		r.close();
 		p.close();
@@ -109,18 +108,18 @@ public class POItemDAO {
 	 *         quantity
 	 * @throws SQLException
 	 */
-	public Map<BookBean, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
+	public Map<String, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
 		String query = "select POItem.bid, sum(POItem.quantity) as \'QUANTITY\' from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>\'DENIED\' and POItem.PO_id >= (select min(PO_id) from POItem where PO_id like '"
 				+ start + "%') and POItem.PO_id <= (select max(PO_id) from POItem where PO_id like '" + end
 				+ "%') group by POItem.bid";
-		Map<BookBean, Integer> map = new HashMap<BookBean, Integer>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String bid = r.getString("BID");
 			int quantity = r.getInt("QUANTITY");
-			map.put(bDAO.retrieveBook(bid), quantity);
+			map.put(bid, quantity);
 		}
 		r.close();
 		p.close();
@@ -133,19 +132,19 @@ public class POItemDAO {
 	 * @return the most popular book
 	 * @throws SQLException
 	 */
-	public Map<BookBean, Integer> retrieveMaxSale() throws SQLException {
+	public Map<String, Integer> retrieveMaxSale() throws SQLException {
 		String query = "select bid, Q from (select POItem.bid, sum(POItem.quantity) as \"Q\" from POItem, PO" 
 				 + "where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M where Q="
 				 + "(select max(Q) from (select POItem.bid, sum(POItem.quantity) as \"Q\" from POItem, PO "
 				 + "where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M)";
-		Map<BookBean, Integer> map = new HashMap<BookBean, Integer>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
 			String bid = r.getString("BID");
 			int quantity = r.getInt("Q");
-			map.put(bDAO.retrieveBook(bid), quantity);
+			map.put(bid, quantity);
 		}
 		r.close();
 		p.close();
