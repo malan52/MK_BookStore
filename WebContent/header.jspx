@@ -1,7 +1,7 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:f="http://java.sun.com/jsp/jstl/fmt"
-	class="container" style="margin-top:5%;">
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" class="container"
+	style="margin-top: 5%;">
 	<jsp:directive.page contentType="text/html; charset=UTF-8"
 		pageEncoding="UTF-8" session="true" />
 	<jsp:output doctype-root-element="html"
@@ -13,10 +13,21 @@
 		<h1>Home</h1>
 		<div class="btn-group" role="group" aria-label="...">
 			<!-- category in header -->
-			<button type="button" class="btn btn-danger">All Books</button>
-			<c:forEach items="${categories}" var="category">
-				<button type="button" class="btn btn-info">${category}</button>
-			</c:forEach>
+			
+			<form method="GET">
+				<table>
+					<tr>
+					<td><button type="button" class="btn btn-danger">All Books</button></td>
+						<c:forEach items="${categories}" var="category">
+							<td>
+								<button type="submit" class="btn btn-info" id="viewByCategory" name="viewByCategory"
+									value="${category}" formaction="Start">${category}</button>
+							</td>
+						</c:forEach>
+					</tr>
+				</table>
+
+			</form>
 		</div>
 	</div>
 </div>
