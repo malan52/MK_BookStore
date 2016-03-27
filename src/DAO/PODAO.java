@@ -198,13 +198,18 @@ public class PODAO {
 	 * @throws SQLException
 	 */
 	public Map<String, Map<String, String>> retrieveName(String username) throws SQLException {
+		String query = "select A_ID, FNAME, LNAME from PO where USERNAME = '" + username + "' order by A_ID";
 		Map<String, Map<String, String>> map = new HashMap<String, Map<String, String>>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		while (r.next()) {
+			String A_id = r.getString("A_ID");
 			String lname = r.getString("LNAME");
 			String fname = r.getString("FNAME");
+			if (!map.containsKey(A_id))
+				map.put(A_id, new HashMap<String, String>());
+			map.get(A_id).put(fname, lname);
 		}
 		r.close();
 		p.close();
