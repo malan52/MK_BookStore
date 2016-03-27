@@ -72,14 +72,23 @@
 <a href="main.jspx"><button type="button" class="btn btn-default" style="margin: 10px 10px 10px 10px;">
 Keep Shopping</button></a>
 
-
-<a href="payment.jspx"><button type="button" class="btn btn-warning btn-lg" 
-	action='submit' name='submit' ><b>CHECK OUT</b></button></a>
+<c:choose>
+<c:when test="${not empty sessionScope['user']}">
+<button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' 
+onclick="location.href='payment.jspx'"><b>CHECK OUT</b></button>
+</c:when>
+<c:otherwise>
+<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" 
+data-target="#loginModal" action='submit' name='submit'><b>CHECK OUT</b></button>
+</c:otherwise>
+</c:choose>
 
 </td>	
 </tr>
 </table>
 </div>
+
+
 <jsp:include page="/login.jspx"/>
 <jsp:include page="/registerModal.jspx"/>
 	<!-- Javascript files -->
@@ -110,6 +119,8 @@ Keep Shopping</button></a>
 	    	  xhttp.open("GET", "OrderProcessCtrl?bid=" + bid + "&amp;quantity=" +  $("#"+ bid +"quantity").val(), true); 
 	    	  xhttp.send();
     	}
+    
+   
  
     </script>
     <script src="js/jquery.min.js">;</script>
