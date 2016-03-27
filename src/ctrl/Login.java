@@ -16,13 +16,13 @@ import bean.CustomerBean;
 /**
  * Servlet implementation class LoginAndRegister
  */
-@WebServlet("/LoginAndRegister")
-public class LoginAndRegister extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginAndRegister() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,6 +50,7 @@ public class LoginAndRegister extends HttpServlet {
 				response.setContentType("text/html");
 				if(customer != null && password.equals(customer.getPassword().trim())){
 					response.getWriter().print("Welcome back " + username + "!");
+					request.getSession().setAttribute("user", customerAccessor.retrieveCustomer(username));
 				}
 				else{
 					response.getWriter().print("Sorry, your are not logged in!");
