@@ -27,7 +27,7 @@ public class PODAO {
 	 * Update Purchase Order by given a POBean, the address will be stored in
 	 * database here
 	 * 
-	 * @param po
+	 * @param po - POBean that need to be stored
 	 * @throws SQLException
 	 */
 	public void updatePO(POBean po) throws SQLException {
@@ -190,9 +190,10 @@ public class PODAO {
 		con.close();
 		return map;
 	}
-	
+
 	/**
 	 * Return the lname and fname of receivers for users' order
+	 * 
 	 * @param username
 	 * @return Return the lname and fname of receivers for users' order
 	 * @throws SQLException
