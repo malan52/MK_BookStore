@@ -190,4 +190,25 @@ public class PODAO {
 		con.close();
 		return map;
 	}
+	
+	/**
+	 * Return the lname and fname of receivers for users' order
+	 * @param username
+	 * @return Return the lname and fname of receivers for users' order
+	 * @throws SQLException
+	 */
+	public Map<String, Map<String, String>> retrieveName(String username) throws SQLException {
+		Map<String, Map<String, String>> map = new HashMap<String, Map<String, String>>();
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		while (r.next()) {
+			String lname = r.getString("LNAME");
+			String fname = r.getString("FNAME");
+		}
+		r.close();
+		p.close();
+		con.close();
+		return map;
+	}
 }
