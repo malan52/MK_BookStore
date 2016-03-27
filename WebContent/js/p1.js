@@ -224,7 +224,27 @@ function sameadrs(){
 		alert("the shipping first name is:"+ document.getElementById("sfname").value);
 	}
 	
-	
+	function disShiping(){
+		
+		if(document.getElementById("previous").value != "0"){
+			document.getElementById("sfname").disabled = true; 
+			document.getElementById("slname").disabled = true;	
+			document.getElementById("sadrs").disabled=true;
+			document.getElementById("sphone").disabled=true;
+			document.getElementById("szip").disabled=true;
+			document.getElementById("scountry").disabled=true;
+			document.getElementById("sstate").disabled=true;
+		}
+		else{
+			document.getElementById("sfname").disabled = false;
+			document.getElementById("slname").disabled = false;
+			document.getElementById("sadrs").disabled = false;
+			document.getElementById("sphone").disabled = false;
+			document.getElementById("szip").disabled = false;
+			document.getElementById("scountry").disabled = false;
+			document.getElementById("sstate").disabled = false;	
+		}	
+	}
 	
 	
 	

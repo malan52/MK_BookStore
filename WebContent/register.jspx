@@ -24,21 +24,15 @@
 
 <jsp:include page="/navbar.jspx" />
 <jsp:include page="/header.jspx" />
-<!-- username password -->
-<jsp:include page="/password.jspx" />	
-<!-- billing address -->
-<jsp:include page="/billing.jspx" />
+<!-- username password and password-->
+<jsp:include page="/password.jspx" />
+<div class="container"><hr/></div>
+	
+<!-- register billing address -->
+<jsp:include page="/registerBilling.jspx" />
 <!-- shipping address -->
-<div class="container">
-<table>
-<tr>
-<td><p style="color:red;">shipping地址==billing地址?</p></td>
-<td><label><input type="checkbox" value="yes" id="yes" name="yes" style="margin: 0px 10px 10px 10px;" onclick="sameadrs()" onchange="change()"/>Yes</label>	</td>
-</tr>
-</table> 
-<p>If you want to ship to a different place, please fillout the form below.</p>
-</div>
-<jsp:include page="/shipping.jspx"/>
+<div class="container"><hr/></div>
+<jsp:include page="/registerShipping.jspx"/>
 
 <div class="container">
 <br/>
