@@ -73,9 +73,9 @@ public class ReviewDAO {
 	 * Giving an bookID return a map with all ReviewBean of this book
 	 * if book not exist or no review on this book, map will be null
 	 */
-	public Map<String, ReviewBean> retrieveAllReview(String bookID) throws SQLException {
+	public ArrayList<ReviewBean> retrieveAllReview(String bookID) throws SQLException {
 		String query = "SELECT * FROM Review WHERE bid = '" + bookID + "'";
-		Map<String, ReviewBean> map = new HashMap<String, ReviewBean>();
+		ArrayList<ReviewBean> list = new ArrayList<ReviewBean>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
@@ -84,12 +84,12 @@ public class ReviewDAO {
 			String username = r.getString("USERNAME");
 			int rating = r.getInt("RATING");
 			String review = r.getString("REVIEW");
-			map.put(username, new ReviewBean(bid, username, rating, review));
+			list.add(new ReviewBean(bid, username, rating, review));
 		}
 		r.close();
 		p.close();
 		con.close();
-		return map;
+		return list;
 	}
 	
 	/**

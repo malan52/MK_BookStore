@@ -25,6 +25,10 @@
 <script src="js/registercfmpwd.js">
 	;
 </script>
+<!-- For login.jspx -->
+<script src="js/login.js">
+	;
+</script>
 <style type="text/css">
 #stars>span {
 	display: inline-block;
@@ -106,10 +110,6 @@
 	</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js">
-		;
-	</script>
-	<!-- For login.jspx -->
-	<script src="js/login.js">
 		;
 	</script>
 

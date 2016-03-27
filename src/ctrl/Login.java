@@ -49,10 +49,13 @@ public class Login extends HttpServlet {
 				customer = customerAccessor.retrieveCustomer(username);
 				response.setContentType("text/html");
 				if(customer != null && password.equals(customer.getPassword().trim())){
+					//System.out.println("correct user");
 					response.getWriter().print("Welcome back " + username + "!");
+
 					request.getSession().setAttribute("user", customerAccessor.retrieveCustomer(username));
 				}
 				else{
+					//System.out.println("Wrong!");
 					response.getWriter().print("Sorry, your are not logged in!");
 				}
 			} catch (SQLException e) {
