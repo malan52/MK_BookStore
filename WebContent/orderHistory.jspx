@@ -10,103 +10,44 @@
 		omit-xml-declaration="true" />
 	<h3>Order History</h3>
 
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">
-				Order Date Name: First Last Address:xxxxxxxxxxxxxxxxx
-				<p style="float: right;">
-					<small style="margin-left: 10px; margin-right: 10px;"><b>status</b></small>Total:
-					$300.00
-				</p>
-			</h3>
+	<c:forEach items="${sample}" var="poElement">
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<table class="table">
+						<tr>
+							<td>${poElement.key.getPO_date()}</td>
+							<td>${poElement.key.getFname()}${poElement.key.getLname()}</td>
+							<td>${poElement.key.getAddress().getStreet()},
+								${poElement.key.getAddress().getProvince()},
+								${poElement.key.getAddress().getCountry()}</td>
+							<td><small>${poElement.key.getStatus()}</small></td>
+						</tr>
+					</table>
+
+				</h3>
+			</div>
+			<div class="list-group">
+				<a class="list-group-item">
+
+					<div class="media">
+						<div class="media-left">
+							<img class="media-left"
+								src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Book Title</h4>
+							<h5>Quantity: 3</h5>
+							<h6 style="float: right">Subtotal: $50.00</h6>
+						</div>
+					</div>
+				</a>
+
+			</div>
 		</div>
-		<div class="list-group">
-			<a class="list-group-item">
+	</c:forEach>
 
-				<div class="media">
-					<div class="media-left">
-						<img class="media-left"
-							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
 
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Book Title</h4>
-						<h5>Quantity: 3</h5>
-						<h6 style="float: right">Subtotal: $50.00</h6>
-					</div>
-				</div>
-			</a> <a class="list-group-item">
-
-				<div class="media">
-					<div class="media-left">
-						<img class="media-left"
-							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
-
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Book Title</h4>
-						<h5>Quantity: 3</h5>
-						<h6 style="float: right">Subtotal: $50.00</h6>
-					</div>
-				</div>
-			</a> <a class="list-group-item">
-
-				<div class="media">
-					<div class="media-left">
-						<img class="media-left"
-							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
-
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Book Title</h4>
-						<h5>Quantity: 2</h5>
-						<h6 style="float: right">Subtotal: $50.00</h6>
-					</div>
-				</div>
-			</a>
-		</div>
-	</div>
-	
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">
-				Order Date Name: First Last Address:xxxxxxxxxxxxxxxxx
-				<p style="float: right;">
-					<small style="margin-left: 10px; margin-right: 10px;"><b>status</b></small>Total:
-					$500.00
-				</p>
-			</h3>
-		</div>
-		<div class="list-group">
-			<a class="list-group-item">
-
-				<div class="media">
-					<div class="media-left">
-						<img class="media-left"
-							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
-
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Book Title</h4>
-						<h5>Quantity: 3</h5>
-						<h6 style="float: right">Subtotal: $80.00</h6>
-					</div>
-				</div>
-			</a> <a class="list-group-item">
-
-				<div class="media">
-					<div class="media-left">
-						<img class="media-left"
-							src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
-
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">Book Title</h4>
-						<h5>Quantity: 1</h5>
-						<h6 style="float: right">Subtotal: $10.00</h6>
-					</div>
-				</div>
-			</a> 
-		</div>
-	</div>
 </div>
