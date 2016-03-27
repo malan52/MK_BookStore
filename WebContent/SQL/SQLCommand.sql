@@ -16,6 +16,8 @@ INSERT INTO Book (bid, title, price, category) VALUES ('b001', 'Little Prince', 
 INSERT INTO Book (bid, title, price, category) VALUES ('b002','Physics', 201, 'Science');
 INSERT INTO Book (bid, title, price, category) VALUES ('b003','Mechanics' ,100,'Engineering');
 
+Select * from BOOK where upper(title) like upper('THE%')
+
 /* Address
 * id: address id
 *
@@ -101,10 +103,17 @@ INSERT INTO POItem (po_id, bid, quantity) VALUES ('201506071545332', 'b001', 1);
 INSERT INTO POItem (po_id, bid, quantity) VALUES ('201511212359082', 'b002', 2);
 INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b003', 1);
 INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b004', 1);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b001', 3);
 
 
-select * from POItem where PO_id >= (select min(PO_id) from POItem where PO_id like '20150607%') 
-and PO_id <= (select max(PO_id) from POItem where PO_id like '20151121%');
+select POItem.bid, sum(POItem.quantity) from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' 
+and POItem.PO_id >= (select min(PO_id) from POItem where PO_id like '20150607%') 
+and POItem.PO_id <= (select max(PO_id) from POItem where PO_id like '20151204%') group by POItem.bid;
+
+select bid, Q from (select POItem.bid, sum(POItem.quantity) as "Q" from POItem, PO 
+where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M where Q=
+(select max(Q) from (select POItem.bid, sum(POItem.quantity) as "Q" from POItem, PO 
+where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M)
 
 /* visit to website
 * day: date
