@@ -18,6 +18,11 @@
 	<div>	
 		<form class="form-inline" role="form" name="form1">
 		<div class="form-group">
+			<label for="phone">Name:</label> 
+			 <input type="text"	class="form-control" id="cardHolder" name="cardHolder"  
+					placeholder="Joe Doe" style="margin: 10px 10px 10px 10px;" />
+		</div>
+		<div class="form-group">
 			<label for="phone">Phone Number:</label> 
 			 <input type="text"	class="form-control" id="phone" name="phone" value="${aB.getPhone()}" 
 					placeholder="10 digits" style="margin: 10px 10px 10px 10px;" onblur="checkPhone()" 
