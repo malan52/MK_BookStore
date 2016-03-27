@@ -40,8 +40,8 @@ public class CustomerDAO {
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
 		if (r.next())
-			customer = new CustomerBean(username, r.getString("PASSWORD"), retrieveProfile(username),
-					retrieveCreditInfo(username));// Profile and CreditInfo will
+			customer = new CustomerBean(username, r.getString("PASSWORD"), retrieveProfile(username));
+					//retrieveCreditInfo(username));// Profile and CreditInfo will
 													// be null initially
 		r.close();
 		p.close();
@@ -96,7 +96,7 @@ public class CustomerDAO {
 			p = con.prepareStatement(queryadd);
 			p.executeUpdate();
 			updateProfile(customer.getProfile());
-			updateCreditInfo(customer.getCreditInfo());
+			//updateCreditInfo(customer.getCreditInfo());
 		}
 		r.close();
 		p.close();
@@ -127,7 +127,7 @@ public class CustomerDAO {
 	 * @param username
 	 * @return a CreditInfoBean with the username and stored credit informations
 	 * @throws SQLException
-	 */
+	 *//*
 	public CreditInfoBean retrieveCreditInfo(String username) throws SQLException {
 		String query = "select * from CreditInfo where username = '" + username + "'";
 		CreditInfoBean credit = null;
@@ -142,7 +142,7 @@ public class CustomerDAO {
 		p.close();
 		con.close();
 		return credit;
-	}
+	}*/
 
 	/**
 	 * Update a new registered customer credit information or update an exist
@@ -150,7 +150,7 @@ public class CustomerDAO {
 	 * 
 	 * @param credit
 	 * @throws SQLException
-	 */
+	 *//*
 	public void updateCreditInfo(CreditInfoBean credit) throws SQLException {
 		String queryget = "SELECT * FROM CreditInfo WHERE username = '" + credit.getUsername() + "'";
 		String queryadd = "INSERT INTO CreditInfo (username, cardType, CardHolder, CardNumber, expireM, expireY) VALUES ('"
@@ -175,7 +175,7 @@ public class CustomerDAO {
 		r.close();
 		p.close();
 		con.close();
-	}
+	}*/
 
 	/**
 	 * Giving an username return a ProfileBean with the username and stored user

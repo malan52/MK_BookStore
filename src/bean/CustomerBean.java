@@ -4,23 +4,22 @@ public class CustomerBean {
 	private String username;
 	private String password;
 	private ProfileBean profile;
-	private CreditInfoBean creditInfo;
+	//private CreditInfoBean creditInfo;
 	/**
 	 * @param username
 	 * @param password
 	 * @param profile
-	 * @param creditInfo
 	 */
-	public CustomerBean(String username, String password, ProfileBean profile, CreditInfoBean creditInfo) {
+	public CustomerBean(String username, String password, ProfileBean profile) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.profile = profile;
-		this.creditInfo = creditInfo;
+		//this.creditInfo = creditInfo;
 	}
 	
 	public CustomerBean(String username, String password){
-		this(username, password, new ProfileBean(username), new CreditInfoBean(username));
+		this(username, password, new ProfileBean(username));
 	}
 
 	/**
@@ -46,10 +45,10 @@ public class CustomerBean {
 
 	/**
 	 * @return the creditInfo
-	 */
+	 *//*
 	public CreditInfoBean getCreditInfo() {
 		return creditInfo;
-	}
+	}*/
 
 	/**
 	 * @param username the username to set
@@ -74,10 +73,10 @@ public class CustomerBean {
 
 	/**
 	 * @param creditInfo the creditInfo to set
-	 */
+	 *//*
 	public void setCreditInfo(CreditInfoBean creditInfo) {
 		this.creditInfo = creditInfo;
-	}
+	}*/
 	/**
 	 * 
 	 */

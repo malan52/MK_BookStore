@@ -124,8 +124,65 @@ public class BookDAO {
 		return rv;
 	}
 	
+	/**
+	 * Search by price, select all book with the price in range low to high
+	 * @param low - lowest price, include
+	 * @param high - highest price, include
+	 * @return return all book in the price range
+	 * @throws SQLException
+	 */
 	public Map<String, BookBean> searchPrice(int low, int high) throws SQLException{
-		String query = "select * from BOOK where PRICE>=" + low + " and PRICE<=" + high;
+		String query = "select * from BOOK where PRICE>=" + low + " and PRICE<=" + high + " order by PRICE";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		while (r.next()) {
+			String bid = r.getString("BID");
+			String title = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			String cate = r.getString("CATEGORY");
+			BookBean book = new BookBean(bid, title, price, cate);
+			rv.put(bid, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+	}
+	
+	/**
+	 * Sort all book by price from low to high
+	 * @return all book in order from low to high
+	 * @throws SQLException
+	 */
+	public Map<String, BookBean> sortPriceASC() throws SQLException {
+		String query = "select * from BOOK order by PRICE ASC";
+		Connection con = this.ds.getConnection();
+		PreparedStatement p = con.prepareStatement(query);
+		ResultSet r = p.executeQuery();
+		Map<String, BookBean> rv = new HashMap<String, BookBean>();
+		while (r.next()) {
+			String bid = r.getString("BID");
+			String title = r.getString("TITLE");
+			int price = r.getInt("PRICE");
+			String cate = r.getString("CATEGORY");
+			BookBean book = new BookBean(bid, title, price, cate);
+			rv.put(bid, book);
+		}
+		r.close();
+		p.close();
+		con.close();
+		return rv;
+	}
+	
+	/**
+	 * Sort all book by price from high to low
+	 * @return all book in order from high to low
+	 * @throws SQLException
+	 */
+	public Map<String, BookBean> sortPriceDESC() throws SQLException {
+		String query = "select * from BOOK order by PRICE DESC";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
