@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import DAO.*;
@@ -35,7 +36,7 @@ public class BSData {
 		return book.retrieveBook(bookID);
 	}
 	
-	public Map<String, ReviewBean> retrieveAllReview(String bookID) throws Exception {
+	public ArrayList<ReviewBean> retrieveAllReview(String bookID) throws Exception {
 		return review.retrieveAllReview(bookID);
 	}
 }
