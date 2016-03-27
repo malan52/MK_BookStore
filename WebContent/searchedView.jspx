@@ -12,7 +12,7 @@
 
 <head>
 <meta charset="utf-8" />
-<title>Home Page</title>
+<title>Searhed Result</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <!-- Optional theme -->
@@ -23,10 +23,6 @@
 <link rel="stylesheet" href="css/main.css" />
 <!-- js for confirm the password -->
 <script src="js/registercfmpwd.js">
-	;
-</script>
-<!-- For login.jspx -->
-<script src="js/login.js">
 	;
 </script>
 <style type="text/css">
@@ -82,7 +78,7 @@
 		<jsp:param name="cart_size" value="${cart.getSize()}" />
 	</jsp:include>
 	<jsp:include page="/header.jspx" />
-	<jsp:include page="/bookDisplayPanel.jspx" />
+	<jsp:include page="/searchedBooksDisplay.jspx" />
 	<!-- <jsp:include page="/profile.jspx" />-->
 	<div class="container" style="margin-bottom: 5%;">
 		<HR />
@@ -110,6 +106,10 @@
 	</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js">
+		;
+	</script>
+	<!-- For login.jspx -->
+	<script src="js/login.js">
 		;
 	</script>
 
