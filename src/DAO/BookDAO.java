@@ -105,7 +105,7 @@ public class BookDAO {
 	 * @throws SQLException
 	 */
 	public Map<String, BookBean> searchBook(String partTitle) throws SQLException{
-		String query = "select * from BOOK where TITLE like '%" + partTitle + "%'";
+		String query = "select * from BOOK where upper(TITLE) like upper('%" + partTitle + "%')";
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
 		ResultSet r = p.executeQuery();
