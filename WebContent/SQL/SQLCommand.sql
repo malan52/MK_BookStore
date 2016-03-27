@@ -171,6 +171,8 @@ UPDATE PROFILE SET "FNAME"='Andy', "LNAME"='Tommy' WHERE "USERNAME"='Andy';
 * expireM: expire month
 * expireY: expire year
 */
+DROP TABLE CreditInfo;
+
 CREATE TABLE CreditInfo (
 username	VARCHAR(20) NOT NULL,
 cardType	INT NOT NULL,
