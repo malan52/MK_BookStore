@@ -59,6 +59,7 @@ public class Start extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		try {
+			String selectedCategory;
 			if(session.getAttribute("cart") == null){
 				request.getSession().setAttribute("cart", new ShoppingCart());
 			}
@@ -67,13 +68,24 @@ public class Start extends HttpServlet {
 				ArrayList<String> categories = new BookDAO().retrieveCategories();
 				request.getServletContext().setAttribute("categories", categories);
 			}
+			if(request.getParameter("viewByCategory") != null)
+			{
+				selectedCategory = request.getParameter("viewByCategory");
+				Map<String, BookBean> bookInCategory = new BookDAO().retrieveCategory(selectedCategory);
+				request.setAttribute("selectCategory", bookInCategory);
+				request.setAttribute("categoryName", selectedCategory);
+				request.getRequestDispatcher("/viewByCategory.jspx").forward(request, response);
+
+			}
+			else{
+				request.getRequestDispatcher(MAIN_URL).forward(request, response);
+			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher(MAIN_URL).forward(request, response);
 	}
 
 	/**

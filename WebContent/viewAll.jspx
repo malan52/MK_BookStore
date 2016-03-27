@@ -10,39 +10,44 @@
 
 
 	<div class="panel panel-info">
-		<div class="panel-heading">Category</div>
+		<div class="panel-heading">
+			<c:out value="${categoryName}" />
+		</div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<!-- thumbnail -->
-						<a href="#"><img type="button" src="image/book_cover/b001.jpg"
-							alt="book001" data-toggle="modal" data-target="#myModal" /></a>
-						<div class="caption">
-							<!-- book caption -->
-							<a href="#"><h3 data-toggle="modal" data-target="#myModal">Book
-									Title</h3></a>
-							<form action="OrderProcessCtrl" method="GET">
-								<p>Price: $5.10
-								<div>
-									Quantity:<input type="number" id="b001quantity"
-										name="b001quantity" value="1" min="1" max="100"
-										style="float: right" />
-								</div>
-								</p>
-								<p>
-									<button action="submit" name="addToCart" value="b001"
-										class="btn btn-primary" style="margin-right: 5px;">Add
-										To Cart</button>
+				<c:forEach items="${selectCategory}" var="element">
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<!-- thumbnail -->
+							<a href="#"><img id="${element.key}toModal" type="button"
+								src="image/book_cover/${element.key}.jpg" alt="book001"
+								onclick="updateModal('${element.key}', '${element.value.getTitle()}', '${element.value.getPrice()}')" data-toggle="modal" data-target="#myModal" /></a>
+							<div class="caption">
+								<!-- book caption -->
+								<a href="#"><h3 id="${element.key}toModal" onclick="updateModal('${element.key}', '${element.value.getTitle()}', '${element.value.getPrice()}')" data-toggle="modal" data-target="#myModal">${element.value.getTitle()}</h3></a>
+								<form action="OrderProcessCtrl" method="GET">
+									<p>
+										<f:formatNumber type="currency">${element.value.getPrice()}</f:formatNumber>
+									<div>
+										Quantity:<input type="number" id="b001quantity"
+											name="b001quantity" value="1" min="1" max="100"
+											style="float: right" />
+									</div>
+									</p>
+									<p>
+										<button action="submit" name="addToCart" value="b001"
+											class="btn btn-primary" style="margin-right: 5px;">Add
+											To Cart</button>
 
-									<button type="button" class="btn btn-default"
-										data-toggle="modal" data-target="#myModal">Detail</button>
-								</p>
-							</form>
-							<jsp:include page="/detailModal.jspx" />
+										<button id="${element.key}toModal" type="button" class="btn btn-default"
+											data-toggle="modal" data-target="#myModal" onclick="updateModal('${element.key}', '${element.value.getTitle()}', '${element.value.getPrice()}')">Detail</button>
+									</p>
+								</form>
+								<jsp:include page="/detailModal.jspx" />
+							</div>
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
