@@ -26,15 +26,15 @@
 		<div id="dvPassword" style="display: none">
 			<div class="form-group form-inline" style="text-align: center">
 				<label for="newPassword" style="width: 150px; text-align: right;">New Password:</label>
-				<input type="password" class="form-control" id="newPassword"
+				<input type="password" class="form-control" id="pwd"
 					name="newPassword" style="margin: 10px 10px 10px 10px;"
-					placeholder="Enter New Password..."></input> <br /> <small>*
+					placeholder="Enter New Password..." onblur="checkPWD()"></input> <br /> <small>*
 					Minimum of 6 characters with only letters or/and number</small>
 			</div>
 			<div class="form-group form-inline" style="text-align: center">
 				<label for="cfm_newPassword" style="width: 150px; text-align: right;">Confirm
 					Password: </label> <input type="password" class="form-control"
-					id="cfm_newPassword" style="margin: 10px 10px 10px 10px;" placeholder="Confirm Password..."
+					id="cfmpws" style="margin: 10px 10px 10px 10px;" placeholder="Confirm Password..."
 					onblur="confirmPWD()" required="required"></input>
 			</div>
 		</div>
