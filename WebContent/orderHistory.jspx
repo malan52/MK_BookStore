@@ -11,7 +11,7 @@
 	<h3>Order History</h3>
 
 	<c:forEach items="${sample}" var="poElement">
-
+		<c:set var="orderTotal" value="${0}" />
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
@@ -21,36 +21,70 @@
 							<td>${poElement.key.getFname()}${poElement.key.getLname()}</td>
 							<td>${poElement.key.getAddress().getStreet()},
 								${poElement.key.getAddress().getProvince()},
-								${poElement.key.getAddress().getCountry()}</td>
-							<td><small>${poElement.key.getStatus()}</small></td>
+								${poElement.key.getAddress().getCountry()}
+								${poElement.key.getAddress().getZip()}</td>
+							<td>Phone: ${poElement.key.getAddress().getPhone()}</td>
+
+							<c:if test="${poElement.key.getStatus() == 'ORDERED'}">
+								<td><h6 style="color:orange;">${poElement.key.getStatus()}</h6></td>
+							</c:if>
+							<c:if test="${poElement.key.getStatus() == 'DENIED'}">
+								<td><h6 style="color:red;">${poElement.key.getStatus()}</h6></td>
+							</c:if>
+							<c:if test="${poElement.key.getStatus() == 'PROCESSED'}">
+								<td><h6 style="color:green;">${poElement.key.getStatus()}</h6></td>
+							</c:if>
+
 						</tr>
 					</table>
 
 				</h3>
 			</div>
 			<div class="list-group">
-				 <c:forEach items="${poElement.value}" var="bookElement">
-				<a class="list-group-item">
 
-					<div class="media">
-						<div class="media-left">
-							<img class="media-left"
-								src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-64.png"></img>
+				<c:forEach items="${poElement.value}" var="bookElement">
+					<a class="list-group-item">
 
+						<div class="media">
+							<div class="media-left">
+								<img class="media-left"
+									src="image/book_cover/${bookElement.key}.jpg" width="85"
+									height="85"></img>
+
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading">${bookAccessor.retrieveBook(bookElement.key).getTitle()}</h4>
+								<c:set var="quantity" value="${bookElement.value}" />
+								<c:set var="unitPrice"
+									value="${bookAccessor.retrieveBook(bookElement.key).getPrice()}" />
+								<c:set var="subtotal" value="${quantity * unitPrice}" />
+								<c:set var="orderTotal" value="${orderTotal + subtotal}" />
+
+								<h5>Quantity: ${bookElement.value}</h5>
+
+								<h6 style="float: right">
+									Subtotal:
+									<f:formatNumber type="currency">${subtotal}</f:formatNumber>
+								</h6>
+							</div>
 						</div>
-						<div class="media-body">
-							<h4 class="media-heading">Book Title</h4>
-							<h5>Quantity: 3</h5>
-							<h6 style="float: right">Subtotal: $50.00</h6>
-						</div>
+
+					</a>
+
+				</c:forEach>
+				<a class="list-group-item" height="40">
+					<div class="media" height="40">
+						<h4 style="float: right;">
+							Total:
+							<f:formatNumber type="currency">${orderTotal}</f:formatNumber>
+						</h4>
 					</div>
 				</a>
-				
-	</c:forEach> 
 
-</div>
-</div>
-</c:forEach>
+
+			</div>
+		</div>
+	</c:forEach>
 
 
 </div>
