@@ -1,6 +1,7 @@
 package ctrl;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -8,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.BookBean;
+import bean.CustomerBean;
 import bean.ReviewBean;
 import model.BSData;
 import model.ShoppingCart;
@@ -34,24 +37,49 @@ public class DetailModalCtrl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BSData ba = new BSData();
-		String bid = (String) request.getAttribute("bid");
-		if(bid != null){
-			
+		HttpSession session = request.getSession();
+		if(request.getParameter("bid") != null){
 			try {
+				String bid = (String) request.getParameter("bid");
 				request.setAttribute("dm_book", ba.retrieveBook(bid));
 				request.setAttribute("reviews", ba.retrieveAllReview(bid));
 				BookBean book = ba.retrieveBook(bid);
 				ArrayList<ReviewBean> reviews = ba.retrieveAllReview(bid);
+				response.setHeader("reviews_size", reviews.size() +"");
+				int i = 0;
+				
 				for(ReviewBean review : reviews){
-					response.getWriter().println(review.getRating() + ","
+					response.addHeader("review" + i, review.getRating() + ","
 							+ review.getReview() + "," + review.getUsername());
+					i++;
 				}
+				
+				
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		else if(request.getParameter("customerreview") != null && request.getParameter("rating") != null){
+			String review = (String) request.getParameter("customerreview");
+			String bid = (String) request.getParameter("submit_bid");
+			int rating = Integer.parseInt(request.getParameter("rating"));
+			CustomerBean user = (CustomerBean) session.getAttribute("user");
+			if(user == null){
+				;
+			}
+			else{
+				try {
+					ba.updateReview(new ReviewBean(bid, user.getUsername(), rating, review));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			//request.getRequestDispatcher("/main.jspx").forward(request, response);
+		}
+		request.getRequestDispatcher("/main.jspx").forward(request, response);
 	}
 
 	/**

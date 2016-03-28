@@ -21,14 +21,49 @@ function updateModal(bid, title, price){
 			if (xhttp.readyState == 4) {
 				$("#dm_img").attr("src", "image/book_cover/" + bid + ".jpg");
 				$("#dm_title").text(title);
+				$("#submit_bid").val(bid);
 				$("#dm_price").text("$" + price + ".00");
-				var reviews = responseText.split("\n");
-				for(var i; i < reviews.length; i++){
-					reviews[i].split(",");
+				var size = xhttp.getResponseHeader("reviews_size");
+				$("#reviewList").html("");
+				if(size == 0)
+					$("#reviewList").append("<div class=\"panel panel-default\">" +
+							"<div class=\"panel-body\">" +
+							"No comments yet. Please write a review!" +
+							"</div>" +
+							"<div class=\"panel-footer\">" +
+							"</div>" +
+						"</div>");
+				else
+				for(i = 0; i < size; i++){
+					var review = xhttp.getResponseHeader("review" + i).split(",");
+					$("#reviewList").append("<div class=\"panel panel-default\">" +
+													"<div class=\"panel-body\">" +
+													review[1] +
+													"</div>" +
+													"<div class=\"panel-footer\">" +
+													review[2] +
+													"</div>" +
+												"</div>");
 				}
 			}	
     	}
-    	 xhttp.open("GET", "DetailModalCtrl?bid=" + bid, true);
-       	 //xhttp.send("username=" + $("#login_username").val() +"&password=" + $("#login_password").val());
-    	 xhttp.send();
+    	xhttp.open("GET", "DetailModalCtrl?bid=" + bid, true); 
+  	  xhttp.send();
+}
+function submitReview(user){
+	if(user == null){
+		alert("Sorry, please sign in before write a review!");
+	}
+	else if($("#rating").val() == null){
+		alert("Please give a rating before submit!");
+	}
+	else if($("#customerreview").val() == null){
+		alert("Invalid review!");
+	}
+	
+	else{
+		document.getElementById("review_form").submit();
+	}
+	
+
 }
