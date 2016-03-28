@@ -40,7 +40,7 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="OrderHistory">My Account(Username)</a></li>
-				<li><a href="main.jspx">Sign Out</a></li>
+				<li><a href="Login">Sign Out</a></li>
 				<li><a href="Cart.jspx">Shopping Cart <span class="badge">${cart.getSize()}</span></a></li>
 			</ul>
 
