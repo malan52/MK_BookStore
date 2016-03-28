@@ -28,8 +28,8 @@
 			id="bs-example-navbar-collapse-1">
 			<form>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-				<li><button type="submit" formaction="OrderHistory">Account</button></li>
+				<li class="active"><a href="/main.jspx">Home <span class="sr-only">(current)</span></a></li>
+				<li><a href="OrderHistory">Account</a></li>
 
 			</ul>
 			</form>
