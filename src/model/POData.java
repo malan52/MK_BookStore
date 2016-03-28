@@ -22,12 +22,12 @@ public class POData {
 	}
 
 	/**
-	 * Return Map<POBean, Map<String, Integer>>, where POBean stores information
-	 * for every PO for this user, inner map Map<String, Integer> stores each
+	 * Return Map<POBean, Map<BookBean, Integer>>, where POBean stores information
+	 * for every PO for this user, inner map Map<BookBean, Integer> stores each
 	 * book and quantity user ordered in this PO.
 	 * 
 	 * @param username
-	 * @return Map<POBean, Map<String, Integer>>
+	 * @return Map<POBean, Map<BookBean, Integer>>
 	 * @throws Exception
 	 */
 	public Map<POBean, Map<String, Integer>> retrievePO(String username) throws Exception {
@@ -119,10 +119,10 @@ public class POData {
 	}
 
 	/**
-	 * Return Map with BID and Quantity for each book
+	 * Return Map with BookBean and Quantity for each book
 	 * 
 	 * @param PO_id
-	 * @return Map with BID and Quantity for each book
+	 * @return Map with BookBean and Quantity for each book
 	 * @throws SQLException
 	 */
 	public Map<String, Integer> retrieveItemByID(String PO_id) throws SQLException {
@@ -159,6 +159,15 @@ public class POData {
 	 */
 	public Map<String, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
 		return poitem.retrieveOrderHistory(start, end);
+	}
+	
+	/**
+	 * Return the most popular book from the first order
+	 * @return the most popular book
+	 * @throws SQLException
+	 */
+	public Map<String, Integer> retrieveMostPopular() throws SQLException {
+		return poitem.retrieveMostPopular();
 	}
 
 }

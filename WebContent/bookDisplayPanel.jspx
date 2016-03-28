@@ -15,9 +15,12 @@
 			value="${bookAccessor.retrieveCategory(category).values().toArray()}" />
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				${category}
-				<button type="button" style="float: right" class="btn btn-link">View
-					All</button>
+				<form>
+					${category}
+					<button type="submit" style="float: right;" class="btn btn-link" id="viewByCategory" name="viewByCategory"
+									value="${category}" formaction="Start">View
+						All</button>
+				</form>
 			</div>
 			<div class="panel-body">
 

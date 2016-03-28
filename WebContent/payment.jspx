@@ -21,7 +21,7 @@
 <body>
 <jsp:include page="/navbar.jspx" />
 <jsp:include page="/header.jspx" />
-
+<form action="Payment" method="GET" name="form1">
 <div class="container">
 <table class="table">
 <tr>
@@ -44,12 +44,12 @@ Go Back to Shopping Cart</button></a></td>
 <br/>
 <div class="container">
 <table style="float:right;">
-<tr><td><button type="button" class="btn btn-warning btn-lg" action='submit' name='submit' onclick="test()"><b>Submit</b></button>
+<tr><td><button type="submit" class="btn btn-warning btn-lg" action='submit' name='submit'><b>Submit</b></button>
 </td></tr>
 </table>
 </div>
  <br/><br/>
-
+</form>
 	<!-- Javascript files -->
     <script src="js/jquery.min.js">;</script>
     <!-- Latest compiled and minified JavaScript -->
