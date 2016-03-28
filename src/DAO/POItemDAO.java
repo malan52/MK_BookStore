@@ -132,11 +132,8 @@ public class POItemDAO {
 	 * @return the most popular book
 	 * @throws SQLException
 	 */
-	public Map<String, Integer> retrieveMaxSale() throws SQLException {
-		String query = "select bid, Q from (select POItem.bid, sum(POItem.quantity) as \"Q\" from POItem, PO" 
-				 + "where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M where Q="
-				 + "(select max(Q) from (select POItem.bid, sum(POItem.quantity) as \"Q\" from POItem, PO "
-				 + "where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M)";
+	public Map<String, Integer> retrieveMostPopular() throws SQLException {
+		String query = "select bid, Q from (select POItem.bid, sum(POItem.quantity) as \"Q\" from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M where Q=(select max(Q) from (select POItem.bid, sum(POItem.quantity) as \"Q\" from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' group by POItem.bid) as M)";
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		Connection con = this.ds.getConnection();
 		PreparedStatement p = con.prepareStatement(query);
