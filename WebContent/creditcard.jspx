@@ -5,15 +5,15 @@
 
 <!-- credit card information -->
 
-<form class="form-inline" role="form">
+<div class="form-inline">
     <div class="form-group">
       <label for="cardHolder">Card Holder:</label>
       <input type="text" class="form-control" placeholder="Joe Doe" id="cardHolder" name="cardHolder" 
       style="margin: 10px 10px 10px 10px;" onblur="billingName()"/>
     </div>
- </form>
+ </div>
 
-<form class="form-inline" role="form">
+<div class="form-inline">
 		<label  for="cardType">Card Type:</label>
 		<div class="form-group" >
 		<div class="col-sm-6 col-md-4">
@@ -24,18 +24,18 @@
 		</select>
 		</div>
 		</div>
-</form>
+</div>
 
-<form class="form-inline" role="form">
+<div class="form-inline" >
     <div class="form-group">
       <label for="cardNumber">Card Number:</label>
       <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="15 or 16 digits"
       style="margin: 10px 10px 10px 10px;" onblur="checkCardNumber()"></input>
     </div>    
-</form>
+</div>
 
 
-<form class="form-inline" role="form">
+<div class="form-inline">
     <div class="form-group">
       <label for="exporydate" style="margin: 0px 10px 0px 0px;">Card Expiry Date: </label>
       <select id="expireM" name="expireM" class="form-control">
@@ -65,13 +65,13 @@
 			<option value= "25" >2025</option>			
 		</select>
 		</div>
-</form>
+</div>
 
-<form class="form-inline" role="form">
+<div class="form-inline">
     <div class="form-group">
       <label for="cvc">CVC:</label>
       <input type="text" class="form-control" id="cvc" name="cvc" placeholder="3 or 4 digits"
       style="margin: 10px 10px 10px 10px;" onblur="checkCVC()"></input>
     </div>  
-</form>
+</div>
 </div>

@@ -31,7 +31,7 @@
 
 <p>Fillout the following form for a <span style="color:red">NEW</span> shipping address</p>
 <br/>
-<form class="form-inline" role="form">
+<div class="form-inline">
     <div class="form-group ">   
       <label for="sfname">First Name:</label>
       <a id="pf"><input type="text" class="form-control" id="sfname" name="sfname" placeholder="Joe"
@@ -48,11 +48,11 @@
       <a id="pp"><input type="text" class="form-control" id="sphone" name="sphone" placeholder="10 digits"
       						style="margin: 10px 10px 10px 10px;" onblur="checkSPhone()"/></a>
     </div>
-  </form>
+  </div>
 </div>
 <!-- select country and state -->
 <div class="container">
-	<form class="form-inline" role="form" name="form2">
+	<div class="form-inline">
 		<label  for="scountry">Country:</label>
 		<div class="form-group" >
 		<div class="col-sm-6 col-md-4">
@@ -79,16 +79,16 @@
      		 <a id="pz"><input type="text" class="form-control" id="szip" name="szip" placeholder="6 digits"
       		style="margin: 10px 10px 10px 10px;" onblur="checkZip()"></input></a>
     	</div>	
-	</form>
+	</div>
 </div>
 <!-- detail address include the apartment number, street number and city -->
 <div class="container">
-  <form role="form">
+  <div>
     <div class="form-group">
       <label for="adrs">Address:</label>
       <p id="pa"/><textarea class="form-control" rows="2" id="sadrs" name="adrs" onclick="this.innerHTML=''">Please enter address</textarea>
     </div>
-  </form>
+  </div>
 </div>
 </div>
 </div>

@@ -16,12 +16,54 @@ function varifyLogin(){
     }
 
 function updateModal(bid, title, price){
-	$(document).ready(function(){
-		//$(document).on("click", "#" + bid + "toModal", function() {
-			$("#dm_img").attr("src", "image/book_cover/" + bid + ".jpg");
-			//alert("image/book_cover/" + bid + ".jpg" + "  " + title + "    " + "$" + price + ".00");
-			$("#dm_title").text(title);
-			$("#dm_price").text("$" + price + ".00");
-		//});
-	});
+		var xhttp = new XMLHttpRequest();
+    	xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4) {
+				$("#dm_img").attr("src", "image/book_cover/" + bid + ".jpg");
+				$("#dm_title").text(title);
+				$("#submit_bid").val(bid);
+				$("#dm_price").text("$" + price + ".00");
+				var size = xhttp.getResponseHeader("reviews_size");
+				$("#reviewList").html("");
+				if(size == 0)
+					$("#reviewList").append("<div class=\"panel panel-default\">" +
+							"<div class=\"panel-body\">" +
+							"No comments yet. Please write a review!" +
+							"</div>" +
+							"<div class=\"panel-footer\">" +
+							"</div>" +
+						"</div>");
+				else
+				for(i = 0; i < size; i++){
+					var review = xhttp.getResponseHeader("review" + i).split(",");
+					$("#reviewList").append("<div class=\"panel panel-default\">" +
+													"<div class=\"panel-body\">" +
+													review[1] +
+													"</div>" +
+													"<div class=\"panel-footer\">" +
+													review[2] +
+													"</div>" +
+												"</div>");
+				}
+			}	
+    	}
+    	xhttp.open("GET", "DetailModalCtrl?bid=" + bid, true); 
+  	  xhttp.send();
+}
+function submitReview(user){
+	if(user == null){
+		alert("Sorry, please sign in before write a review!");
+	}
+	else if($("#rating").val() == null){
+		alert("Please give a rating before submit!");
+	}
+	else if($("#customerreview").val() == null){
+		alert("Invalid review!");
+	}
+	
+	else{
+		document.getElementById("review_form").submit();
+	}
+	
+
 }

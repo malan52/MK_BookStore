@@ -17,7 +17,7 @@
 			<form method="GET">
 				<table>
 					<tr>
-					<td><button type="button" class="btn btn-danger">All Books</button></td>
+					<td><button type="submit" class="btn btn-danger" id="viewAll" name="viewAll" value="all" formaction="Start" >All Books</button></td>
 						<c:forEach items="${categories}" var="category">
 							<td>
 								<button type="submit" class="btn btn-info" id="viewByCategory" name="viewByCategory"
