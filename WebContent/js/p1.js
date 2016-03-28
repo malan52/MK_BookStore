@@ -6,15 +6,15 @@ var state=[
 
      function getState(){
          
-         var sltCountry=document.form1.country;        
+         var sltCountry=document.form1.country;   
          var sltState=document.form1.state;            
-         var countryState=state[sltCountry.selectedIndex - 1];         
+         var countryState=state[sltCountry.selectedIndex - 1];          
          sltState.length=1;         
          for(var i=0;i<countryState.length;i++){
              sltState[i+1]=new Option(countryState[i],countryState[i]);
          }
      }
-     
+    
 //------------------shippinging address---------------------    
 
 	var sstate=[
@@ -23,10 +23,10 @@ var state=[
 	           ];
 
 	function sgetState(){
-	             
-	               var sltCountry=document.form2.scountry;        
-	               var sltState=document.form2.sstate;            
-	               var countryState=sstate[sltCountry.selectedIndex - 1];         
+					
+	               var sltCountry=document.form1.scountry; 	         
+	               var sltState=document.form1.sstate; 	               
+	               var countryState=sstate[sltCountry.selectedIndex - 1]; 	               
 	               sltState.length=1;         
 	               for(var i=0;i<countryState.length;i++){
 	                   sltState[i+1]=new Option(countryState[i],countryState[i]);
@@ -219,10 +219,11 @@ function sameadrs(){
 	}
 	
 	
-	
+	/*
 	function test(){
 		alert("the shipping first name is:"+ document.getElementById("sfname").value);
 	}
+	*/
 	
 	function disShiping(){
 		

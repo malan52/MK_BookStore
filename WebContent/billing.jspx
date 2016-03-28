@@ -16,7 +16,7 @@
 
 <br/>
 	<div>	
-		<form class="form-inline" role="form" name="form1">
+		<div class="form-inline">
 		<div class="form-group">
 			<label for="phone">Phone Number:</label> 
 			 <input type="text"	class="form-control" id="phone" name="phone" value="${aB.getPhone()}" 
@@ -55,17 +55,17 @@
 			</div>
 
 
-		</form>
+		</div>
 	</div>
 	<!-- detail address include the apartment number, street number and city -->
 	<div>
-		<form role="form">
+		<div role="form">
 			<div class="form-group">
 				<label for="adrs">Address:</label>
 				<textarea class="form-control" rows="2" id="adrs" name="adrs" value="${aB.getStreet()}"
 					onclick="this.innerHTML='';if (this.value=='${aB.getStreet()}'){this.value=''};">Please enter address</textarea>
 			</div>
-		</form>
+		</div>
 	</div>
 
 </div>

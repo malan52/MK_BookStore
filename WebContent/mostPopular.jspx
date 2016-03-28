@@ -15,6 +15,7 @@
 </head>
 <body>
 	<div class="container">
+	<p style="color:red;">the most popular booke: </p>${sessionScope['mostpopular']}
 	<c:choose>
 		<c:when test="${not empty sessionScope['mostpopular']}">
 			The most popular book of the book store is: ${sessionScope['mostpopular'] }
