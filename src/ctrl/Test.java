@@ -3,6 +3,7 @@ package ctrl;
 import java.io.IOException;
 import java.util.*;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,23 @@ public class Test extends HttpServlet {
 	}
 
 	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		BookDAO bookAccessor = null;
+		CustomerDAO customerAccessor = null;
+		try {
+			bookAccessor = new BookDAO();
+			config.getServletContext().setAttribute("bookAccessor", bookAccessor);
+			customerAccessor = new CustomerDAO();
+			config.getServletContext().setAttribute("customerAccessor", customerAccessor);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -42,15 +60,17 @@ public class Test extends HttpServlet {
 			POData podata = new POData();
 			ShoppingCart sc = new ShoppingCart();
 
-			/*Map<POBean, Map<String, Integer>> sample = new HashMap<POBean, Map<String, Integer>>();
-			Map<String, Integer> book = new HashMap<String, Integer>();
-			book.put("b001", 1);
-			book.put("b002", 2);
-			sample.put(new POBean("Roger", POBean.ORDERED, aDAO.retrieveAddrByID(1), "Hehe", "Meng"), book);
-			book.put("b003", 3);
-			sample.put(new POBean("Roger", POBean.DENIED, aDAO.retrieveAddrByID(411), "Zhao", "Rihe"), book);*/
+			/*
+			 * Map<POBean, Map<String, Integer>> sample = new HashMap<POBean,
+			 * Map<String, Integer>>(); Map<String, Integer> book = new
+			 * HashMap<String, Integer>(); book.put("b001", 1); book.put("b002",
+			 * 2); sample.put(new POBean("Roger", POBean.ORDERED,
+			 * aDAO.retrieveAddrByID(1), "Hehe", "Meng"), book);
+			 * book.put("b003", 3); sample.put(new POBean("Roger",
+			 * POBean.DENIED, aDAO.retrieveAddrByID(411), "Zhao", "Rihe"),
+			 * book);
+			 */
 
-			
 			request.setAttribute("sample", podata.retrievePO("Roger"));
 			request.getRequestDispatcher("/myAccount.jspx").forward(request, response);
 		} catch (ClassNotFoundException e) {
