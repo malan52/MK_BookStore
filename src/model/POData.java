@@ -160,5 +160,14 @@ public class POData {
 	public Map<String, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
 		return poitem.retrieveOrderHistory(start, end);
 	}
+	
+	/**
+	 * Return the most popular book from the first order
+	 * @return the most popular book
+	 * @throws SQLException
+	 */
+	public Map<String, Integer> retrieveMostPopular() throws SQLException {
+		return poitem.retrieveMostPopular();
+	}
 
 }
