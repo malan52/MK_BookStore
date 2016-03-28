@@ -22,16 +22,34 @@ public class POData {
 	}
 
 	/**
-	 * Return Map<POBean, Map<BookBean, Integer>>, where POBean stores information
-	 * for every PO for this user, inner map Map<BookBean, Integer> stores each
+	 * Return Map<POBean, Map<String, Integer>>, where POBean stores information
+	 * for every PO for this user, inner map Map<String, Integer> stores each
 	 * book and quantity user ordered in this PO.
 	 * 
 	 * @param username
-	 * @return Map<POBean, Map<BookBean, Integer>>
+	 * @return Map<POBean, Map<String, Integer>>
 	 * @throws Exception
 	 */
 	public Map<POBean, Map<String, Integer>> retrievePO(String username) throws Exception {
 		Map<String, POBean> pobean = po.retrievePOByUser(username);
+		Map<POBean, Map<String, Integer>> result = new HashMap<POBean, Map<String, Integer>>();
+		for (String key : pobean.keySet()) {
+			result.put(pobean.get(key), poitem.retrieveItemByID(key));
+		}
+		return result;
+	}
+	
+	/**
+	 * Return Map<POBean, Map<String, Integer>>, where POBean stores information
+	 * for every PO for all users, inner map Map<String, Integer> stores each
+	 * book and quantity user ordered in this PO.
+	 * 
+	 * @param username
+	 * @return Map<POBean, Map<String, Integer>>
+	 * @throws Exception
+	 */
+	public Map<POBean, Map<String, Integer>> retrieveAllPO() throws Exception {
+		Map<String, POBean> pobean = po.retrieveAll();
 		Map<POBean, Map<String, Integer>> result = new HashMap<POBean, Map<String, Integer>>();
 		for (String key : pobean.keySet()) {
 			result.put(pobean.get(key), poitem.retrieveItemByID(key));
