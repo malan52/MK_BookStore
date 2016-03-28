@@ -19,7 +19,7 @@
 
 			<br />
 			<div>
-				<form class="form-inline">
+				<div class="form-inline">
 					<div class="form-group">
 						<label for="phone">Name:</label> <input type="text"
 							class="form-control" id="cardHolder" name="cardHolder"
@@ -33,12 +33,12 @@
 							onClick="if (this.value=='${ab.getPhone()}'){this.value=''};" />
 					</div>
 					<!-- !!!!!!!!!!!!!!!!!!!!!!for select the country, attribute onclick may or maynot work!!!!!!!!!!!!!!!!!!! -->
-				</form>
+				</div>
 			</div>
 			<!-- //////////////////////////////////////// -->
 			<!-- select country and state -->
 			<div class="container">
-				<form class="form-inline" role="form" name="form1">
+				<div class="form-inline">
 					<label for="country">Country:</label>
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4">
@@ -67,18 +67,18 @@
 							placeholder="6 digits" style="margin: 10px 10px 10px 10px;"
 							onblur="checkZip()"></input>
 					</div>
-				</form>
+				</div>
 			</div>
 			<!-- detail address include the apartment number, street number and city -->
 			<div>
-				<form role="form">
+				<div>
 					<div class="form-group">
 						<label for="adrs">Address:</label>
 						<textarea class="form-control" rows="2" id="adrs" name="adrs"
 							value="${aB.getStreet()}"
 							onclick="this.innerHTML='';if (this.value=='${aB.getStreet()}'){this.value=''};">Please enter address</textarea>
 					</div>
-				</form>
+				</div>
 			</div>
 
 		</div>
