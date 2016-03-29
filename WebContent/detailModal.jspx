@@ -26,7 +26,7 @@
 									<tr>
 										<td>
 											<h4 class="media-heading">Write A Review</h4>
-
+											
 											<div class="rating">
 												<input type="radio" id="star5" name="rating" value="5" /><label
 													for="star5">5 stars</label> <input type="radio" id="star4"
@@ -42,8 +42,8 @@
 									</tr>
 									<tr>
 										<td><textarea name="customerreview" rows="3" cols="50"
-												id="customerreview" onclick="this.innerHTML=''"> please write a review</textarea></td>
-										<td><button onclick="submitReview(${user})"
+												id="customerreview" onclick="this.innerHTML=''">please write a review</textarea></td>
+										<td><button onclick="return submitReview('${user}')"
 												id="submit_bid" name="submit_bid" type="submit"
 												class="btn btn-primary">Submit</button></td>
 									</tr>
@@ -67,10 +67,10 @@
 				<div class="modal-footer">
 					<form action="OrderProcessCtrl" method="GET">
 						<div style="float: left">
-							Quantity:<input type="number" id="b001quantity"
-								name="b001quantity" value="1" min="1" max="100" />
+							Quantity:<input type="number" id="quantity"
+								name="quantity" value="1" min="1" max="100" />
 						</div>
-						<button type="submit" name="addToCart" value="b001"
+						<button type="submit" name="addToCart" id="addToCart" 
 							class="btn btn-primary">Add To Cart</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
