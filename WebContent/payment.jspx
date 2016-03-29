@@ -55,6 +55,9 @@ Go Back to Shopping Cart</button></a></td>
     <!-- Latest compiled and minified JavaScript -->
     <script src="js/bootstrap.min.js">;</script>
     <script src="js/p1.js">;</script>
+    <script src="js/login.js">
+		;
+	</script>
 </body>
 </html>
 </jsp:root>
