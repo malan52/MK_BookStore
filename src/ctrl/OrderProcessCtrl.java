@@ -52,7 +52,6 @@ public class OrderProcessCtrl extends HttpServlet {
 		}
 		if(request.getParameter("delete") != null){
 			String param = (String) request.getParameter("delete");
-			//System.out.println(param);
 			cart.dropBook(request.getParameter("delete"));
 		}
 		if(request.getParameter("quantity") != null && request.getParameter("bid") != null){	
