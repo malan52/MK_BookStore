@@ -26,9 +26,9 @@
 
 			</div>
 			<div class="form-group">
-				<label for="slname">Last Name:</label> <a id="pl"><input
+				<label for="slname">Last Name:</label><input
 					type="text" class="form-control" id="slname" name="slname"
-					placeholder="Doe" style="margin: 10px 10px 10px 10px;" /></a>
+					placeholder="Doe" style="margin: 10px 10px 10px 10px;" />
 			</div>
 			<div class="form-group">
 				<label for="slname">Phone Number:</label> <input type="text"
@@ -44,7 +44,7 @@
 			<label for="scountry">Country:</label>
 			<div class="form-group">
 				<div class="col-sm-6 col-md-4">
-					<select id="scountry" name="scountry" class="form-control"
+					<select id="scountry" name="scountry" class="form-control" style="color:238,238,238;"
 						onchange="sgetState()">
 						<option value="0">Select country</option>
 						<option value="Canada">Canada</option>
@@ -73,8 +73,8 @@
 	<div class="container">
 		<div>
 			<div class="form-group">
-				<label for="adrs">Address:</label>
-				<textarea class="form-control" rows="2" id="sadrs" name="adrs"
+				<label for="sadrs">Address:</label>
+				<textarea class="form-control" rows="2" id="sadrs" name="sadrs"
 					onclick="this.innerHTML=''">Please enter address</textarea>
 			</div>
 		</div>

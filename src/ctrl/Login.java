@@ -51,12 +51,16 @@ public class Login extends HttpServlet {
 				if(customer != null && password.equals(customer.getPassword().trim())){
 					//System.out.println("correct user");
 					response.getWriter().print("Welcome back " + username + "!");
-
 					request.getSession().setAttribute("user", customerAccessor.retrieveCustomer(username));
+					request.getRequestDispatcher("/signedInMain.jspx").forward(request, response);
+
 				}
 				else{
 					//System.out.println("Wrong!");
 					response.getWriter().print("Sorry, your are not logged in!");
+					
+					// hui jia xie zhe ge bu fen !!
+					//request.getRequestDispatcher("/main.jspx").forward(request, response);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -36,59 +36,61 @@ var state=[
 
 //-------------shipping addres is as the same as billing address----------
 
-function sameadrs(){
-	if(document.getElementById("yes").checked == true){
-		var cName = document.getElementById("cardHolder").value; // name form credit card
-		var nameSplit = cName.split(" ");
-		//first name for the shipping address
-		var sfToString="";
-		for(var i=0;i<nameSplit.length - 1;i++){
-			sfToString=sfToString+nameSplit[i].toString() + " ";
+	function sameadrs(){
+		if(document.getElementById("yes").checked == true){
+			
+			var cName = document.getElementById("cardHolder").value; // name form credit card
+			var nameSplit = cName.split(" ");
+			//first name for the shipping address
+			var sfToString="";
+			for(var i=0;i<nameSplit.length - 1;i++){
+				sfToString=sfToString+nameSplit[i].toString() + " ";
+			}			
+			document.getElementById("sfname").value=sfToString;
+			document.getElementById("sfname").readOnly=true; 
+			
+			
+			//last name for the shipping address
+			var slToString="";
+			slToString=nameSplit[nameSplit.length - 1].toString();	
+			document.getElementById("slname").value=slToString;
+			document.getElementById("slname").readOnly = true;	
+			
+			//the same address
+			var a = document.getElementById("adrs").value;
+			document.getElementById("sadrs").value=a;
+			document.getElementById("sadrs").readOnly=true;
+			
+			//the same phone number
+			var p = document.getElementById("phone").value;
+			document.getElementById("sphone").value=p;
+			document.getElementById("sphone").readOnly=true;
+			
+			//the same zip
+			var e = document.getElementById("zip").value;
+			document.getElementById("szip").value=e;
+			document.getElementById("szip").readOnly=true;
+			//the same contry
+			var c = document.getElementById("country").value;
+			document.getElementById("scountry").value=c;
+			document.getElementById("scountry").readOnly=true;
+			sgetState();	
+			//the same state
+			var s = document.getElementById("state").value;
+			document.getElementById("sstate").value=s;	
+			document.getElementById("sstate").options[document.getElementById("sstate").selectedIndex].text=document.getElementById("state").options[document.getElementById("state").selectedIndex].text;
+			document.getElementById("sstate").readOnly=true;
 		}
-		document.getElementById("sfname").value=sfToString;
-		document.getElementById("sfname").disabled = true; 
-		
-		//last name for the shipping address
-		var slToString="";
-		slToString=nameSplit[nameSplit.length - 1].toString();	
-		document.getElementById("slname").value=slToString;
-		document.getElementById("slname").disabled = true;	
-		
-		//the same address
-		var a = document.getElementById("adrs").value;
-		document.getElementById("sadrs").value=a;
-		document.getElementById("sadrs").disabled=true;
-		
-		//the same phone number
-		var p = document.getElementById("phone").value;
-		document.getElementById("sphone").value=p;
-		document.getElementById("sphone").disabled=true;
-		
-		//the same zip
-		var e = document.getElementById("zip").value;
-		document.getElementById("szip").value=e;
-		document.getElementById("szip").disabled=true;
-		//the same contry
-		var c = document.getElementById("country").value;
-		document.getElementById("scountry").value=c;
-		document.getElementById("scountry").disabled=true;
-		sgetState();	
-		//the same state
-		var s = document.getElementById("state").value;
-		document.getElementById("sstate").value=s;	
-		document.getElementById("sstate").options[document.getElementById("sstate").selectedIndex].text=document.getElementById("state").options[document.getElementById("state").selectedIndex].text;
-		document.getElementById("sstate").disabled=true;
+		else{
+			document.getElementById("sfname").readOnly=false;
+			document.getElementById("slname").readOnly=false;
+			document.getElementById("sadrs").readOnly=false;
+			document.getElementById("sphone").readOnly=false;
+			document.getElementById("szip").readOnly=false;
+			document.getElementById("scountry").readOnly=false;
+			document.getElementById("sstate").readOnly=false;	
+		}	
 	}
-	else{
-		document.getElementById("sfname").disabled = false;
-		document.getElementById("slname").disabled = false;
-		document.getElementById("sadrs").disabled = false;
-		document.getElementById("sphone").disabled = false;
-		document.getElementById("szip").disabled = false;
-		document.getElementById("scountry").disabled = false;
-		document.getElementById("sstate").disabled = false;	
-	}	
-}
 	
 //check if the billing phone number is 10 digits
 	function checkPhone(){
