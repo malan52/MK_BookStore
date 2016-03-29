@@ -22,6 +22,7 @@ function updateModal(bid, title, price){
 				$("#dm_img").attr("src", "image/book_cover/" + bid + ".jpg");
 				$("#dm_title").text(title);
 				$("#submit_bid").val(bid);
+				$("#addToCart").val(bid);
 				$("#dm_price").text("$" + price + ".00");
 				var size = xhttp.getResponseHeader("reviews_size");
 				$("#reviewList").html("");
@@ -51,19 +52,53 @@ function updateModal(bid, title, price){
   	  xhttp.send();
 }
 function submitReview(user){
-	if(user == null){
+	if(user == ''){
 		alert("Sorry, please sign in before write a review!");
+		return false;
 	}
-	else if($("#rating").val() == null){
+	
+	else if(!($("#star1").prop("checked") ||
+			$("#star2").prop("checked") ||
+			$("#star3").prop("checked") ||
+			$("#star4").prop("checked") ||
+			$("#star5").prop("checked"))){
 		alert("Please give a rating before submit!");
+		return false;
 	}
-	else if($("#customerreview").val() == null){
+	
+	
+	else if($("#customerreview").val().indexOf("<") >= 0){
 		alert("Invalid review!");
+		return false;
+	}
+	
+	else if($("#customerreview").val() == ""){
+		alert("Invalid review!");
+		return false;
+	}
+	
+	else if($("#customerreview").val() == "please write a review"){
+		alert("Invalid review!");
+		return false;
 	}
 	
 	else{
-		document.getElementById("review_form").submit();
+		return true;
 	}
 	
 
+}
+
+
+function submitPayment(){
+	var someEmpty = $('.paymentInput').filter(function(){
+	    return $.trim(this.value).length === 0;
+	}).length > 0;
+	
+	if(someEmpty){
+		alert("Please fill out all information before submit!");
+		return false;
+	}
+	else
+		return true;
 }

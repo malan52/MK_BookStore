@@ -7,7 +7,7 @@ import java.util.Date;
 //import javax.xml.bind.annotation.XmlType;
 
 //@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"id", "lname", "fname", "status", "address"})
+//@XmlType(propOrder={"PO_id", "username", "status", "address", "PO_date", "lname", "fname"})
 public class POBean {
 
 	private String PO_id;
