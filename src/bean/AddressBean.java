@@ -4,7 +4,7 @@ package bean;
 //import javax.xml.bind.annotation.XmlType;
 
 //@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"id", "street", "province", "country", "zip", "phone", "type"})
+//@XmlType(propOrder={"username", "street", "province", "country", "zip", "phone", "type"})
 public class AddressBean {
 	
 	private String username;
