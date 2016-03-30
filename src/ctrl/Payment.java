@@ -94,11 +94,17 @@ public class Payment extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
 		// Clear shopping cart.
 		cart.clear();
 		request.getSession().setAttribute("cart", cart);
-		
-		request.getRequestDispatcher("/main.jspx").forward(request, response);
+		if(status == PROCESSED)
+			request.setAttribute("message", "Order Successfully Completed.");
+		else
+			request.setAttribute("message", "Credit Card Authorization Failed.");
+		request.setAttribute("referer", request.getHeader("referer"));
+		request.getRequestDispatcher("/message.jspx").forward(request, response);
+		//request.getRequestDispatcher("/main.jspx").forward(request, response);
 		
 	}
 

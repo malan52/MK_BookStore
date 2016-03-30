@@ -34,18 +34,18 @@
 <div class="form-inline">
     <div class="form-group">   
       <label for="sfname">First Name:</label>
-      <a id="pf"><input type="text" class="form-control paymentInput" id="sfname" name="sfname" placeholder="Joe"
+      <a id="pf"><input type="text" class="form-control inputTextField" id="sfname" name="sfname" placeholder="Joe"
       					style="margin: 10px 10px 10px 10px;"/></a>
       
     </div>
     <div class="form-group">
       <label for="slname">Last Name:</label>
-      <a id="pl"><input type="text" class="form-control paymentInput" id="slname" name="slname" placeholder="Doe"
+      <a id="pl"><input type="text" class="form-control inputTextField" id="slname" name="slname" placeholder="Doe"
       					style="margin: 10px 10px 10px 10px;"/></a>
     </div>
     <div class="form-group">
       <label for="slname">Phone Number:</label>
-      <a id="pp"><input type="text" class="form-control paymentInput" id="sphone" name="sphone" placeholder="10 digits"
+      <a id="pp"><input type="text" class="form-control inputTextField" id="sphone" name="sphone" placeholder="10 digits"
       						style="margin: 10px 10px 10px 10px;" onblur="checkSPhone()"/></a>
     </div>
   </div>
@@ -76,7 +76,7 @@
 		
 		<div class="form-group">
       		<label for="szip">ZIP CODE:</label>
-     		 <a id="pz"><input type="text" class="form-control paymentInput" id="szip" name="szip" placeholder="6 digits"
+     		 <a id="pz"><input type="text" class="form-control inputTextField" id="szip" name="szip" placeholder="6 digits"
       		style="margin: 10px 10px 10px 10px;" onblur="checkZip()"></input></a>
     	</div>	
 	</div>
@@ -86,7 +86,7 @@
   <div>
     <div class="form-group">
       <label for="adrs">Address:</label>
-      <p id="pa"/><textarea class="form-control paymentInput" rows="2" id="sadrs" name="sadrs" onclick="this.innerHTML=''">Please enter address</textarea>
+      <p id="pa"/><textarea class="form-control inputTextField" rows="2" id="sadrs" name="sadrs" onclick="this.innerHTML=''">Please enter address</textarea>
     </div>
   </div>
 </div>
