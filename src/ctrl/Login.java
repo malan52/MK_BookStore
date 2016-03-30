@@ -49,23 +49,36 @@ public class Login extends HttpServlet {
 				customer = customerAccessor.retrieveCustomer(username);
 				response.setContentType("text/html");
 				if(customer != null && password.equals(customer.getPassword().trim())){
-					//System.out.println("correct user");
 					response.getWriter().print("Welcome back " + username + "!");
 					request.getSession().setAttribute("user", customerAccessor.retrieveCustomer(username));
-					request.getRequestDispatcher("/signedInMain.jspx").forward(request, response);
+					request.setAttribute("message", "Successfully logged in!");
+					request.setAttribute("referer", request.getHeader("referer"));
+					//System.out.println(request.getHeader("referer"));
+
+					request.getRequestDispatcher("/message.jspx").forward(request, response);
 
 				}
 				else{
-					//System.out.println("Wrong!");
 					response.getWriter().print("Sorry, your are not logged in!");
+					request.setAttribute("message", "Sorry, your are not logged in!");
 					
-					// hui jia xie zhe ge bu fen !!
-					//request.getRequestDispatcher("/main.jspx").forward(request, response);
+					request.setAttribute("referer", request.getHeader("referer"));
+					//System.out.println(request.getHeader("referer"));
+					request.getRequestDispatcher("/message.jspx").forward(request, response);
+
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+		}
+		else if(request.getParameter("signout") != null){
+			request.getSession().setAttribute("user", null);
+			request.setAttribute("message", "Successfully signed out!");
+			request.setAttribute("referer", request.getHeader("referer"));
+			//System.out.println(request.getHeader("referer"));
+			request.getRequestDispatcher("/message.jspx").forward(request, response);
 			
 		}
 	}

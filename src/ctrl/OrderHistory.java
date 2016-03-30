@@ -30,54 +30,53 @@ public class OrderHistory extends HttpServlet {
 	}
 
 	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		BookDAO bookAccessor = null;
-		CustomerDAO customerAccessor = null;
-		try {
-			bookAccessor = new BookDAO();
-			config.getServletContext().setAttribute("bookAccessor", bookAccessor);
-			customerAccessor = new CustomerDAO();
-			config.getServletContext().setAttribute("customerAccessor", customerAccessor);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		try {
-			BookDAO bdao = new BookDAO();
-			PODAO poDAO = new PODAO();
-			AddressDAO aDAO = new AddressDAO();
-			POData podata = new POData();
-			ShoppingCart sc = new ShoppingCart();
-
-			/*
-			 * Map<POBean, Map<String, Integer>> sample = new HashMap<POBean,
-			 * Map<String, Integer>>(); Map<String, Integer> book = new
-			 * HashMap<String, Integer>(); book.put("b001", 1); book.put("b002",
-			 * 2); sample.put(new POBean("Roger", POBean.ORDERED,
-			 * aDAO.retrieveAddrByID(1), "Hehe", "Meng"), book);
-			 * book.put("b003", 3); sample.put(new POBean("Roger",
-			 * POBean.DENIED, aDAO.retrieveAddrByID(411), "Zhao", "Rihe"),
-			 * book);
-			 */
-
-			request.setAttribute("sample", podata.retrievePO("Roger"));
-			request.getRequestDispatcher("/myAccount.jspx").forward(request, response);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(request.getParameter("editFName") != null){
+			try {
+				// Retrieve all parameters from query string.
+				String newPassword = request.getParameter("newPassword");
+				String editFName = request.getParameter("editFName");
+				String editLName = request.getParameter("editLName");
+				String editemail = request.getParameter("editemail");
+				
+				// Retrieve DAOs from context scope.
+				POData POAccessor = (POData) request.getServletContext().getAttribute("POAccessor");
+				CustomerDAO customerAccessor = 
+						(CustomerDAO) request.getServletContext().getAttribute("customerAccessor"); 
+				
+				// Current logged in user.
+				CustomerBean user = (CustomerBean) request.getSession().getAttribute("user");
+				
+				// Create new profile object.
+				ProfileBean profile = new ProfileBean(user.getUsername(), editFName, editLName, editemail);
+				
+				// If user wanted to change their password, reset password.
+				if(newPassword != null){
+					user.setPassword(newPassword);
+				}
+				
+				// Update user info in database and updata user object in session scope.
+				user.setProfile(profile);
+				customerAccessor.updateCustomer(user);
+				request.getSession().setAttribute("user", user);
+				
+				request.setAttribute("sample", POAccessor.retrievePO(user.getUsername()));
+				request.setAttribute("message", "Successfully updated your account information!");
+				request.setAttribute("referer", request.getHeader("referer"));
+				//System.out.println(request.getHeader("referer"));
+				request.getRequestDispatcher("/message.jspx").forward(request, response);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		else
+			request.getRequestDispatcher("/myAccount.jspx").forward(request, response);
 	}
 
 	/**

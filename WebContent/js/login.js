@@ -90,8 +90,8 @@ function submitReview(user){
 }
 
 
-function submitPayment(){
-	var someEmpty = $('.paymentInput').filter(function(){
+function validateInput(){
+	var someEmpty = $('.inputTextField').filter(function(){
 	    return $.trim(this.value).length === 0;
 	}).length > 0;
 	

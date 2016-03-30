@@ -38,13 +38,12 @@
 						<th>Category</th>
 
 						<!-- Shopping Cart -->
-						<th>Quatity</th>
+						<th>Quantity</th>
 						<th>Subtotal</th>
 						<th>Operation</th>
 					</tr>
 				</thead>
 				<tbody>
-
 					<!-- loop cart item -->
 					<c:forEach items="${cart.getBooks()}" var="element">
 						<tr id="${element.key}">
@@ -59,8 +58,8 @@
 							<!-- ${element.value.quantity} -->
 							<td id="${element.key}subtotal"><f:formatNumber
 									type="currency">${cart.getSubtotal(element.key)}</f:formatNumber></td>
-							<td><button action='submit' name='submit' label='submit'
-									onclick='deleteBook("${element.key}")'>Delete</button></td>
+							<td><FORM action="OrderProcessCtrl"><button type="submit" action='submit' name='delete' label='submit'
+									value="${element.key}">Delete</button></FORM></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -111,7 +110,7 @@
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					// Use jQuery to perform remove action on element "bid".
-					$(bid).remove();
+					$("#" + bid).remove();
 
 				}
 				xhttp.open("GET", "OrderProcessCtrl?delete=" + bid, true);
