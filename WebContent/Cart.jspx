@@ -20,7 +20,7 @@
 <!-- cart.css -->
 <link rel="stylesheet" href="css/cart.css" />
 </head>
-<body>
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
 
 	<jsp:include page="/navbar.jspx">
 		<!-- include the navigation bar -->
@@ -97,6 +97,7 @@
 
 		<jsp:include page="/login.jspx" />
 		<jsp:include page="/registerModal.jspx" />
+		<jsp:include page="/detailModal.jspx" />
 		<!-- Javascript files -->
 		<script src="js/jquery.min.js">
 			;

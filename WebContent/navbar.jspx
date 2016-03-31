@@ -37,7 +37,6 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jspx">Home</a></li>
-				<li><a href="OrderHistory">Account</a></li>
 			</ul>
 			<form class="navbar-form navbar-left">
 				<div class="form-group">
@@ -60,7 +59,6 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jspx">Home <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Link</a></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">

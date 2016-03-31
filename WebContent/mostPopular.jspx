@@ -13,7 +13,7 @@
 <head>
 <title>mostPopular</title>
 </head>
-<body>
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<div class="container">
 	<p style="color:red;">the most popular booke: </p>${sessionScope['mostpopular']}
 	<c:choose>
@@ -36,6 +36,10 @@
 	<script src="js/jquery.min.js">;</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js">;</script>
+	
+	<jsp:include page="/login.jspx" />
+		<jsp:include page="/registerModal.jspx" />
+		<jsp:include page="/detailModal.jspx" />
 
 </body>
 	</html>

@@ -77,42 +77,42 @@
 </script>
 </head>
 
-<body>
-	<jsp:include page="/navbar.jspx">
-		<jsp:param name="cart_size" value="${cart.getSize()}" />
-	</jsp:include>
-	<jsp:include page="/header.jspx" />
-	<jsp:include page="/bookDisplayPanel.jspx" />
-	<!-- <jsp:include page="/profile.jspx" />-->
-	<div class="container" style="margin-bottom: 5%;">
-		<HR />
-	</div>
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
+	
+		<jsp:include page="/navbar.jspx">
+			<jsp:param name="cart_size" value="${cart.getSize()}" />
+		</jsp:include>
+		<jsp:include page="/header.jspx" />
+		<jsp:include page="/bookDisplayPanel.jspx" />
+		<!-- <jsp:include page="/profile.jspx" />-->
+		<div class="container" style="margin-bottom: 5%;">
+			<HR />
+		</div>
 
-	<jsp:include page="/login.jspx" />
-	<jsp:include page="/registerModal.jspx" />
-	<jsp:include page="/detailModal.jspx" />
+		<jsp:include page="/login.jspx" />
+		<jsp:include page="/registerModal.jspx" />
+		<jsp:include page="/detailModal.jspx" />
 
-	<script>
-		$("#input-id").rating({
-			min : 1,
-			max : 10,
-			step : 2,
-			size : 'lg'
-		});
-	</script>
+		<script>
+			$("#input-id").rating({
+				min : 1,
+				max : 10,
+				step : 2,
+				size : 'lg'
+			});
+		</script>
 
-	<script src="js/jquery.js">
-		;
-	</script>
-	<!-- Javascript files -->
-	<script src="js/jquery.min.js">
-		;
-	</script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="js/bootstrap.min.js">
-		;
-	</script>
-
+		<script src="js/jquery.js">
+			;
+		</script>
+		<!-- Javascript files -->
+		<script src="js/jquery.min.js">
+			;
+		</script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="js/bootstrap.min.js">
+			;
+		</script>
 </body>
 	</html>
 </jsp:root>

@@ -77,7 +77,7 @@
 </script>
 </head>
 
-<body>
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<jsp:include page="/signedInNavbar.jspx">
 		<jsp:param name="cart_size" value="${cart.getSize()}" />
 	</jsp:include>

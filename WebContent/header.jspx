@@ -9,18 +9,18 @@
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
 	<div class="jumbotron"
-		style="background-image: url(image/headerImg.png)">
-		<h1>Home</h1>
+		style="background-image: url(image/header.png);  background-repeat:no-repeat; background-size:cover; height:270px;">
+		<h1 style="color:white;">MK BOOKSTORE</h1>
 		<div class="btn-group" role="group" aria-label="...">
 			<!-- category in header -->
 			
 			<form method="GET">
 				<table>
 					<tr>
-					<td><button type="submit" class="btn btn-danger" id="viewAll" name="viewAll" value="all" formaction="Start" >All Books</button></td>
+					<td><button type="submit" class="btn btn-danger btn-lg" id="viewAll" name="viewAll" value="all" formaction="Start" >All Books</button></td>
 						<c:forEach items="${categories}" var="category">
 							<td>
-								<button type="submit" class="btn btn-info" id="viewByCategory" name="viewByCategory"
+								<button type="submit" class="btn btn-default btn-lg" id="viewByCategory" name="viewByCategory"
 									value="${category}" formaction="Start">${category}</button>
 							</td>
 						</c:forEach>
