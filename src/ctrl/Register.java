@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.AddressDAO;
+import DAO.CustomerDAO;
+import bean.AddressBean;
+import bean.CustomerBean;
+import bean.POBean;
+import model.ShoppingCart;
+
 /**
  * Servlet implementation class Register
  */
@@ -26,51 +33,60 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		System.out.println("Enter the Register servelet!");
-		
-		request.getSession().setAttribute("user", request.getParameter("usr"));
-		System.out.println(request.getSession().getAttribute("user"));
-		
-		request.getSession().setAttribute("password", request.getParameter("password"));
-		System.out.println(request.getSession().getAttribute("password"));
-		/////////////////////////////////////////////////////////////////////////////////////////////////
-		request.getSession().setAttribute("phone", request.getParameter("phone"));
-		System.out.println(request.getSession().getAttribute("phone"));
 
-		request.getSession().setAttribute("country", request.getParameter("country"));
-		System.out.println(request.getSession().getAttribute("country"));
+		AddressDAO adrsAccessor = (AddressDAO) request.getServletContext().getAttribute("adrsAccessor");
+		CustomerDAO customerAccessor = (CustomerDAO) request.getServletContext().getAttribute("customerAccessor");
 		
-		request.getSession().setAttribute("state", request.getParameter("state"));
-		System.out.println(request.getSession().getAttribute("state"));
+		// Retrieve username and password.
+		String username = request.getParameter("usr");
+		String password = request.getParameter("password");
 		
-		request.getSession().setAttribute("zip", request.getParameter("zip"));
-		System.out.println(request.getSession().getAttribute("zip"));
+		// Billing info.
+		String phone = request.getParameter("phone");
+		String country = request.getParameter("country");
+		String state = request.getParameter("state");
+		String zip = request.getParameter("zip");
+		String adrs = request.getParameter("adrs");
 		
-		request.getSession().setAttribute("adrs", request.getParameter("adrs"));
-		System.out.println(request.getSession().getAttribute("adrs"));
-		///////////////////////////////////////////////////////////////////////////////////////////////
-		request.getSession().setAttribute("sfname", request.getParameter("sfname"));
-		System.out.println(request.getSession().getAttribute("sfname"));
+		// Shipping info.
+		String sfname = request.getParameter("sfname");
+		String slname = request.getParameter("slname");
+		String sphone = request.getParameter("sphone");
+		String scountry = request.getParameter("scountry");
+		String sstate = request.getParameter("sstate");
+		String szip = request.getParameter("szip");
+		String sadrs = request.getParameter("sadrs");
 		
-		request.getSession().setAttribute("slname", request.getParameter("slname"));
-		System.out.println(request.getSession().getAttribute("slname"));
+		try {
+			// Create user object and store it in session scope.
+			if(customerAccessor.retrieveCustomer(username) == null){
+				CustomerBean user = new CustomerBean(username, password);
+				request.getSession().setAttribute("user", user);
+				
+				// Store this customer into database.
+				customerAccessor.updateCustomer(user);
 		
-		request.getSession().setAttribute("sphone", request.getParameter("sphone"));
-		System.out.println(request.getSession().getAttribute("sphone"));
-
-		request.getSession().setAttribute("scountry", request.getParameter("scountry"));
-		System.out.println(request.getSession().getAttribute("scountry"));
-		
-		request.getSession().setAttribute("sstate", request.getParameter("sstate"));
-		System.out.println(request.getSession().getAttribute("sstate"));
-		
-		request.getSession().setAttribute("szip", request.getParameter("szip"));
-		System.out.println(request.getSession().getAttribute("zip"));
-		
-		request.getSession().setAttribute("sadrs", request.getParameter("sadrs"));
-		System.out.println(request.getSession().getAttribute("sadrs"));
-		
+				// Create addresses.
+				AddressBean billing = new AddressBean(user.getUsername(), 
+						adrs, state, country, zip, phone, "Billing");
+				AddressBean shipping = new AddressBean(user.getUsername(), 
+						sadrs, sstate, scountry, szip, sphone, "Shipping");
+			
+				// Interact with database.
+				adrsAccessor.updateAddr(billing);
+				adrsAccessor.updateAddr(shipping);	
+				request.setAttribute("message", "Successfully registered!");
+				request.setAttribute("referer", "/MK_BookStore/main.jspx");
+			}
+			else{
+				request.setAttribute("message", "User already exists! Please select a new username!");
+				request.setAttribute("referer", "/MK_BookStore/register.jspx");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.getRequestDispatcher("/message.jspx").forward(request, response);
 		
 	}
 

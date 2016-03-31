@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html; charset=ISO-8859-1" 
+		pageEncoding="ISO-8859-1" session="true"/>
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Register</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<!-- Optional theme -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+
+
+</head>
+<body>
+
+	<jsp:include page="/navbar.jspx" />
+	<jsp:include page="/header.jspx" />
+	<jsp:include page="/login.jspx" />
+	
+	<DIV id="message" class="panel panel-default">
+		<h1>${message}</h1>
+	</DIV>
+	<a type="button" class="btn btn-warning btn-lg" href="${referer}">Back</a>
+	<script src="js/p1.js">
+		;
+	</script>
+	<!-- Javascript files -->
+	<script src="js/jquery.min.js">
+		;
+	</script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="js/bootstrap.min.js">
+		;
+	</script>
+	<script src="js/login.js">
+		;
+	</script>
+</body>
+</html>
+</jsp:root>

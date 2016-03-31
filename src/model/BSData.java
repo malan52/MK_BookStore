@@ -45,4 +45,13 @@ public class BSData {
 	public int avgRate(String bookID) throws SQLException{
 		return this.review.avgRate(bookID);
 	}
+	public void updateProfile(ProfileBean profile) throws SQLException {
+		this.customer.updateProfile(profile);
+	}
+	public ProfileBean retrieveProfile(String username) throws SQLException {
+		return this.customer.retrieveProfile(username);
+	}
+	public void updateCustomer(CustomerBean customer) throws SQLException {
+		this.customer.updateCustomer(customer);
+	}
 }

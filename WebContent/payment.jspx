@@ -50,7 +50,7 @@
 			<table style="float: right;">
 				<tr>
 					<td><button type="submit" class="btn btn-warning btn-lg"
-							action='submit' name='submit' onclick="return submitPayment()">
+							action='submit' name='submit' onclick="return validateInput()">
 							<b>Submit</b>
 						</button></td>
 				</tr>
