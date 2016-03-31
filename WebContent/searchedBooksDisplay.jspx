@@ -16,7 +16,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<c:forEach items="${searchedBooksMap}" var="element">
-					<div class="col-sm-6 col-md-4">
+					<div class="col-sm-6 col-md-4" style="height:550px;">
 						<div class="thumbnail">
 							<!-- thumbnail -->
 							<a href="#"><img id="${element.key}toModal" type="button"
