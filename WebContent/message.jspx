@@ -18,12 +18,19 @@
 
 
 </head>
-<body>
-
-	<jsp:include page="/navbar.jspx" />
-	<jsp:include page="/header.jspx" />
-	<jsp:include page="/login.jspx" />
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
+<div class="container">
+<div class="jumbotron"
+		style="background-image: url(image/headerImg.png); background-repeat:no-repeat; background-size:cover; height:270px;">
+		<h1 style="color:white;">MK BOOKSTORE</h1>
+		<div class="btn-group" role="group" aria-label="...">
+			<!-- category in header -->
+			
+			
+		</div>
+	</div>
 	
+	</div>
 	<div class="container">
 	<div id="message" class="panel panel-default">
 		<h1>${message}</h1>
