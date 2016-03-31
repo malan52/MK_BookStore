@@ -12,6 +12,8 @@
 <div class="container">
 <h3><p>Shipping Information</p></h3>
 <table>
+		<c:set var="shippingAdrs" value="${adrsAccessor.retrieveShippingAddr(user.getUsername())}"></c:set>
+
 	<tr>
 	<td><p style="color:red;">Set Shipping Address as Billing Address?</p></td>
 	<td><label><input type="checkbox" id="yes" name="yes" style="margin: 0px 10px 10px 20px;" onchange="sameadrs()" />Yes</label>	</td>

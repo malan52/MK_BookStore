@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8" />
-<title>Register</title>
+<title>Message Page</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -24,10 +24,12 @@
 	<jsp:include page="/header.jspx" />
 	<jsp:include page="/login.jspx" />
 	
-	<DIV id="message" class="panel panel-default">
+	<div class="container">
+	<div id="message" class="panel panel-default">
 		<h1>${message}</h1>
-	</DIV>
+	</div>
 	<a type="button" class="btn btn-warning btn-lg" href="${referer}">Back</a>
+	</div>
 	<script src="js/p1.js">
 		;
 	</script>

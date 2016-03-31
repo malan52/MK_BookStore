@@ -12,6 +12,7 @@
 	<c:if test="true">
 		<!-- if ['aB'] exist means that this user has a default address-->
 		<!-- <p style="color:red"> this is true </p> -->
+		<c:set var="billingAdrs" value="${adrsAccessor.retrieveBillingAddr(user.getUsername())}"></c:set>
 		<div>
 			<h4 style="color: red;">
 				<p>Billing Address</p>
@@ -23,9 +24,9 @@
 					<div class="form-group">
 						<label for="phone">Phone Number:</label> <input type="text"
 							class="form-control inputTextField" id="phone" name="phone"
-							value="${aB.getPhone()}" placeholder="10 digits"
+							value="${billingAdrs.getPhone()}" placeholder="10 digits"
 							style="margin: 10px 10px 10px 10px;" onblur="checkPhone()"
-							onClick="if (this.value=='${ab.getPhone()}'){this.value=''};" />
+							onclick="if (this.value=='${billingAdrs.getPhone()}'){this.value=''};" />
 					</div>
 
 					<label for="country">Country:</label>
@@ -33,8 +34,8 @@
 						<div class="col-sm-6 col-md-4">
 							<!-- !!!!!!!!!!!!!!!!!!!!!!for select the country, attribute onclick may or maynot work!!!!!!!!!!!!!!!!!!! -->
 							<select id="country" name="country" class="form-control"
-								value="${aB.getCountry }" onchange="getState()"
-								onClick="if (this.value=='${aB.getPhone()}'){this.value=''};">
+								value="${billingAdrs.getCountry()}" onchange="getState()"
+								onClick="if (this.value=='${billingAdrs.getCountry()}'){this.value=''};">
 								<option value="0">Select country</option>
 								<option value="Canada">Canada</option>
 								<option value="USA">USA</option>
@@ -46,8 +47,8 @@
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4">
 							<select id="state" name="state" class="form-control"
-								value="${aB.getProvince() }"
-								onClick="if (this.value=='${aB.getProvince()}'){this.value=''};">
+								value="${billingAdrs.getProvince()}"
+								onClick="if (this.value=='${billingAdrs.getProvince()}'){this.value=''};">
 								<option value="0">Select state</option>
 							</select>
 						</div>
@@ -56,9 +57,9 @@
 					<div class="form-group">
 						<label for="zip">ZIP CODE:</label> <input type="text"
 							class="form-control inputTextField" id="zip" name="zip" placeholder="6 digits"
-							value="${aB.getZip() }" style="margin: 10px 10px 10px 10px;"
+							value="${billingAdrs.getZip()}" style="margin: 10px 10px 10px 10px;"
 							onblur="checkZip()"
-							onclick="if (this.value=='${aB.getZip()}'){this.value=''};"></input>
+							onclick="if (this.value=='${billingAdrs.getZip()}'){this.value=''};"></input>
 					</div>
 
 
@@ -70,8 +71,7 @@
 					<div class="form-group">
 						<label for="adrs">Address:</label>
 						<textarea class="form-control inputTextField" rows="2" id="adrs" name="adrs"
-							value="${aB.getStreet()}"
-							onclick="this.innerHTML='';if (this.value=='${aB.getStreet()}'){this.value=''};">Please enter address</textarea>
+							onclick="this.innerHTML='';if (this.value=='${billingAdrs.getStreet()}'){this.value=''};">${billingAdrs.getStreet()}</textarea>
 					</div>
 				</div>
 			</div>
