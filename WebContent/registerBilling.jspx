@@ -22,12 +22,12 @@
 				<div class="form-inline">
 					<div class="form-group">
 						<label for="phone">Name:</label> <input type="text"
-							class="form-control" id="cardHolder" name="cardHolder"
-							placeholder="Joe Doe" style="margin: 10px 10px 10px 10px;" />
+							class="form-control inputTextField" id="cardHolder" name="cardHolder"
+							placeholder="Joe Doe" style="margin: 10px 10px 10px 10px; " />
 					</div>
 					<div class="form-group">
 						<label for="phone">Phone Number:</label> <input type="text"
-							class="form-control" id="phone" name="phone"
+							class="form-control inputTextField" id="phone" name="phone"
 							value="${aB.getPhone()}" placeholder="10 digits"
 							style="margin: 10px 10px 10px 10px;" onblur="checkPhone()"
 							onClick="if (this.value=='${ab.getPhone()}'){this.value=''};" />
@@ -63,7 +63,7 @@
 
 					<div class="form-group">
 						<label for="zip">ZIP CODE:</label> <input
-							type="text" class="form-control" id="zip" name="zip"
+							type="text" class="form-control inputTextField" id="zip" name="zip"
 							placeholder="6 digits" style="margin: 10px 10px 10px 10px;"
 							onblur="checkZip()"></input>
 					</div>
@@ -74,7 +74,7 @@
 				<div>
 					<div class="form-group">
 						<label for="adrs">Address:</label>
-						<textarea class="form-control" rows="2" id="adrs" name="adrs"
+						<textarea class="form-control inputTextField" rows="2" id="adrs" name="adrs"
 							value="${aB.getStreet()}"
 							onclick="this.innerHTML='';if (this.value=='${aB.getStreet()}'){this.value=''};">Please enter address</textarea>
 					</div>

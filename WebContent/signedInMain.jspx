@@ -78,11 +78,10 @@
 </head>
 
 <body>
-	<jsp:include page="/navbar.jspx">
+	<jsp:include page="/signedInNavbar.jspx">
 		<jsp:param name="cart_size" value="${cart.getSize()}" />
 	</jsp:include>
 	<jsp:include page="/header.jspx" />
-	
 	<jsp:include page="/profile.jspx" />
 	<div class="container" style="margin-bottom: 5%;">
 		<HR />
@@ -110,9 +109,6 @@
 	</script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/bootstrap.min.js">
-		;
-	</script>
-	<script src="js/login.js">
 		;
 	</script>
 

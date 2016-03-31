@@ -8,7 +8,7 @@
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
 
-
+<c:set var="newRow" value="${0}" />
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<c:out value="${categoryName}" />
@@ -16,7 +16,8 @@
 		<div class="panel-body">
 			<div class="row">
 				<c:forEach items="${selectCategory}" var="element">
-					<div class="col-sm-6 col-md-4">
+			
+					<div class="col-sm-6 col-md-4" style="height:550px;">
 						<div class="thumbnail">
 							<!-- thumbnail -->
 							<a href="#"><img id="${element.key}toModal" type="button"
@@ -29,13 +30,13 @@
 									<p>
 										<f:formatNumber type="currency">${element.value.getPrice()}</f:formatNumber>
 									<div>
-										Quantity:<input type="number" id="b001quantity"
-											name="b001quantity" value="1" min="1" max="100"
+										Quantity:<input type="number" id="quantity"
+											name="quantity" value="1" min="1" max="100"
 											style="float: right" />
 									</div>
 									</p>
 									<p>
-										<button action="submit" name="addToCart" value="b001"
+										<button action="submit" name="addToCart" value="${element.key}"
 											class="btn btn-primary" style="margin-right: 5px;">Add
 											To Cart</button>
 
