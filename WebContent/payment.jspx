@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
 
 </head>
-<body>
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<jsp:include page="/navbar.jspx" />
 	<jsp:include page="/header.jspx" />
 	<form action="Payment" method="POST" name="form1">
@@ -73,6 +73,10 @@
 	<script src="js/login.js">
 		;
 	</script>
+	
+	<jsp:include page="/login.jspx" />
+		<jsp:include page="/registerModal.jspx" />
+		<jsp:include page="/detailModal.jspx" />
 </body>
 	</html>
 </jsp:root>
