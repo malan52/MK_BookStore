@@ -102,9 +102,8 @@ public class Payment extends HttpServlet {
 			request.setAttribute("message", "Order Successfully Completed.");
 		else
 			request.setAttribute("message", "Credit Card Authorization Failed.");
-		request.setAttribute("referer", request.getHeader("referer"));
+		request.setAttribute("referer", "/MK_BookStore/main.jspx");
 		request.getRequestDispatcher("/message.jspx").forward(request, response);
-		//request.getRequestDispatcher("/main.jspx").forward(request, response);
 		
 	}
 

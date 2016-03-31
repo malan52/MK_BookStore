@@ -35,48 +35,49 @@ public class OrderHistory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		if(request.getParameter("editFName") != null){
-			try {
-				// Retrieve all parameters from query string.
-				String newPassword = request.getParameter("newPassword");
-				String editFName = request.getParameter("editFName");
-				String editLName = request.getParameter("editLName");
-				String editemail = request.getParameter("editemail");
-				
-				// Retrieve DAOs from context scope.
-				POData POAccessor = (POData) request.getServletContext().getAttribute("POAccessor");
-				CustomerDAO customerAccessor = 
-						(CustomerDAO) request.getServletContext().getAttribute("customerAccessor"); 
-				
-				// Current logged in user.
-				CustomerBean user = (CustomerBean) request.getSession().getAttribute("user");
-				
-				// Create new profile object.
-				ProfileBean profile = new ProfileBean(user.getUsername(), editFName, editLName, editemail);
-				
-				// If user wanted to change their password, reset password.
-				if(newPassword != null){
-					user.setPassword(newPassword);
-				}
-				
-				// Update user info in database and updata user object in session scope.
-				user.setProfile(profile);
-				customerAccessor.updateCustomer(user);
-				request.getSession().setAttribute("user", user);
-				
+		// Retrieve DAOs from context scope.
+		POData POAccessor = (POData) request.getServletContext().getAttribute("POAccessor");
+		CustomerDAO customerAccessor = 
+				(CustomerDAO) request.getServletContext().getAttribute("customerAccessor"); 
+		
+		// Current logged in user.
+		CustomerBean user = (CustomerBean) request.getSession().getAttribute("user");
+		
+		try {
 				request.setAttribute("sample", POAccessor.retrievePO(user.getUsername()));
-				request.setAttribute("message", "Successfully updated your account information!");
-				request.setAttribute("referer", request.getHeader("referer"));
-				//System.out.println(request.getHeader("referer"));
-				request.getRequestDispatcher("/message.jspx").forward(request, response);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+				// If user wants to change their profile.
+				if(request.getParameter("editFName") != null){
+					
+					// Retrieve all parameters from query string.
+					String newPassword = request.getParameter("newPassword");
+					String editFName = request.getParameter("editFName");
+					String editLName = request.getParameter("editLName");
+					String editemail = request.getParameter("editemail");
+					
+					// Create new profile object.
+					ProfileBean profile = new ProfileBean(user.getUsername(), editFName, editLName, editemail);
+					
+					// If user wanted to change their password, reset password.
+					if(newPassword != null){
+						user.setPassword(newPassword);
+					}
+					
+					// Update user info in database and updata user object in session scope.
+					user.setProfile(profile);
+					customerAccessor.updateCustomer(user);
+					request.getSession().setAttribute("user", user);
+					
+					request.setAttribute("message", "Successfully updated your account information!");
+					request.setAttribute("referer", request.getHeader("referer"));
+					//System.out.println(request.getHeader("referer"));
+					request.getRequestDispatcher("/message.jspx").forward(request, response);
+				}
+				else
+					request.getRequestDispatcher("/myAccount.jspx").forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else
-			request.getRequestDispatcher("/myAccount.jspx").forward(request, response);
+		
 	}
 
 	/**
