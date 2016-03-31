@@ -41,7 +41,7 @@
 
 		<div class="container">
 			<br />
-			<button type="submit" class="btn btn-warning" action="submit"
+			<button type="submit" class="btn btn-warning" action="submit" onclick="return validateInput()"
 				name='register' style="float: right">Register</button>
 		</div>
 		<br /> <br />

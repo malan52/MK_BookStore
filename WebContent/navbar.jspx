@@ -8,8 +8,16 @@
 		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
-
-
+	
+	<script>
+	function confirmSignOut(){
+	    if (confirm("Are you sure you want to sign out?") == true) {
+	       	return true;
+	    } else {
+	        return false;
+	    }
+	}
+	</script>
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -24,34 +32,53 @@
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
+		<c:if test="${user eq null}">
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-			<form>
 			<ul class="nav navbar-nav">
 				<li><a href="main.jspx">Home</a></li>
 				<li><a href="OrderHistory">Account</a></li>
-
 			</ul>
-			</form>
 			<form class="navbar-form navbar-left">
 				<div class="form-group">
-					<input type="text" class="form-control" id="searchPattern" name="searchPattern"
-						placeholder="Search Books..."/>
+					<input type="text" class="form-control" id="searchPattern"
+						name="searchPattern" placeholder="Search Books..." />
 				</div>
-				<button type="submit" class="btn btn-secondary btn-default" id="searchbtn" name="searchbtn" value="searchbtn" formaction="Start">Search</button>
+				<button type="submit" class="btn btn-secondary btn-default"
+					id="searchbtn" name="searchbtn" value="searchbtn"
+					formaction="Start">Search</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="modal" data-target="#loginModal">Sign
-						In</a></li>
+				<li><a href="#" data-toggle="modal" data-target="#loginModal">Sign In</a></li>
 				<li><a href="register.jspx">Register</a></li>
-				<li><a href="Cart.jspx">Shopping Cart <span id="cart_icon"
-						class="badge">${param.cart_size}</span></a></li>
+				<li><a href="Cart.jspx">Shopping Cart<span id="cart_icon" class="badge">${cart.getSize()}</span></a></li>
 			</ul>
-
 		</div>
-
+		</c:if>
+		<c:if test="${user ne null}">
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="main.jspx">Home <span class="sr-only">(current)</span></a></li>
+				<li><a href="#">Link</a></li>
+			</ul>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" id="searchPattern"
+						name="searchPattern" placeholder="Search Books..." />
+				</div>
+				<button type="submit" class="btn btn-secondary btn-default"
+					id="searchbtn" name="searchbtn" value="searchbtn"
+					formaction="Start">Search</button>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="OrderHistory">My Account(${user.username})</a></li>
+				<li><a href="Login?signout=1" onclick="return confirmSignOut()">Sign Out</a></li>
+				<li><a href="Cart.jspx">Shopping Cart<span class="badge">${cart.getSize()}</span></a></li>
+			</ul>
+		</div>
+		</c:if>
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container-fluid -->
-
 </nav>

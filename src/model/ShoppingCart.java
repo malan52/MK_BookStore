@@ -134,5 +134,8 @@ public class ShoppingCart {
 	public String getCategory(String bid){
 		return getBook(bid).getCategory();
 	}
+	public void clear(){
+		this.books.clear();
+	}
 	
 }

@@ -8,7 +8,7 @@
 <div class="form-inline">
     <div class="form-group">
       <label for="cardHolder">Card Holder:</label>
-      <input type="text" class="form-control" placeholder="Joe Doe" id="cardHolder" name="cardHolder" 
+      <input type="text" class="form-control inputTextField" placeholder="Joe Doe" id="cardHolder" name="cardHolder" 
       style="margin: 10px 10px 10px 10px;" onblur="billingName()"/>
     </div>
  </div>
@@ -29,7 +29,7 @@
 <div class="form-inline" >
     <div class="form-group">
       <label for="cardNumber">Card Number:</label>
-      <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="15 or 16 digits"
+      <input type="text" class="form-control inputTextField" id="cardNumber" name="cardNumber" placeholder="15 or 16 digits"
       style="margin: 10px 10px 10px 10px;" onblur="checkCardNumber()"></input>
     </div>    
 </div>
@@ -70,7 +70,7 @@
 <div class="form-inline">
     <div class="form-group">
       <label for="cvc">CVC:</label>
-      <input type="text" class="form-control" id="cvc" name="cvc" placeholder="3 or 4 digits"
+      <input type="text" class="form-control inputTextField" id="cvc" name="cvc" placeholder="3 or 4 digits"
       style="margin: 10px 10px 10px 10px;" onblur="checkCVC()"></input>
     </div>  
 </div>

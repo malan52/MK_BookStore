@@ -12,7 +12,7 @@
 		Edit Personal Information <small>Current User Name</small>
 	</h3>
 
-	<form role="form" id="editAccInfo" style="text-align: center">
+	<form role="form" method="GET" id="editAccInfo" style="text-align: center" action="OrderHistory">
 
 		<div class="form-group form-inline" style="text-align: center">
 			<label for="oldpassword" style="width: 150px; text-align: right;">Password: </label> <input
@@ -35,35 +35,35 @@
 				<label for="cfm_newPassword" style="width: 150px; text-align: right;">Confirm
 					Password: </label> <input type="password" class="form-control"
 					id="cfmpws" style="margin: 10px 10px 10px 10px;" placeholder="Confirm Password..."
-					onblur="confirmPWD()" required="required"></input>
+					onblur="confirmPWD()"></input>
 			</div>
 		</div>
 
 		<div class="form-group form-inline" style="text-align: center">
 			<label for="editFName" style="width: 150px; text-align: right;">First Name: </label> <input
-				type="text" class="form-control" id="editFName" name="editFName"
-				value="Current First Name" style="margin: 10px 10px 10px 10px;"></input>
+				type="text" class="form-control inputTextField" id="editFName" name="editFName"
+				value="${user.getProfile().getFname()}" style="margin: 10px 10px 10px 10px;"></input>
 
 		</div>
 		
 		<div class="form-group form-inline" style="text-align: center">
 			<label for="editLName" style="width: 150px; text-align: right;">Last Name: </label> <input
-				type="text" class="form-control" id="editLName" name="editLName"
-				value="Current Last Name" style="margin: 10px 10px 10px 10px;"></input>
+				type="text" class="form-control inputTextField" id="editLName" name="editLName"
+				value="${user.getProfile().getLname()}" style="margin: 10px 10px 10px 10px;"></input>
 
 		</div>
 
 		<div class="form-group form-inline" style="text-align: center">
 			<label for="editemail" style="width: 150px; text-align: right;">Email Address: </label>
-			<input type="text" class="form-control" id="editemail"
-				name="editemail" value="Current Email Address"
+			<input type="text" class="form-control inputTextField" id="editemail"
+				name="editemail" value="${user.getProfile().getEmail()}"
 				style="margin: 10px 10px 10px 10px;"></input>
 		</div>
 		<div class="form-group" style="float: right;">
 			<button type="reset" class="btn btn-default btn-lg"
 				style="margin-right: 10px" value="resetEditInfo"
 				onclick="ShowHideDiv(this)">Reset</button>
-			<button type="submit" class="btn btn-info btn-lg">Save
+			<button type="submit" onclick="return validateInput()" action="submit" class="btn btn-info btn-lg">Save
 				Changes</button>
 		</div>
 	</form>
