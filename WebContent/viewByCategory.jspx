@@ -73,7 +73,7 @@
 </script>
 </head>
 
-<body>
+<body style="background-image:url(image/background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<jsp:include page="/navbar.jspx">
 		<jsp:param name="cart_size" value="${cart.getSize()}" />
 	</jsp:include>
@@ -87,7 +87,8 @@
 	</div>	
 
 	<jsp:include page="/login.jspx" />
-	<jsp:include page="/registerModal.jspx" />
+		<jsp:include page="/registerModal.jspx" />
+		<jsp:include page="/detailModal.jspx" />
 
 
 	<script>
