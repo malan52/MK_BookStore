@@ -1,13 +1,10 @@
 package bean;
 
-//import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-//import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.annotation.XmlType;
-
-//@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"bid", "title", "price", "category"})
+@XmlRootElement(name="MKReport")
+@XmlType(propOrder={"bid", "title", "price", "category"})
 public class BookBean {
 	
 	/* (non-Javadoc)
@@ -31,6 +28,9 @@ public class BookBean {
 		this.setTitle(title);
 		this.setPrice(price);
 		this.setCategory(category);
+	}
+	
+	public BookBean() {
 	}
 
 	/**

@@ -1,10 +1,5 @@
 package bean;
 
-//import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.annotation.XmlType;
-
-//@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"PO_id", "bid", "quantity"})
 public class POItemBean {
 
 	private String PO_id;

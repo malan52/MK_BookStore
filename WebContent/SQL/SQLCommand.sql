@@ -148,6 +148,9 @@ INSERT INTO Customer (username, password) VALUES ('Steven', 'steven123');
 INSERT INTO Customer (username, password) VALUES ('John', 'john123');
 INSERT INTO Customer (username, password) VALUES ('Peter', 'peter123');
 INSERT INTO Customer (username, password) VALUES ('Andy', 'Andy123');
+INSERT INTO Customer (username, password) VALUES ('Malan', 'malan123');
+INSERT INTO Customer (username, password) VALUES ('Emily', 'emily123');
+INSERT INTO Customer (username, password) VALUES ('Evelyn', 'evelyn123');
 
 SELECT username, password FROM Customer WHERE username = 'username';
 UPDATE CUSTOMER SET "PASSWORD"='roger124' WHERE "USERNAME"='Roger';
