@@ -21,18 +21,18 @@
 		<div class="form-inline" role="form">
 			<div class="form-group ">
 				<label for="sfname">First Name:</label> <input type="text"
-					class="form-control" id="sfname" name="sfname" placeholder="Joe"
+					class="form-control inputTextField" id="sfname" name="sfname" placeholder="Joe"
 					style="margin: 10px 10px 10px 10px;" />
 
 			</div>
 			<div class="form-group">
 				<label for="slname">Last Name:</label><input
-					type="text" class="form-control" id="slname" name="slname"
+					type="text" class="form-control inputTextField" id="slname" name="slname"
 					placeholder="Doe" style="margin: 10px 10px 10px 10px;" />
 			</div>
 			<div class="form-group">
 				<label for="slname">Phone Number:</label> <input type="text"
-					class="form-control" id="sphone" name="sphone"
+					class="form-control inputTextField" id="sphone" name="sphone"
 					placeholder="10 digits" style="margin: 10px 10px 10px 10px;"
 					onblur="checkSPhone()" />
 			</div>
@@ -64,7 +64,7 @@
 
 			<div class="form-group">
 				<label for="szip">ZIP CODE:</label> <input type="text"
-					class="form-control" id="szip" name="szip" placeholder="6 digits"
+					class="form-control inputTextField" id="szip" name="szip" placeholder="6 digits"
 					style="margin: 10px 10px 10px 10px;" onblur="checkZip()"></input>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 		<div>
 			<div class="form-group">
 				<label for="sadrs">Address:</label>
-				<textarea class="form-control" rows="2" id="sadrs" name="sadrs"
+				<textarea class="form-control inputTextField" rows="2" id="sadrs" name="sadrs"
 					onclick="this.innerHTML=''">Please enter address</textarea>
 			</div>
 		</div>

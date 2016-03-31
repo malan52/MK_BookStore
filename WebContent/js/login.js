@@ -88,3 +88,17 @@ function submitReview(user){
 	
 
 }
+
+
+function validateInput(){
+	var someEmpty = $('.inputTextField').filter(function(){
+	    return $.trim(this.value).length === 0;
+	}).length > 0;
+	
+	if(someEmpty){
+		alert("Please fill out all information before submit!");
+		return false;
+	}
+	else
+		return true;
+}
