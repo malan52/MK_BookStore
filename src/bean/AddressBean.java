@@ -1,10 +1,5 @@
 package bean;
 
-//import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.annotation.XmlType;
-
-//@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"username", "street", "province", "country", "zip", "phone", "type"})
 public class AddressBean {
 	
 	private String username;
