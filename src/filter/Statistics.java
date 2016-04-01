@@ -48,16 +48,17 @@ public class Statistics implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		try {
-			//Map<POBean, Map<String, Integer>> map = req.getSession().getAttribute("anonymizedpo");
-			Map<POBean, Map<String, Integer>> map = podata.retrieveAllPO();
-			for (POBean pobean : map.keySet()) {
-				String lastthree = pobean.getUsername().substring(pobean.getUsername().length() - 3);
-				pobean.setUsername("******" + lastthree);
-				pobean.setLname("Lname");
-				pobean.setFname("Fname");
-				pobean.setAddress(null);
+			Map<POBean, Map<String, Integer>> map = (Map<POBean, Map<String, Integer>>) req.getAttribute("anonymizedpo");
+			if (map != null) {
+				for (POBean pobean : map.keySet()) {
+					//String lastthree = pobean.getUsername().substring(pobean.getUsername().length() - 3);
+					pobean.setUsername("******");
+					pobean.setLname("Lname");
+					pobean.setFname("Fname");
+					pobean.setAddress(null);
+				}
+				req.getSession().setAttribute("anonymizedpo", map);
 			}
-			//req.getSession().setAttribute("anonymizedpo", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

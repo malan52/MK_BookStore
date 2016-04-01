@@ -1,0 +1,33 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" class="container">
+	<jsp:directive.page contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8" session="true" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+		omit-xml-declaration="true" />
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+	<div class="container">
+	<c:if test="${not empty anonymizedpo}"> 
+	this is test
+	</c:if>
+		<table class="table">
+			<tr>
+			
+				<c:forEach items="${anonymizedpo}" var="map">
+					<td>${map.key.getLname()}</td>
+					<td>${map.key.getFname()}</td>
+					<td>${map.key.getPO_date()}</td>
+				</c:forEach>
+				
+			</tr>
+
+		</table>
+
+		</h3>
+	</div>
+
+
+</div>

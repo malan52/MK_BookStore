@@ -59,6 +59,8 @@
 		<br />
 		<br />
 	</form>
+	
+	<jsp:include page="/footer.jspx" />
 	<!-- Javascript files -->
 	<script src="js/jquery.min.js">
 		;

@@ -75,6 +75,8 @@ public class Payment extends HttpServlet {
 		
 		// Create an order.
 		String status = PROCESSED;
+		request.getSession().setAttribute("poupdated", counter);
+		System.out.println(request.getSession().getAttribute("poupdated"));
 		if(counter % 3 == 0){
 			status = DENIED;
 		}

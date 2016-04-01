@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import bean.*;
 
-@XmlRootElement(name="MKReport")
+@XmlRootElement(name="MKBook")
 
 public class BookWrapper {
 	

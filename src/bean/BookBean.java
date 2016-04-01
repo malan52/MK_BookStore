@@ -3,7 +3,7 @@ package bean;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name="MKReport")
+@XmlRootElement(name="MKBook")
 @XmlType(propOrder={"bid", "title", "price", "category"})
 public class BookBean {
 	
