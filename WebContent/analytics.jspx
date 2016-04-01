@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsp/jstl/fmt" version="2.0">
 	<jsp:directive.page contentType="text/html; charset=ISO-8859-1"
 		pageEncoding="ISO-8859-1" session="true" />
 	<jsp:output doctype-root-element="html"
@@ -9,7 +11,7 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8" />
-<title>Message Page</title>
+<title>Analytics Page</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -20,6 +22,8 @@
 </head>
 <body
 	style="background-image: url(image/background.jpg); background-repeat: no-repeat; background-size: cover;">
+	
+
 	<div class="container">
 		<div class="jumbotron"
 			style="background-image: url(image/headerImg.png); background-repeat: no-repeat; background-size: cover; height: 270px;">
@@ -28,14 +32,23 @@
 				<!-- category in header -->
 			</div>
 		</div>
-	
+		<p style="color: DimGray">
+		<h1>The Book Sold Each Month</h1>
+		</p>
+		
+		<p style="color: DimGray">
+		<h1>The Most Popluar Book</h1>
+		</p>
+		<jsp:include page="/mostPopular.jspx" />
+		
+		<p style="color: DimGray">
+		<h1>User Buying Statistics</h1>
+		</p>
+		<jsp:include page="/statistics.jspx" />
+		<BR />
+		<BR />
 
-	<div id="message" class="panel panel-default">
-		<h1>${message}</h1>
 	</div>
-	<a type="button" class="btn btn-warning btn-lg" href="${referer}" style="float:right">Back</a>
-</div>
-<jsp:include page="/footer.jspx" />
 	<script src="js/p1.js">
 		;
 	</script>

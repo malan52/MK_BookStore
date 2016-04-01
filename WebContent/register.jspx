@@ -46,6 +46,8 @@
 		</div>
 		<br /> <br />
 	</form>
+	
+	<jsp:include page="/footer.jspx" />
 	<!-- js for confirm the password -->
 	<script src="js/registercfmpwd.js">
 		;

@@ -85,14 +85,14 @@
 		<jsp:include page="/header.jspx" />
 		<jsp:include page="/bookDisplayPanel.jspx" />
 		<!-- <jsp:include page="/profile.jspx" />-->
-		<div class="container" style="margin-bottom: 5%;">
+		<div class="container" >
 			<HR />
 		</div>
-
+		<jsp:include page="/footer.jspx" />
 		<jsp:include page="/login.jspx" />
 		<jsp:include page="/registerModal.jspx" />
 		<jsp:include page="/detailModal.jspx" />
-
+		
 		<script>
 			$("#input-id").rating({
 				min : 1,
