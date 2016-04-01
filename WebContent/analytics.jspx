@@ -22,6 +22,9 @@
 </head>
 <body
 	style="background-image: url(image/background.jpg); background-repeat: no-repeat; background-size: cover;">
+	<!-- this is a Map<String, Integer> retrieveMostPopular() -->
+	<c:set var="mostPopular" value="${(sessionScope['mostpopular'])}"></c:set>
+
 	<div class="container">
 		<div class="jumbotron"
 			style="background-image: url(image/headerImg.png); background-repeat: no-repeat; background-size: cover; height: 270px;">
@@ -30,35 +33,40 @@
 				<!-- category in header -->
 			</div>
 		</div>
-	<p style="color:DimGray"><h1>The Most Popluar Book</h1></p>
-	${sessionScope['mostpopular'].key}
-	<c:choose>
-		<c:when test="${not empty sessionScope['mostpopular']}">
-		 <p style="color:DimGray"> the most popular book in MK bookstore is: </p>
-		 <table class="table-striped" style="color:DimGray">
-		 <tr>
-		 <td>BID</td>
-		 <td>Book Title</td>
-		 <td>Price</td>
-		 <td>Category</td>
-		 <td>Quantity</td>
-		 </tr>
-		 <tr>
-		 <td>${bookAccessor.(sessionScope['mostpopular'].key).getBid()}</td>
-		 <td>${bookAccessor.(sessionScope['mostpopular'].key).getTitle()}</td>
-		 <td>${bookAccessor.(sessionScope['mostpopular'].key).getPrice()}</td>
-		 <td>${bookAccessor.(sessionScope['mostpopular'].key).getCategory()}</td>
-		 <td>${bookAccessor.(sessionScope['mostpopular'].value)}</td>
-		 </tr>
-		 </table>
-		</c:when>
-		<c:otherwise>
-		<p style="color:DimGray"><h1>No Sell Yet!!!</h1></p>
-		</c:otherwise>
-	</c:choose>
+		<p style="color: DimGray">
+		<h1>The Most Popluar Book</h1>
+		</p>
 
-	
-</div>
+		<c:choose>
+			<c:when test="${not empty sessionScope['mostpopular']}">
+				<table class="table" style="color: DimGray">
+					<tr>
+						<td>BID</td>
+						<td>Book Title</td>
+						<td>Price</td>
+						<td>Category</td>
+						<td>Quantity</td>
+					</tr>
+					<c:forEach items="${mostPopular}" var="element">
+						<tr>
+							<td>${bookAccessor.retrieveBook(element.key).getBid()}</td>
+							<td>${bookAccessor.retrieveBook(element.key).getTitle()}</td>
+							<td>${bookAccessor.retrieveBook(element.key).getPrice()}</td>
+							<td>${bookAccessor.retrieveBook(element.key).getCategory()}</td>
+							<td>${element.value}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<p style="color: DimGray">
+				<h1>No Sell Yet!!!</h1>
+				</p>
+			</c:otherwise>
+		</c:choose>
+
+
+	</div>
 	<script src="js/p1.js">
 		;
 	</script>

@@ -9,6 +9,9 @@ public class AddressBean {
 	private String zip;
 	private String phone;
 	private String type;
+	
+	public static String BILLING = "Billing";
+	public static String SHIPPING = "Shipping";
 
 	public AddressBean(String username, String street, String province, String country, String zip, String phone, String type) {
 		this.setUsername(username);
