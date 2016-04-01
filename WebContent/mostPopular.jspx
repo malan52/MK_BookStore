@@ -8,12 +8,12 @@
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
 	<!-- this is a Map<String, Integer> retrieveMostPopular() -->
+	
 	<c:set var="mostPopular" value="${(sessionScope['mostpopular'])}"></c:set>
 	<c:choose>
 		<c:when test="${not empty sessionScope['mostpopular']}">
 			<table class="table">
 				<tr>
-					<td>BID</td>
 					<td>Book Title</td>
 					<td>Price</td>
 					<td>Category</td>
@@ -21,7 +21,6 @@
 				</tr>
 				<c:forEach items="${mostPopular}" var="element">
 					<tr>
-						<td>${bookAccessor.retrieveBook(element.key).getBid()}</td>
 						<td>${bookAccessor.retrieveBook(element.key).getTitle()}</td>
 						<td>${bookAccessor.retrieveBook(element.key).getPrice()}</td>
 						<td>${bookAccessor.retrieveBook(element.key).getCategory()}</td>
