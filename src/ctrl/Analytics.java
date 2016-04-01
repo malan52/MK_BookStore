@@ -19,6 +19,7 @@ import bean.*;
 @WebServlet("/Analytics")
 public class Analytics extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private POData POAccessor;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,7 +34,7 @@ public class Analytics extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Retrieve DAOs from context scope.
-		POData POAccessor = (POData) request.getServletContext().getAttribute("POAccessor");
+		POAccessor = new POData();
 		
 		//Current Date to get report period
 		Date date = new Date();
