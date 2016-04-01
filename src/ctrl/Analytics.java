@@ -44,6 +44,7 @@ public class Analytics extends HttpServlet {
 		try {
 			//UC A1: Set report with book id and quantity as attribute.
 			request.setAttribute("report", POAccessor.retrieveOrderHistory(YMformate.format(date)+"01", YMDformate.format(date)));
+			System.out.println(request.getAttribute("report"));
 			/*
 			Map<String, Integer> report = POAccessor.retrieveOrderHistory(YMformate.format(date)+"01", YMDformate.format(date));
 			for (String bid: report.keySet())
