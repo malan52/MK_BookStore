@@ -1,10 +1,5 @@
 package bean;
 
-//import javax.xml.bind.annotation.XmlRootElement;
-//import javax.xml.bind.annotation.XmlType;
-
-//@XmlRootElement(name="sisReport")
-//@XmlType(propOrder={"day", "bid", "eventtype"})
 public class VisitEventBean {
 	
 	private String day;

@@ -27,7 +27,6 @@ public class MostPopular implements HttpSessionAttributeListener {
      * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
      */
     public void attributeAdded(HttpSessionBindingEvent arg0)  { 
-    	System.out.println("enter!add");
     }
 
 	/**
@@ -43,7 +42,7 @@ public class MostPopular implements HttpSessionAttributeListener {
     public void attributeReplaced(HttpSessionBindingEvent event)  { 
     	if (event.getName().equals("poupdated")) {
 	    	try {
-	    		System.out.println("map:"+podata.retrieveMostPopular().toString());
+	    		//System.out.println("map:"+podata.retrieveMostPopular().toString());
 				event.getSession().setAttribute("mostpopular", podata.retrieveMostPopular());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
