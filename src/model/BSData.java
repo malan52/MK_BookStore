@@ -86,9 +86,10 @@ public class BSData {
 		marshaller.setSchema(schema);
 		marshaller.marshal(bw, new StreamResult(sw));
 		System.out.println(sw.toString()); // for debugging
-		/*FileWriter fw = new FileWriter(filename);
+		System.out.println(filename);
+		FileWriter fw = new FileWriter(filename);
 		fw.write(sw.toString());
-		fw.close();*/
+		fw.close();
 	}
 	
 	public void exportOrders(String productId, String filename)throws Exception{
