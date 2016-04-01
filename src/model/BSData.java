@@ -66,8 +66,33 @@ public class BSData {
 		this.customer.updateCustomer(customer);
 	}
 	
+	
 	public void exportProductInfo(String productId, String filename)throws Exception{
 	
+		BookBean bookBean = book.retrieveBook(productId);
+		
+		BookWrapper bw = new BookWrapper(productId, bookBean);
+		
+		JAXBContext jc = JAXBContext.newInstance(bw.getClass());
+		Marshaller marshaller = jc.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+		StringWriter sw = new StringWriter();
+		sw.write("<?xml-stylesheet type=\"text/xsl\" href=\"MKBook.xsl\"?>");
+		sw.write("\n");
+		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		String path = "C:/Malan/University/eclipse_workspace/Workspace/MK_BookStore/WebContent/XML";
+		Schema schema = sf.newSchema(new File(path + "/MK_Book.xsd"));
+		marshaller.setSchema(schema);
+		marshaller.marshal(bw, new StreamResult(sw));
+		System.out.println(sw.toString()); // for debugging
+		/*FileWriter fw = new FileWriter(filename);
+		fw.write(sw.toString());
+		fw.close();*/
+	}
+	
+	public void exportOrders(String productId, String filename)throws Exception{
+		
 		BookBean bookBean = book.retrieveBook(productId);
 		
 		BookWrapper bw = new BookWrapper(productId, bookBean);

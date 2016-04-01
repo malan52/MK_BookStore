@@ -1,6 +1,7 @@
 package ctrl;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.ServletException;
@@ -31,7 +32,24 @@ public class Analytics extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Retrieve DAOs from context scope.
+		POData POAccessor = (POData) request.getServletContext().getAttribute("POAccessor");
 		
+		//Current Date to get report period
+		Date date = new Date();
+		SimpleDateFormat YMformate = new SimpleDateFormat("yyyyMM");
+		SimpleDateFormat YMDformate = new SimpleDateFormat("yyyyMMdd");
+		
+		try {
+			//UC A1: Set report with book id and quantity as attribute.
+			request.setAttribute("report", POAccessor.retrieveOrderHistory(YMformate.format(date)+"01", YMDformate.format(date)));
+			//UC A3: Set all PO records as attribute.
+			request.setAttribute("anonymizedpo", POAccessor.retrieveAllPO());
+			//Forward to page
+			request.getRequestDispatcher("/analytics.jspx").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
