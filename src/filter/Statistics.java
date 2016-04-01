@@ -49,14 +49,16 @@ public class Statistics implements Filter {
 		
 		try {
 			Map<POBean, Map<String, Integer>> map = (Map<POBean, Map<String, Integer>>) req.getAttribute("anonymizedpo");
-			for (POBean pobean : map.keySet()) {
-				//String lastthree = pobean.getUsername().substring(pobean.getUsername().length() - 3);
-				pobean.setUsername("******");
-				pobean.setLname("Lname");
-				pobean.setFname("Fname");
-				pobean.setAddress(null);
+			if (map != null) {
+				for (POBean pobean : map.keySet()) {
+					//String lastthree = pobean.getUsername().substring(pobean.getUsername().length() - 3);
+					pobean.setUsername("******");
+					pobean.setLname("Lname");
+					pobean.setFname("Fname");
+					pobean.setAddress(null);
+				}
+				req.getSession().setAttribute("anonymizedpo", map);
 			}
-			req.getSession().setAttribute("anonymizedpo", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

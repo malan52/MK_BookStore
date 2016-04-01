@@ -242,7 +242,103 @@ public class TestDriver {
 	 * @return String with error message
 	 */
 	public String checkPOBean() {
-		
+		if (!result)
+			return "";
+		String PO_id = "1";
+		String username = "2";
+		String status = POBean.PROCESSED;
+		AddressBean address = new AddressBean("Cherry", "12 Eglinton St.", 
+				"Ontario", "Canada", "M2N 6X8", "6471231234", AddressBean.BILLING);
+		String PO_date = "3";
+		String lname = "4";
+		String fname = "5";
+		POBean po = new POBean(PO_id, username, status, address, PO_date, lname, fname); 
+		//t0
+		if (!po.getPO_id().equals(PO_id)) {
+			result = false;
+			return "t0: getPO_id return wrong answer.";
+		}
+		//t1
+		if (!po.getUsername().equals(username)) {
+			result = false;
+			return "t1: getUsername return wrong answer.";
+		}
+		//t2
+		if (!po.getStatus().equals(status)) {
+			result = false;
+			return "t2: getStatus return wrong answer.";
+		}
+		//t3
+		if (!po.getAddress().equals(address)) {
+			result = false;
+			return "t3: getAddress return wrong answer.";
+		}
+		//t4
+		if (!po.getPO_date().equals(PO_date)) {
+			result = false;
+			return "t4: getPO_date return wrong answer.";
+		}
+		//t5
+		if (!po.getLname().equals(lname)) {
+			result = false;
+			return "t5: getLname return wrong answer.";
+		}
+		//t6
+		if (!po.getFname().equals(fname)) {
+			result = false;
+			return "t6: getFname return wrong answer.";
+		}
+		String new_PO_id = "9";
+		String new_username = "8";
+		String new_status = POBean.DENIED;
+		AddressBean new_address = new AddressBean("new_Cherry", "new_12 Eglinton St.", 
+				"new_Ontario", "new_Canada", "new_M2N 6X8", "new_6471231234", AddressBean.SHIPPING);
+		String new_PO_date = "7";
+		String new_lname = "6";
+		String new_fname = "0";
+		//t7
+		po.setPO_id(new_PO_id);
+		if (!po.getPO_id().equals(new_PO_id)) {
+			result = false;
+			return "t7: setPO_id return wrong answer.";
+		}
+		//t8
+		po.setUsername(new_username);
+		if (!po.getUsername().equals(new_username)) {
+			result = false;
+			return "t8: setUsername return wrong answer.";
+		}
+		//t9
+		po.setStatus(new_status);
+		if (!po.getStatus().equals(new_status)) {
+			result = false;
+			return "t9: setStatus return wrong answer.";
+		}
+		//t10
+		po.setAddress(new_address);
+		if (!po.getAddress().equals(new_address)) {
+			result = false;
+			return "t10: setAddress return wrong answer.";
+		}
+		//t11
+		po.setPO_date(new_PO_date);
+		if (!po.getPO_date().equals(new_PO_date)) {
+			result = false;
+			return "t11: setPO_date return wrong answer.";
+		}
+		//t12
+		po.setLname(new_lname);
+		if (!po.getLname().equals(new_lname)) {
+			result = false;
+			return "t12: setLname return wrong answer.";
+		}
+		//t13
+		po.setFname(new_fname);
+		if (!po.getFname().equals(new_fname)) {
+			result = false;
+			return "t13: setFname return wrong answer.";
+		}
+		return "checkPOBean test success!\n";
 	}
 	
 	/**
@@ -350,7 +446,62 @@ public class TestDriver {
 	 * @return String with error message
 	 */
 	public String checkReviewBean() {
-		
+		if (!result)
+			return "";
+		String bid = "1";
+		String username = "2";
+		int rating = 3;
+		String review = "4";
+		ReviewBean reviewBean = new ReviewBean(bid, username, rating, review);
+		//t0
+		if (!reviewBean.getBid().equals(bid)) {
+			result = false;
+			return "t0: getBid return wrong answer.";
+		}
+		//t1
+		if (!reviewBean.getUsername().equals(username)) {
+			result = false;
+			return "t1: getUsername return wrong answer.";
+		}
+		//t2
+		if (reviewBean.getRating() != rating) {
+			result = false;
+			return "t2: getRating return wrong answer.";
+		}
+		//t3
+		if (!reviewBean.getReview().equals(review)) {
+			result = false;
+			return "t2: getRating return wrong answer.";
+		}
+		String new_bid = "5";
+		String new_username = "6";
+		int new_rating = 7;
+		String new_review = "8";
+		//t4
+		reviewBean.setBid(new_bid);
+		if (!reviewBean.getBid().equals(new_bid)) {
+			result = false;
+			return "t4: setBid return wrong answer.";
+		}
+		//t5
+		reviewBean.setUsername(new_username);
+		if (!reviewBean.getUsername().equals(new_username)) {
+			result = false;
+			return "t5: setUsername return wrong answer.";
+		}
+		//t6
+		reviewBean.setRating(new_rating);
+		if (reviewBean.getRating() != new_rating) {
+			result = false;
+			return "t6: setRating return wrong answer.";
+		}
+		//t7
+		reviewBean.setReview(new_review);
+		if (!reviewBean.getReview().equals(new_review)) {
+			result = false;
+			return "t7: setRating return wrong answer.";
+		}
+		return "checkReviewBean test success!\n";
 	}
 	
 	/**
@@ -358,7 +509,49 @@ public class TestDriver {
 	 * @return String with error message
 	 */
 	public String checkVisitEventBean() {
-		
+		if (!result)
+			return "";
+		String day = "1";
+		String bid = "2";
+		String evettype = "3";
+		VisitEventBean ve = new VisitEventBean(day, bid, evettype);
+		//t0
+		if (!ve.getDay().equals(day)) {
+			result = false;
+			return "t0: getDay return wrong answer.";
+		}
+		//t1
+		if (!ve.getBid().equals(bid)) {
+			result = false;
+			return "t1: getBid return wrong answer.";
+		}
+		//t2
+		if (!ve.getEvettype().equals(evettype)) {
+			result = false;
+			return "t2: getEvettype return wrong answer.";
+		}
+		String new_day = "4";
+		String new_bid = "5";
+		String new_evettype = "6";
+		//t3
+		ve.setDay(new_day);;
+		if (!ve.getDay().equals(new_day)) {
+			result = false;
+			return "t3: setDay not work correctly.";
+		}
+		//t4
+		ve.setBid(new_bid);;
+		if (!ve.getBid().equals(new_bid)) {
+			result = false;
+			return "t4: setBid not work correctly.";
+		}
+		//t5
+		ve.setEvettype(new_evettype);;
+		if (!ve.getEvettype().equals(new_evettype)) {
+			result = false;
+			return "t5: setEvettype not work correctly.";
+		}
+		return "checkVisitEventBean test success!\n";
 	}
 	
 	
@@ -370,6 +563,9 @@ public class TestDriver {
 		result = result + td.checkProfileBean();
 		result = result + td.checkPOItemBean();
 		result = result + td.checkCustomerBean();
+		result = result + td.checkPOBean();
+		result = result + td.checkReviewBean();
+		result = result + td.checkVisitEventBean();
 		System.out.println(td.result);
 		System.out.println(result);
 	}
