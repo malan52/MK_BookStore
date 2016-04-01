@@ -15,7 +15,7 @@
 		<c:set var="billingAdrs" value="${adrsAccessor.retrieveBillingAddr(user.getUsername())}"></c:set>
 		<div>
 			<h4 style="color: red;">
-				<p>Billing Address</p>
+				<p>Billing Address</p> 
 			</h4>
 
 			<br />
@@ -33,9 +33,10 @@
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4">
 							<!-- !!!!!!!!!!!!!!!!!!!!!!for select the country, attribute onclick may or maynot work!!!!!!!!!!!!!!!!!!! -->
-							<select id="country" name="country" class="form-control"
-								value="${billingAdrs.getCountry()}" onchange="getState()"
-								onClick="if (this.value=='${billingAdrs.getCountry()}'){this.value=''};">
+							<select id="country" name="country" class="form-control" onchange="getState()">
+								<c:if test="${not empty billingAdrs.getCountry() }">
+								<option value="${billingAdrs.getCountry()}">${billingAdrs.getCountry()}</option>
+								</c:if>
 								<option value="0">Select country</option>
 								<option value="Canada">Canada</option>
 								<option value="USA">USA</option>
@@ -47,8 +48,10 @@
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4">
 							<select id="state" name="state" class="form-control"
-								value="${billingAdrs.getProvince()}"
-								onClick="if (this.value=='${billingAdrs.getProvince()}'){this.value=''};">
+								value="${billingAdrs.getProvince()}">
+								<c:if test="${not empty billingAdrs.getProvince()}">
+								<option value="${billingAdrs.getProvince()}">${billingAdrs.getProvince()}</option>
+								</c:if>
 								<option value="0">Select state</option>
 							</select>
 						</div>
