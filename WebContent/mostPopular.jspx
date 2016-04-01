@@ -31,7 +31,7 @@
 			</div>
 		</div>
 	<p style="color:DimGray"><h1>The Most Popluar Book</h1></p>
-	
+	${sessionScope['mostpopular'].key}
 	<c:choose>
 		<c:when test="${not empty sessionScope['mostpopular']}">
 		 <p style="color:DimGray"> the most popular book in MK bookstore is: </p>
@@ -53,7 +53,7 @@
 		 </table>
 		</c:when>
 		<c:otherwise>
-		<p style="color:DimGray">No Sell Yet!!!</p>
+		<p style="color:DimGray"><h1>No Sell Yet!!!</h1></p>
 		</c:otherwise>
 	</c:choose>
 

@@ -33,7 +33,7 @@
 	<div id="message" class="panel panel-default">
 		<h1>${message}</h1>
 	</div>
-	<a type="button" class="btn btn-warning btn-lg" href="${referer}">Back</a>
+	<a type="button" class="btn btn-warning btn-lg" href="${referer}" style="float:right">Back</a>
 </div>
 	<script src="js/p1.js">
 		;
