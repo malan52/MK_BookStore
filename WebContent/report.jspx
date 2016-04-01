@@ -10,6 +10,6 @@
 		omit-xml-declaration="true" />
 		<c:set var="report" value="${requestScope['report']}"></c:set>
 		<c:forEach items="${report}" var="element">
-		${element.key}
+		this is a test${element.key}
 		</c:forEach>
 </div>

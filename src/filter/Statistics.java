@@ -49,7 +49,7 @@ public class Statistics implements Filter {
 		
 		try {
 			Map<POBean, Map<String, Integer>> map = (Map<POBean, Map<String, Integer>>) req.getAttribute("anonymizedpo");
-			if (map != null) {
+			if (map != null) {//
 				for (POBean pobean : map.keySet()) {
 					//String lastthree = pobean.getUsername().substring(pobean.getUsername().length() - 3);
 					pobean.setUsername("******");
