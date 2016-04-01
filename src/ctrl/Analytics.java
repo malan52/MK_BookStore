@@ -19,6 +19,7 @@ import bean.*;
 @WebServlet("/Analytics")
 public class Analytics extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private POData POAccessor;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,7 +34,7 @@ public class Analytics extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Retrieve DAOs from context scope.
-		POData POAccessor = (POData) request.getServletContext().getAttribute("POAccessor");
+		POAccessor = new POData();
 		
 		//Current Date to get report period
 		Date date = new Date();
@@ -45,6 +46,15 @@ public class Analytics extends HttpServlet {
 			request.setAttribute("report", POAccessor.retrieveOrderHistory(YMformate.format(date)+"01", YMDformate.format(date)));
 			//UC A3: Set all PO records as attribute.
 			request.setAttribute("anonymizedpo", POAccessor.retrieveAllPO());
+			/*
+			Map<POBean, Map<String, Integer>> map = POAccessor.retrieveAllPO();
+			for (POBean key : map.keySet()) {
+				System.out.println("***" + key.toString());
+				for (String bid : map.get(key).keySet()) {
+					System.out.println("book: " + bid + ", quantity: " + map.get(key).get(bid));
+				}
+			}
+			*/
 			//Forward to page
 			request.getRequestDispatcher("/analytics.jspx").forward(request, response);
 		} catch (Exception e) {

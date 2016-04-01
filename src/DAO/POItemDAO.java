@@ -109,7 +109,7 @@ public class POItemDAO {
 	 * @throws SQLException
 	 */
 	public Map<String, Integer> retrieveOrderHistory(String start, String end) throws SQLException {
-		String query = "select POItem.bid, sum(POItem.quantity) as \'QUANTITY\' from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>\'DENIED\' and POItem.PO_id >= (select min(PO_id) from POItem where PO_id like '"
+		String query = "select POItem.bid, sum(POItem.quantity) as \"QUANTITY\" from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' and POItem.PO_id >= (select min(PO_id) from POItem where PO_id like '"
 				+ start + "%') and POItem.PO_id <= (select max(PO_id) from POItem where PO_id like '" + end
 				+ "%') group by POItem.bid";
 		Map<String, Integer> map = new HashMap<String, Integer>();
