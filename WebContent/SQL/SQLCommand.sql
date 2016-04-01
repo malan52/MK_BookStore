@@ -79,6 +79,7 @@ FOREIGN KEY (a_id) REFERENCES Address(a_id)
 INSERT INTO PO VALUES ( '201506071545332', 'Roger', 'PROCESSED', 2, '20150607', 'Rose', 'Wendy');
 INSERT INTO PO VALUES ( '201511212359082', 'John', 'DENIED', 6, '20151121', 'John', 'Willie');
 INSERT INTO PO VALUES ( '201512041403527', 'Andy', 'ORDERD', 4, '20151204', 'Andy', 'Olly');
+INSERT INTO PO VALUES ( '201604010203634', 'Roger', 'ORDERD', 10, '20160401', 'Andy', 'Sherry');
 
 SELECT * from PO order by PO_date desc;
 select * from PO where PO_date > '20150710' and po_date < '20151203';
@@ -104,6 +105,9 @@ INSERT INTO POItem (po_id, bid, quantity) VALUES ('201511212359082', 'b002', 2);
 INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b003', 1);
 INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b004', 1);
 INSERT INTO POItem (po_id, bid, quantity) VALUES ('201512041403527', 'b001', 3);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201604010203634', 'b001', 3);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201604010203634', 'b002', 2);
+INSERT INTO POItem (po_id, bid, quantity) VALUES ('201604010203634', 'b003', 1);
 
 
 select POItem.bid, sum(POItem.quantity) from POItem, PO where POItem.PO_id=PO.PO_id and PO.status<>'DENIED' 

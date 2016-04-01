@@ -44,6 +44,11 @@ public class Analytics extends HttpServlet {
 		try {
 			//UC A1: Set report with book id and quantity as attribute.
 			request.setAttribute("report", POAccessor.retrieveOrderHistory(YMformate.format(date)+"01", YMDformate.format(date)));
+			/*
+			Map<String, Integer> report = POAccessor.retrieveOrderHistory(YMformate.format(date)+"01", YMDformate.format(date));
+			for (String bid: report.keySet())
+				System.out.println("bid:"+bid+", quantity:"+report.get(bid));
+			*/
 			//UC A3: Set all PO records as attribute.
 			request.setAttribute("anonymizedpo", POAccessor.retrieveAllPO());
 			/*
