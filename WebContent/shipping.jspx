@@ -16,17 +16,7 @@
 
 	<tr>
 	<td><p style="color:red;">Set Shipping Address as Billing Address?</p></td>
-	<td><label><input type="checkbox" id="yes" name="yes" style="margin: 0px 10px 10px 20px;" onchange="sameadrs()" />Yes</label>	</td>
-	
-	 <td>
-	 	<select class="form-control" id="previous" style="margin: 0px 10px 10px 20px;" onchange="disShiping()">
-	    <option value="0">Your previous shipping address</option>
-	    <option>1</option>
-	    <option>1</option>
-	    <option>1</option>
-	    <option>1</option>
-	      </select>
-	 </td>
+	<td><label><input type="checkbox" id="yes" name="yes" style="margin: 0px 10px 10px 20px;" onchange="sameadrs()" />Yes</label></td>
 	 </tr>
 </table> 
 <!-- table end -->
