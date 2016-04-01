@@ -50,7 +50,6 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#loginModal">Sign In</a></li>
 				<li><a href="register.jspx">Register</a></li>
-				<li><a href="Cart.jspx">Shopping Cart<span id="cart_icon" class="badge">${cart.getSize()}</span></a></li>
 			</ul>
 		</div>
 		</c:if>

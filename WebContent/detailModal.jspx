@@ -45,7 +45,7 @@
 												id="customerreview" onclick="this.innerHTML=''">please write a review</textarea></td>
 										<td><button onclick="return submitReview('${user}')"
 												id="submit_bid" name="submit_bid" type="submit"
-												class="btn btn-primary">Submit</button></td>
+												class="btn btn-primary" style="margin-left:165px;">Submit</button></td>
 									</tr>
 								<tr>
 									<td><hr /></td>
